@@ -2200,7 +2200,7 @@
           </div>
           <h3 class="font-headline font-bold text-3xl mb-3" style="color:#1a1c1e;">No Special Upcoming Events Right Now</h3>
           <p class="font-body text-base leading-relaxed max-w-2xl mx-auto mb-8" style="color:#495f84;">
-            Join us for our regular weekly services and check back soon for the next gathering.
+            No special events are scheduled right now. Join us for our regular weekly services. Subscribe for updates.
           </p>
           <button type="button" onclick="navigate('visit')" class="btn-primary px-8 py-4 rounded-2xl font-body font-bold">
             Plan Your Visit
@@ -2213,7 +2213,6 @@
   function renderEventCards(events) {
     return events.map((event, index) => {
       const theme = EVENT_CARD_THEMES[index % EVENT_CARD_THEMES.length];
-      const startDate = String(event.startAt || '').slice(0, 10);
       const start = new Date(event.startAt);
       const day = Number.isNaN(start.getTime()) ? '--' : String(start.getDate()).padStart(2, '0');
       const month = Number.isNaN(start.getTime()) ? 'TBD' : start.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
@@ -2248,7 +2247,7 @@
                     <span class="inline-flex items-center rounded-full px-3 py-1 font-body font-bold text-xs uppercase tracking-widest" style="background:${theme.accent};color:#ffffff;">${escapeHtml(event.category || 'Special Event')}</span>
                     <p class="font-body font-semibold text-sm mt-4" style="color:#495f84;">${escapeHtml(formatEventDateRange(event.startAt, event.endAt))}</p>
                   </div>
-                  <div class="inline-flex items-center justify-center rounded-full px-4 py-2 font-body font-bold text-sm whitespace-nowrap upcoming-event-countdown" style="background:${theme.accentWash};color:${theme.accent};border:1px solid ${theme.border};" data-event-date="${escapeHtml(startDate)}">
+                  <div class="inline-flex items-center justify-center rounded-full px-4 py-2 font-body font-bold text-sm whitespace-nowrap upcoming-event-countdown" style="background:${theme.accentWash};color:${theme.accent};border:1px solid ${theme.border};" data-event-start="${escapeHtml(event.startAt)}" data-event-end="${escapeHtml(event.endAt)}">
                     Coming soon
                   </div>
                 </div>
@@ -2318,25 +2317,32 @@
     if (!badges.length) return;
 
     function updateBadge(badge) {
-      const targetValue = badge.dataset.eventDate;
-      if (!targetValue) return;
+      const startValue = badge.dataset.eventStart || badge.dataset.eventDate;
+      const endValue = badge.dataset.eventEnd || startValue;
+      if (!startValue || !endValue) return;
 
-      const targetDate = new Date(`${targetValue}T00:00:00`);
-      if (Number.isNaN(targetDate.getTime())) return;
+      const startDate = new Date(startValue);
+      const endDate = new Date(endValue);
+      if (Number.isNaN(startDate.getTime()) || Number.isNaN(endDate.getTime())) return;
 
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const eventDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
-      const diffDays = Math.round((eventDay - today) / 86400000);
+      const eventStartDay = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+      const eventEndDay = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+      const diffDays = Math.round((eventStartDay - today) / 86400000);
+      const isActive = now >= startDate && now <= endDate;
+      const isSameDayEvent = eventStartDay.getTime() === eventEndDay.getTime();
 
-      if (diffDays > 1) {
+      if (isActive) {
+        badge.textContent = isSameDayEvent ? 'Happening today' : 'Happening now';
+      } else if (now > endDate) {
+        badge.textContent = 'Event concluded';
+      } else if (diffDays > 1) {
         badge.textContent = `${diffDays} days to go`;
       } else if (diffDays === 1) {
         badge.textContent = '1 day to go';
       } else if (diffDays === 0) {
         badge.textContent = 'Today';
-      } else {
-        badge.textContent = 'Event concluded';
       }
     }
 
