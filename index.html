@@ -1,0 +1,2368 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kingdom Calibration | Transforming Lives, Aligning Destinies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,300;1,6..72,400;1,6..72,600;1,6..72,700&family=Manrope:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #b5000b;
+      --primary-dark: #8a0008;
+      --primary-light: #e30613;
+      --secondary: #495f84;
+      --tertiary: #735c00;
+      --surface: #f9f9fc;
+      --surface-container: #eeeef0;
+      --surface-low: #f3f3f6;
+      --surface-high: #e8e8ea;
+      --surface-white: #ffffff;
+      --on-surface: #1a1c1e;
+      --on-secondary: #5e3f3b;
+      --outline: #e9bcb6;
+    }
+
+    * { box-sizing: border-box; }
+    html { font-family: 'Manrope', sans-serif; }
+    body { background-color: var(--surface); color: var(--on-surface); overflow-x: hidden; }
+
+    .font-headline { font-family: 'Newsreader', serif; }
+    .font-body { font-family: 'Manrope', sans-serif; }
+    #page-about header .about-hero-copy + p.font-body { display: none; }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+
+    /* Page Transitions */
+    .page { display: none; animation: fadeIn 0.4s ease; }
+    .page.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--surface); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* Primary Gradient */
+    .btn-primary {
+      background: linear-gradient(135deg, #b5000b 0%, #e30613 100%);
+      color: white;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(181,0,11,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(181,0,11,0.4); }
+    .btn-primary:active { transform: scale(0.97); }
+
+    /* Nav */
+    .nav-link { position: relative; transition: color 0.2s; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--primary); transition: width 0.3s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: var(--primary); font-weight: 700; }
+
+    /* Cards */
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(181,0,11,0.08); }
+
+    /* Hero Gradient Overlay */
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(249,249,252,0.72) 0%, rgba(249,249,252,0.8) 22%, rgba(249,249,252,0.86) 42%, rgba(249,249,252,0.55) 62%, transparent 100%);
+    }
+
+    /* Section Reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Stagger children */
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
+    .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
+    .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s; }
+
+    /* Text Gradient */
+    .text-gradient {
+      background: linear-gradient(135deg, #b5000b, #e30613);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Decorative line */
+    .section-label {
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--primary);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .mobile-menu.open { max-height: 400px; }
+
+    /* Value card hover */
+    .value-card { transition: all 0.4s ease; }
+    .value-card:hover { background: var(--primary); color: white; }
+    .value-card:hover .value-icon { color: white; }
+    .value-card:hover p { color: rgba(255,255,255,0.8); }
+
+    /* Ministry card */
+    .ministry-card img {
+      display: block; width: 100%; height: 100%;
+      transition: transform 0.35s ease; backface-visibility: hidden;
+    }
+    .ministry-card:hover img { transform: scale(1.02); }
+    .ministry-photo-landscape { aspect-ratio: 4 / 3; background: #f3f3f6; }
+    .ministry-photo-portrait { aspect-ratio: 4 / 5; background: #f3f3f6; }
+
+    /* KLF showcase */
+    .klf-showcase {
+      position: relative; overflow: hidden; border-radius: 2rem; padding: 1.1rem;
+      background: linear-gradient(155deg, #f8efe4 0%, #fbf8f2 42%, #eef3fa 100%);
+      border: 1px solid rgba(233,188,182,0.45);
+      box-shadow: 0 30px 70px rgba(26,28,30,0.12);
+    }
+    .klf-showcase::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.95), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(73,95,132,0.12), transparent 30%);
+      pointer-events: none;
+    }
+    .klf-showcase-top {
+      position: relative; z-index: 1; display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 1rem; margin-bottom: 1rem; padding: 0.35rem 0.35rem 0 0.35rem;
+    }
+    .klf-showcase-kicker {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #b5000b;
+    }
+    .klf-showcase-heading {
+      margin-top: 0.45rem; font-family: 'Newsreader', serif; font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700; line-height: 1; color: #1a1c1e;
+    }
+    .klf-showcase-nav {
+      display: flex; gap: 0.55rem; flex-shrink: 0;
+    }
+    .klf-showcase-nav button {
+      width: 2.75rem; height: 2.75rem; border-radius: 999px; border: 1px solid rgba(181,0,11,0.16);
+      background: rgba(255,255,255,0.72); color: #1a1c1e;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .klf-showcase-nav button:hover {
+      transform: translateY(-1px); border-color: rgba(181,0,11,0.4); background: white;
+    }
+    .klf-stage {
+      position: relative; aspect-ratio: 5 / 4; overflow: hidden; border-radius: 1.65rem;
+      background: linear-gradient(180deg, #d9c6ad, #e7ddd1);
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+    .klf-stage::after {
+      content: ''; position: absolute; inset: 1rem;
+      border-radius: 1.2rem; border: 1px solid rgba(255,255,255,0.35);
+      pointer-events: none; z-index: 2;
+    }
+    .klf-slide {
+      position: absolute; inset: 0; opacity: 0; transform: scale(1.03);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+      pointer-events: none;
+    }
+    .klf-slide.is-active {
+      opacity: 1; transform: scale(1); pointer-events: auto;
+    }
+    .klf-slide-backdrop {
+      position: absolute; inset: -8%; background-size: cover; background-position: center;
+      filter: blur(34px) saturate(1.08); transform: scale(1.14); opacity: 0.58;
+    }
+    .klf-slide::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(12,13,16,0.06) 0%, rgba(12,13,16,0.2) 48%, rgba(12,13,16,0.7) 100%),
+        radial-gradient(circle at top right, rgba(255,255,255,0.34), transparent 26%);
+    }
+    .klf-slide-image-wrap {
+      position: absolute; inset: 0; z-index: 1; padding: 1.35rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .klf-slide-image {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+      filter: drop-shadow(0 22px 38px rgba(26,28,30,0.26));
+    }
+    .klf-slide-tag {
+      position: absolute; top: 1.15rem; left: 1.15rem; z-index: 3;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 0.9rem; border-radius: 999px;
+      background: rgba(255,255,255,0.82); color: #6f4a30;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+    .klf-slide-tag::before {
+      content: ''; width: 0.45rem; height: 0.45rem; border-radius: 999px; background: #b5000b;
+    }
+    .klf-showcase-footer {
+      position: relative; z-index: 1; margin-top: 1rem;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+      padding: 0 0.35rem;
+    }
+    .klf-showcase-label {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #b5000b;
+    }
+    .klf-showcase-current {
+      margin-top: 0.45rem; font-family: 'Newsreader', serif; font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700; line-height: 1.02; color: #1a1c1e;
+    }
+    .klf-showcase-copy {
+      margin-top: 0.5rem; max-width: 34rem; font-size: 0.96rem; line-height: 1.7; color: #495f84;
+    }
+    .klf-showcase-counter {
+      flex-shrink: 0; min-width: 5rem; text-align: right;
+      font-family: 'Newsreader', serif; font-size: 1.55rem; font-weight: 700; color: #1a1c1e;
+    }
+    .klf-showcase-counter span {
+      font-family: 'Manrope', sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #7a7d85;
+    }
+    .klf-progress {
+      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.15rem;
+      padding: 0 0.35rem 0.35rem;
+    }
+    .klf-progress-item {
+      flex: 1 1 calc(33.333% - 0.7rem); min-width: 9.25rem; border-radius: 1rem;
+      border: 1px solid rgba(26,28,30,0.08); background: rgba(255,255,255,0.72);
+      padding: 0.85rem 0.95rem; text-align: left;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .klf-progress-item:hover, .klf-progress-item.is-active {
+      transform: translateY(-2px); border-color: rgba(181,0,11,0.28); background: white;
+      box-shadow: 0 14px 32px rgba(26,28,30,0.08);
+    }
+    .klf-progress-item span {
+      display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #b5000b;
+    }
+    .klf-progress-item strong {
+      display: block; margin-top: 0.4rem; font-size: 0.92rem; line-height: 1.3; color: #1a1c1e;
+    }
+    .klf-copy-panel {
+      position: relative; overflow: hidden; border-radius: 2rem; padding: 2rem 1.75rem;
+      background: linear-gradient(180deg, #ffffff 0%, #fbf8f4 100%);
+      border: 1px solid rgba(233,188,182,0.42); box-shadow: 0 24px 52px rgba(26,28,30,0.08);
+    }
+    .klf-copy-panel::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, rgba(181,0,11,0.06), transparent 24%),
+                  radial-gradient(circle at bottom left, rgba(73,95,132,0.07), transparent 26%);
+      pointer-events: none;
+    }
+    .klf-copy-panel > * { position: relative; z-index: 1; }
+    .klf-copy-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem;
+    }
+    .klf-copy-card {
+      border-radius: 1.25rem; padding: 1rem 1.05rem;
+      background: rgba(255,255,255,0.85); border: 1px solid rgba(233,188,182,0.38);
+    }
+    .klf-copy-card strong {
+      display: block; font-family: 'Newsreader', serif; font-size: 1.25rem; font-weight: 700; color: #1a1c1e;
+    }
+    .klf-copy-card span {
+      display: inline-block; margin-top: 0.3rem; font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase; color: #b5000b;
+    }
+    .klf-copy-note {
+      margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid #e9bcb6;
+      font-size: 0.96rem; line-height: 1.7; color: #495f84;
+    }
+    .about-purpose-shell {
+      position: relative; overflow: hidden; border-radius: 2.2rem; padding: 1.15rem;
+      background: linear-gradient(145deg, #fff8f4 0%, #ffffff 48%, #f4f7fb 100%);
+      border: 1px solid rgba(233,188,182,0.42);
+      box-shadow: 0 28px 68px rgba(26,28,30,0.08);
+    }
+    .about-purpose-orb {
+      position: absolute; border-radius: 999px; filter: blur(40px); opacity: 0.48; pointer-events: none;
+    }
+    .about-purpose-orb-one {
+      width: 12rem; height: 12rem; top: -2.5rem; left: -2rem; background: rgba(181,0,11,0.09);
+    }
+    .about-purpose-orb-two {
+      width: 13rem; height: 13rem; right: -2rem; bottom: -2rem; background: rgba(73,95,132,0.11);
+    }
+    .about-purpose-grid {
+      position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0,1.02fr) minmax(0,0.98fr); gap: 1.35rem;
+    }
+    .about-purpose-card {
+      position: relative; overflow: hidden; min-height: 100%; border-radius: 1.85rem; padding: 2rem 1.8rem;
+    }
+    .about-purpose-card::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+    }
+    .about-vision-card {
+      background: linear-gradient(180deg, #fffdf9 0%, #fff8ef 100%);
+      border: 1px solid #f0d7d2; box-shadow: 0 18px 40px rgba(26,28,30,0.04);
+    }
+    .about-vision-card::before {
+      background:
+        radial-gradient(circle at top left, rgba(181,0,11,0.07), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.55), transparent 28%);
+    }
+    .about-mission-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+      border: 1px solid #dfe6f0; box-shadow: 0 18px 40px rgba(26,28,30,0.04);
+    }
+    .about-mission-card::before {
+      background:
+        radial-gradient(circle at top right, rgba(73,95,132,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.6), transparent 26%);
+    }
+    .about-purpose-kicker {
+      position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.55rem;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #b5000b;
+    }
+    .about-purpose-kicker::before {
+      content: ''; width: 0.55rem; height: 0.55rem; border-radius: 999px; background: #b5000b;
+      box-shadow: 0 0 0 6px rgba(181,0,11,0.08);
+    }
+    .about-vision-quote {
+      position: relative; z-index: 1; margin-top: 1.5rem;
+      font-family: 'Newsreader', serif; font-weight: 700; font-style: italic;
+      font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: 0.94; color: #1a1c1e;
+    }
+    .about-vision-mark {
+      position: absolute; top: 1.4rem; right: 1.5rem; z-index: 0;
+      font-family: 'Newsreader', serif; font-size: clamp(6rem, 11vw, 9rem); line-height: 1;
+      color: rgba(181,0,11,0.08);
+    }
+    .about-vision-accent {
+      position: relative; z-index: 1; width: 7rem; height: 0.3rem; border-radius: 999px; margin-top: 1.75rem;
+      background: linear-gradient(90deg, #b5000b, rgba(233,188,182,0.3));
+    }
+    .about-mission-copy {
+      position: relative; z-index: 1; margin-top: 1.45rem;
+      color: #495f84; font-size: clamp(1.24rem, 2.15vw, 1.85rem); line-height: 1.72;
+    }
+    .about-mission-divider {
+      position: relative; z-index: 1; width: 7.5rem; height: 0.28rem; border-radius: 999px; margin-top: 2rem;
+      background: linear-gradient(90deg, #b5000b, rgba(73,95,132,0.2));
+    }
+    .about-mission-note {
+      position: relative; z-index: 1; margin-top: 1.05rem;
+      font-size: 0.84rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #7f8ba0;
+    }
+    @media (max-width: 1023px) {
+      .klf-showcase, .klf-copy-panel { border-radius: 1.7rem; }
+      .about-purpose-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .klf-showcase-top, .klf-showcase-footer { padding-left: 0.1rem; padding-right: 0.1rem; }
+      .klf-stage { aspect-ratio: 1 / 1.06; }
+      .klf-progress-item { flex-basis: calc(50% - 0.7rem); min-width: 0; }
+      .klf-copy-grid { grid-template-columns: 1fr; }
+      .klf-showcase-counter { text-align: left; min-width: 0; }
+      .klf-showcase-footer { flex-direction: column; align-items: flex-start; }
+      .about-purpose-shell { padding: 0.85rem; }
+      .about-purpose-card { padding: 1.45rem 1.25rem; border-radius: 1.5rem; }
+      .about-vision-mark { right: 1rem; top: 1rem; }
+    }
+
+    /* Sermons */
+    .sermon-player {
+      position: relative; aspect-ratio: 16 / 9; background: #111214;
+      border-radius: 1.5rem; overflow: hidden;
+    }
+    .sermon-player iframe {
+      width: 100%; height: 100%; border: 0; display: block;
+    }
+    .sermon-player-trigger {
+      position: relative; width: 100%; height: 100%; display: block;
+      text-align: left; background: #111214; color: white; overflow: hidden;
+    }
+    .sermon-player-backdrop {
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      transform: scale(1.01); transition: transform 0.5s ease;
+    }
+    .sermon-player-trigger::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(12,13,16,0.15) 0%, rgba(12,13,16,0.25) 38%, rgba(12,13,16,0.88) 100%);
+    }
+    .sermon-player-trigger:hover .sermon-player-backdrop { transform: scale(1.05); }
+    .sermon-player-badge {
+      position: absolute; top: 1.25rem; left: 1.25rem; z-index: 2;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 0.9rem; border-radius: 999px;
+      background: rgba(181,0,11,0.88); color: #fff4f2;
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 800;
+    }
+    .sermon-play-icon {
+      position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center;
+    }
+    .sermon-play-icon span {
+      width: 5rem; height: 5rem; border-radius: 999px; display: inline-flex;
+      align-items: center; justify-content: center; color: white;
+      background: rgba(181,0,11,0.92); box-shadow: 0 18px 42px rgba(181,0,11,0.32);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .sermon-player-trigger:hover .sermon-play-icon span {
+      transform: scale(1.05); box-shadow: 0 22px 48px rgba(181,0,11,0.4);
+    }
+    .sermon-player-copy {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 1.5rem;
+    }
+    .sermon-player-title {
+      display: block; font-family: 'Newsreader', serif; font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 2.3rem); line-height: 1.05; color: white;
+    }
+    .sermon-player-subtitle {
+      display: inline-block; margin-top: 0.7rem; color: rgba(255,255,255,0.76);
+      font-size: 0.95rem;
+    }
+    .sermon-list-item {
+      width: 100%; display: flex; gap: 1rem; align-items: center;
+      padding: 0.9rem; border-radius: 1.25rem; text-align: left;
+      background: #ffffff; border: 1px solid #e2e2e5;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .sermon-list-item:hover, .sermon-list-item.is-active {
+      transform: translateY(-2px); border-color: #e9bcb6;
+      box-shadow: 0 16px 36px rgba(26,28,30,0.08);
+    }
+    .sermon-list-item.is-active {
+      background: linear-gradient(180deg, #fffaf9, #ffffff);
+    }
+    .sermon-list-thumb {
+      position: relative; width: 6.5rem; flex-shrink: 0; aspect-ratio: 16 / 9;
+      border-radius: 0.95rem; overflow: hidden; background-size: cover; background-position: center;
+      background-color: #d9dde4;
+    }
+    .sermon-list-thumb::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(26,28,30,0.02) 0%, rgba(26,28,30,0.5) 100%);
+    }
+    .sermon-list-number {
+      position: absolute; left: 0.6rem; top: 0.55rem; z-index: 1;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; color: white;
+    }
+    .sermon-list-copy { min-width: 0; }
+    .sermon-list-copy strong {
+      display: block; color: #1a1c1e; font-size: 0.98rem; line-height: 1.3;
+    }
+    .sermon-list-copy span {
+      display: inline-block; margin-top: 0.45rem; font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #b5000b;
+    }
+    @media (max-width: 640px) {
+      .sermon-list-item { align-items: flex-start; }
+      .sermon-list-thumb { width: 5.8rem; }
+    }
+
+    /* Sticky header shadow on scroll */
+    .header-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    /* Form focus */
+    .form-input {
+      width: 100%; background: transparent; border: none; border-bottom: 2px solid #e2e2e5;
+      padding: 12px 0; font-family: 'Manrope', sans-serif; font-size: 1rem;
+      transition: border-color 0.3s; outline: none;
+    }
+    .form-input:focus { border-color: var(--primary); }
+    .form-input::placeholder { color: #9ca3af; }
+
+    /* Grain texture overlay */
+    .grain::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 150px; opacity: 0.5; z-index: 1;
+    }
+
+    /* Pulse animation */
+    @keyframes pulse-red { 0%,100%{box-shadow:0 0 0 0 rgba(181,0,11,0.3)} 50%{box-shadow:0 0 0 12px rgba(181,0,11,0)} }
+    .pulse { animation: pulse-red 2s infinite; }
+
+    /* Ticker */
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-inner { animation: ticker 25s linear infinite; }
+
+    /* Leader image hover */
+    .leader-img-wrap { overflow: hidden; background: #e2e2e5; }
+    .leader-img-wrap img {
+      display: block; width: 100%; height: 100%;
+      transition: transform 0.45s ease; backface-visibility: hidden;
+      filter: none;
+    }
+    .leader-img-wrap:hover img { transform: scale(1.01); filter: none; }
+
+    /* Schedule card */
+    .schedule-card { transition: all 0.3s ease; border: 1px solid transparent; }
+    .schedule-card:hover { transform: translateY(-6px); border-color: var(--outline); box-shadow: 0 16px 48px rgba(181,0,11,0.06); }
+
+    /* Social link hover */
+    .social-link .social-icon { transition: all 0.3s ease; }
+    .social-link:hover .social-icon { background: var(--primary); border-color: var(--primary); color: white; }
+
+    /* Decorative blob */
+    .blob {
+      position: absolute; border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      background: rgba(181,0,11,0.05); filter: blur(40px);
+      animation: morph 8s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0%,100%{border-radius:60% 40% 70% 30% / 50% 60% 40% 50%}
+      50%{border-radius:30% 70% 40% 60% / 60% 40% 70% 30%}
+    }
+
+    /* Progress bar decoration */
+    .stat-bar { background: #e2e2e5; height: 3px; border-radius: 2px; overflow: hidden; }
+    .stat-bar-fill { height: 100%; background: var(--primary); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform 1s ease 0.3s; }
+    .reveal.visible .stat-bar-fill { transform: scaleX(1); }
+
+    /* Quote decorative */
+    .big-quote::before { content: '"'; font-family: 'Newsreader', serif; font-size: 8rem; color: rgba(181,0,11,0.08); position: absolute; top: -20px; left: -10px; line-height: 1; }
+
+    /* Giving panel */
+    .giving-panel {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
+    }
+    .giving-panel.open {
+      max-height: 900px;
+      opacity: 1;
+      padding: 0.75rem 0 1rem;
+    }
+    .giving-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .giving-card {
+      border-radius: 1.5rem;
+      padding: 1.35rem;
+      min-height: 100%;
+      border: 1px solid rgba(233,188,182,0.4);
+      box-shadow: 0 18px 48px rgba(26,28,30,0.08);
+    }
+    .giving-card h4 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1a1c1e;
+    }
+    .giving-card strong {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .giving-card .giving-big {
+      display: block;
+      font-size: clamp(1.9rem, 3vw, 2.7rem);
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .give-button-highlight {
+      box-shadow: 0 0 0 4px rgba(181,0,11,0.16);
+      border-radius: 0.9rem;
+    }
+    @media (max-width: 900px) {
+      .giving-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background:rgba(249,249,252,0.9);backdrop-filter:blur(16px);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-18 py-4">
+      <!-- Logo -->
+      <button onclick="navigate('home')" class="flex items-center hover:opacity-80 transition-opacity flex-shrink-0" aria-label="Kingdom Calibration Church home">
+        <img loading="eager" fetchpriority="high" decoding="async" src="assets/kcc-logo-dark-transparent.png" alt="Kingdom Calibration Church" style="height:clamp(2.9rem,5vw,3.9rem);width:auto;display:block;"/>
+      </button>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <button onclick="navigate('home')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="home">Home</button>
+        <button onclick="navigate('about')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="about">About Us</button>
+        <button onclick="navigate('ministries')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="ministries">Ministries</button>
+        <button onclick="navigate('visit')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="visit">Visit</button>
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <button id="desktop-give-button" type="button" class="font-body font-semibold text-sm transition-colors" style="color:#b5000b;" onmouseover="this.style.color='#8a0008'" onmouseout="this.style.color='#b5000b'" onclick="toggleGivingMenu()" aria-expanded="false" aria-controls="giving-panel">Give</button>
+        <button onclick="navigate('visit')" class="btn-primary px-6 py-2.5 rounded-xl font-body font-bold text-sm">Join Us &rarr;</button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" onclick="toggleMenu()">
+        <span class="w-6 h-0.5 bg-gray-700 transition-all" id="h1"></span>
+        <span class="w-6 h-0.5 bg-gray-700 transition-all" id="h2"></span>
+        <span class="w-5 h-0.5 bg-gray-700 transition-all" id="h3"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu md:hidden" id="mobile-menu">
+      <div class="pb-6 flex flex-col gap-4 border-t" style="border-color:#e9bcb6;">
+        <button onclick="navigate('home');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Home</button>
+        <button onclick="navigate('about');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">About Us</button>
+        <button onclick="navigate('ministries');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
+        <button onclick="navigate('visit');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
+        <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
+        <button onclick="navigate('visit');toggleMenu()" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Join Us &rarr;</button>
+      </div>
+    </div>
+
+    <div id="giving-panel" class="giving-panel" aria-hidden="true">
+      <div class="rounded-3xl p-6 md:p-8" style="background:#ffffff;border:1px solid #e9bcb6;">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+          <div>
+            <div class="section-label mb-2">Ways To Give</div>
+            <h3 class="font-headline font-bold text-3xl" style="color:#1a1c1e;">Tithes and Offerings</h3>
+          </div>
+          <p class="font-body text-sm max-w-xl" style="color:#495f84;">Use any of the options below to give. The details come directly from the church giving poster you shared.</p>
+        </div>
+
+        <div class="giving-grid">
+          <article class="giving-card" style="background:linear-gradient(160deg,#fff6f5 0%,#ffffff 100%);">
+            <strong style="color:#b5000b;">DTB Bank</strong>
+            <h4 class="mt-3">089-GTC Branch</h4>
+            <p class="font-body text-sm mt-4" style="color:#495f84;">Account</p>
+            <span class="font-body giving-big mt-2" style="color:#1a1c1e;">0485 664 001</span>
+            <p class="font-body text-sm mt-4" style="color:#495f84;">Kingdom Calibration Church</p>
+          </article>
+
+          <article class="giving-card" style="background:linear-gradient(160deg,#f7fbff 0%,#ffffff 100%);">
+            <strong style="color:#00695c;">M-PESA</strong>
+            <h4 class="mt-3">Send Money</h4>
+            <span class="font-body giving-big mt-5" style="color:#1a1c1e;">0742 830 772</span>
+            <p class="font-body text-sm mt-5" style="color:#495f84;">Kingdom Calibration Church</p>
+          </article>
+
+          <article class="giving-card" style="background:linear-gradient(160deg,#f7fbff 0%,#ffffff 100%);">
+            <strong style="color:#0a7d34;">Safaricom Paybill</strong>
+            <span class="font-body giving-big mt-4" style="color:#1a1c1e;">51 66 00</span>
+            <p class="font-body text-sm mt-4" style="color:#495f84;">A/C No</p>
+            <span class="font-body giving-big mt-2" style="color:#1a1c1e;">94 54 48</span>
+            <p class="font-body text-sm mt-4" style="color:#495f84;">Kingdom C C</p>
+            <p class="font-body text-sm mt-5" style="color:#495f84;">To specify your giving:</p>
+            <p class="font-body font-bold text-base mt-2" style="color:#1a1c1e;">A/C No: 9454 48#</p>
+            <p class="font-body text-sm mt-2" style="color:#495f84;">Offering / Tithe / Partnership</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== PAGE: HOME ===================== -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center overflow-hidden" style="padding-top:80px;">
+    <div class="blob w-96 h-96 top-20 right-10 opacity-60" style="position:absolute;"></div>
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 z-10 hero-overlay"></div>
+      <img loading="eager" fetchpriority="high" decoding="async" src="assets/Lion and Eagle.png"
+        alt="Lion and eagle" class="w-full h-full object-cover" style="object-position:center 18%;transform:scaleX(-1);"/>
+    </div>
+    <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full py-24">
+      <div class="max-w-2xl" style="animation:fadeIn 0.8s ease both;">
+        <div class="section-label mb-6">Apostolic & Prophetic Ministry &middot; Nairobi, Kenya</div>
+        <h1 class="font-headline font-bold leading-none mb-8" style="font-size:clamp(3rem,8vw,6rem);color:#1a1c1e;">
+          Kingdom<br/>Calibration
+          <span class="italic" style="color:#b5000b;"> Church,</span><br/>Westlands.
+        </h1>
+        <p class="font-body text-lg leading-relaxed mb-12 max-w-xl" style="color:#495f84;">
+          Changing Lives, Aligning Destinies
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="navigate('visit')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">church</span> Join Our Sunday Service
+          </button>
+          <a href="https://www.youtube.com/@kingdomcalibrationchurch/live" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all hover:border-red-600 hover:text-red-600 inline-flex items-center justify-center" style="border-color:#e2e2e5;color:#1a1c1e;">
+            <span class="material-symbols-outlined align-middle mr-1" style="font-size:18px;">play_circle</span> Watch Live
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60" style="animation:fadeIn 1.5s ease both;">
+      <span class="font-body text-xs tracking-widest uppercase" style="color:#495f84;">Scroll</span>
+      <div class="w-0.5 h-12 rounded-full" style="background:linear-gradient(to bottom,#b5000b,transparent);"></div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div style="background:#b5000b;overflow:hidden;padding:14px 0;">
+    <div class="ticker-inner flex gap-12 whitespace-nowrap" style="width:max-content;">
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Sunday 10am&ndash;1pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Tuesday 6:30pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Upper Room Friday 6:30pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Woodvale Center, Westlands</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Sunday 10am&ndash;1pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Tuesday 6:30pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Upper Room Friday 6:30pm</span>
+      <span class="text-white opacity-40">&middot;</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Woodvale Center, Westlands</span>
+      <span class="text-white opacity-40">&middot;</span>
+    </div>
+  </div>
+
+  <!-- Weekly Encounters -->
+  <section class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+        <div>
+          <h2 class="font-headline font-bold" style="font-size:clamp(2rem,5vw,3.5rem);color:#1a1c1e;">Weekly Meetings</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+        <!-- Sunday -->
+        <div class="card-hover p-8 rounded-2xl relative overflow-hidden group cursor-pointer" style="background:#f9f9fc;border:1px solid #e9bcb6;">
+          <div class="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+            <span class="material-symbols-outlined" style="font-size:100px;color:#b5000b;">church</span>
+          </div>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 pulse" style="background:rgba(181,0,11,0.1);">
+            <span class="material-symbols-outlined" style="color:#b5000b;font-size:22px;">church</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Service</h3>
+          <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Sunday &middot; 10:00 AM &mdash; 1:00 PM</p>
+          <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Our main gathering for worship, the word, and corporate realignment with heaven's agenda.</p>
+          <button onclick="navigate('visit')" class="font-body font-bold text-sm flex items-center gap-2 transition-colors group-hover:gap-3" style="color:#b5000b;">
+            Get Directions <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+          </button>
+        </div>
+
+        <!-- Tuesday -->
+        <div class="card-hover p-8 rounded-2xl relative overflow-hidden group cursor-pointer" style="background:#f9f9fc;border:1px solid #e9bcb6;">
+          <div class="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+            <span class="material-symbols-outlined" style="font-size:100px;color:#b5000b;">menu_book</span>
+          </div>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(73,95,132,0.1);">
+            <span class="material-symbols-outlined" style="color:#495f84;font-size:22px;">menu_book</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Tuesday</h3>
+          <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Tuesday &middot; 6:30 PM &mdash; 8:00 PM</p>
+          <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Diving deep into Truth (Veritas). An intensive discipleship and biblical school for the hungry.</p>
+          <button onclick="navigate('about')" class="font-body font-bold text-sm flex items-center gap-2 transition-colors group-hover:gap-3" style="color:#b5000b;">
+            Learn More <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+          </button>
+        </div>
+
+        <!-- Friday -->
+        <div class="card-hover p-8 rounded-2xl relative overflow-hidden group cursor-pointer" style="background:#f9f9fc;border:1px solid #e9bcb6;">
+          <div class="absolute top-4 right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+            <span class="material-symbols-outlined" style="font-size:100px;color:#b5000b;">auto_awesome</span>
+          </div>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(115,92,0,0.1);">
+            <img src="assets/prayer.png" alt="Prayer icon" class="w-6 h-6 object-contain" loading="lazy">
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Upper Room</h3>
+          <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Friday &middot; 6:30 PM &mdash; 8:00 PM</p>
+          <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">An evening of deep intercession and prophetic activation. Touching the heavens from Nairobi.</p>
+          <a href="https://www.youtube.com/@kingdomcalibrationchurch/live" target="_blank" rel="noopener noreferrer" class="font-body font-bold text-sm flex items-center gap-2 transition-colors group-hover:gap-3" style="color:#b5000b;">
+            Join Online <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sermons -->
+  <section class="py-28" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-14 gap-6 reveal">
+        <div>
+            <h2 class="font-headline font-bold" style="font-size:clamp(2rem,5vw,3.5rem);color:#1a1c1e;">Latest Sermons</h2>
+          </div>
+        <a href="https://www.youtube.com/playlist?list=PLrQK6G-Wm69qr3p2E4S6nFPXo4S8Tqy7N" target="_blank" rel="noopener noreferrer" class="font-body font-bold text-sm pb-1 transition-colors" style="color:#b5000b;border-bottom:2px solid #b5000b;">Browse Archive &rarr;</a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Featured Sermon -->
+        <div class="lg:col-span-2 reveal">
+          <div id="featured-sermon-player" class="sermon-player shadow-2xl"
+            data-video-id="WzmT96LnZ-0"
+            data-title="Forged by Grace - The Heart of Jesus' Ministry 1"
+            data-url="https://www.youtube.com/watch?v=WzmT96LnZ-0">
+          </div>
+          <div class="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+            <div>
+              <span class="inline-flex items-center rounded-full px-4 py-2 font-body font-bold text-[11px] uppercase tracking-[0.22em]" style="background:#fff;color:#b5000b;border:1px solid #e9bcb6;">Forged by Grace Series</span>
+              <h3 id="featured-sermon-title" class="font-headline font-bold mt-4" style="font-size:clamp(1.6rem,3vw,2.4rem);color:#1a1c1e;">Forged by Grace - The Heart of Jesus' Ministry 1</h3>
+              <p class="font-body text-sm mt-3" style="color:#495f84;">Watch directly on the page or open the full message on YouTube.</p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button type="button" onclick="activateSermonPlayer(document.getElementById('featured-sermon-player'))" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm">Play Here</button>
+              <a id="featured-sermon-link" href="https://www.youtube.com/watch?v=WzmT96LnZ-0" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl font-body font-bold text-sm border transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Watch on YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sermon List -->
+        <div class="reveal">
+          <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6 pb-4" style="color:#495f84;border-bottom:1px solid #e9bcb6;">More in This Series</h4>
+          <div class="space-y-4">
+            <button type="button" class="sermon-list-item" data-sermon-video="kkRSyith_TM" data-sermon-title="Forged by Grace - The Heart of Jesus' Ministry 2" data-sermon-url="https://www.youtube.com/watch?v=kkRSyith_TM" onclick="selectSermon(this)">
+              <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/kkRSyith_TM/hqdefault.jpg');">
+                <span class="sermon-list-number">02</span>
+              </span>
+              <span class="sermon-list-copy">
+                <strong>Forged by Grace - The Heart of Jesus' Ministry 2</strong>
+                <span>Load in Player</span>
+              </span>
+            </button>
+            <button type="button" class="sermon-list-item" data-sermon-video="clABECH10Xg" data-sermon-title="Forged by Grace - New Creation Realities" data-sermon-url="https://www.youtube.com/watch?v=clABECH10Xg" onclick="selectSermon(this)">
+              <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/clABECH10Xg/hqdefault.jpg');">
+                <span class="sermon-list-number">03</span>
+              </span>
+              <span class="sermon-list-copy">
+                <strong>Forged by Grace - New Creation Realities</strong>
+                <span>Load in Player</span>
+              </span>
+            </button>
+            <button type="button" class="sermon-list-item" data-sermon-video="F1YxjVc_lic" data-sermon-title="Forged by Grace - Principle of Wisdom in Forging Men" data-sermon-url="https://www.youtube.com/watch?v=F1YxjVc_lic" onclick="selectSermon(this)">
+              <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/F1YxjVc_lic/hqdefault.jpg');">
+                <span class="sermon-list-number">04</span>
+              </span>
+              <span class="sermon-list-copy">
+                <strong>Forged by Grace - Principle of Wisdom in Forging Men</strong>
+                <span>Load in Player</span>
+              </span>
+            </button>
+            <button type="button" class="sermon-list-item" data-sermon-video="ZwrdKZK1KME" data-sermon-title="Forged by Grace - Forged into Transformation" data-sermon-url="https://www.youtube.com/watch?v=ZwrdKZK1KME" onclick="selectSermon(this)">
+              <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/ZwrdKZK1KME/hqdefault.jpg');">
+                <span class="sermon-list-number">05</span>
+              </span>
+              <span class="sermon-list-copy">
+                <strong>Forged by Grace - Forged into Transformation</strong>
+                <span>Load in Player</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <div class="section-label mb-3">Mark Your Calendar</div>
+        <h2 class="font-headline font-bold" style="font-size:clamp(2rem,5vw,3.5rem);color:#1a1c1e;">Upcoming Events</h2>
+        <p class="font-body text-base leading-relaxed max-w-3xl mx-auto mt-5" style="color:#495f84;">
+          Special gatherings posted by the church team will appear here automatically.
+        </p>
+      </div>
+
+      <p id="events-status" class="max-w-3xl mx-auto text-center font-body text-sm mb-8" style="color:#495f84;" aria-live="polite">
+        Loading upcoming events...
+      </p>
+
+      <div id="events-grid" class="max-w-6xl mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 stagger">
+        <div class="card-hover rounded-3xl p-8 md:p-10 h-full" style="background:linear-gradient(135deg,#fffaf8 0%,#f9f9fc 100%);border:1px solid #f0d7d1;">
+          <div class="animate-pulse" aria-hidden="true">
+            <div class="h-6 w-32 rounded-full mb-5" style="background:#f7d9d4;"></div>
+            <div class="h-10 w-3/4 rounded-2xl mb-4" style="background:#f3e6e2;"></div>
+            <div class="h-4 w-full rounded-full mb-3" style="background:#f7efed;"></div>
+            <div class="h-4 w-5/6 rounded-full mb-8" style="background:#f7efed;"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="h-24 rounded-2xl" style="background:#fbf5f4;"></div>
+              <div class="h-24 rounded-2xl" style="background:#fbf5f4;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apostolic Mandate -->
+  <section class="py-28" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <!-- Image Stack -->
+      <div class="relative reveal">
+        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative z-10" style="margin:30px 0 0 30px;background:#e2e2e5;">
+          <img loading="lazy" decoding="async" src="assets/Westlands Image.jpg"
+            alt="Westlands Nairobi skyline" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"/>
+        </div>
+        <div class="absolute z-0 border-2 rounded-2xl" style="inset:-30px 30px 30px -30px;border-color:rgba(181,0,11,0.2);pointer-events:none;"></div>
+      </div>
+
+      <div class="reveal">
+        <div class="section-label mb-5">Our Mandate</div>
+        <h2 class="font-headline font-bold leading-tight mb-8" style="font-size:clamp(2rem,4.5vw,3.2rem);color:#1a1c1e;">Reconciling Nations<br/>From the Heart of Westlands.</h2>
+        <p class="font-body text-base leading-relaxed mb-10" style="color:#495f84;">
+          Strategically located in Woodvale Center, Westlands Nairobi, Kingdom Calibration is a hub for spiritual renewal. Our mission extends beyond local borders&mdash;we are called to calibrate the hearts of leaders, influencers, and families to the frequency of heaven.
+        </p>
+        <div class="grid grid-cols-2 gap-8 mb-10">
+          <div>
+            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Apostolic</p>
+            <div class="stat-bar mb-3"><div class="stat-bar-fill" style="width:85%;"></div></div>
+            <p class="font-body text-sm" style="color:#495f84;">Building order & government in the body of Christ.</p>
+          </div>
+          <div>
+            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Prophetic</p>
+            <div class="stat-bar mb-3"><div class="stat-bar-fill" style="width:92%;"></div></div>
+            <p class="font-body text-sm" style="color:#495f84;">Discerning the times & speaking heaven's mind.</p>
+          </div>
+        </div>
+        <button onclick="navigate('about')" class="font-body font-bold text-sm pb-1 transition-colors" style="color:#b5000b;border-bottom:2px solid #b5000b;">Our Full Vision Statement &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Preview -->
+  <section class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <div class="section-label mb-3">Spiritual Oversight</div>
+        <h2 class="font-headline font-bold" style="font-size:clamp(2rem,5vw,3.5rem);color:#1a1c1e;">Our senior leadership</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto stagger">
+        <!-- Apostle -->
+        <div class="text-center group">
+          <div class="relative inline-block mb-6">
+            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap" style="border:4px solid #ffdad5;box-shadow:0 20px 60px rgba(181,0,11,0.15);">
+              <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg"
+                alt="Apostle Boniface Nagi" class="w-full h-full object-cover"/>
+            </div>
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full font-body font-bold text-xs text-white uppercase tracking-widest" style="background:#b5000b;">Apostle</div>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Boniface Nagi</h3>
+          <p class="font-body text-sm leading-relaxed max-w-xs mx-auto" style="color:#495f84;">A visionary leader with a mandate to calibrate lives for divine purpose and kingdom authority.</p>
+        </div>
+        <!-- Prophetess -->
+        <div class="text-center group">
+          <div class="relative inline-block mb-6">
+            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap" style="border:4px solid #d6e3ff;box-shadow:0 20px 60px rgba(73,95,132,0.15);">
+              <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg"
+                alt="Prophetess Joyce Wangechi" class="w-full h-full object-cover"/>
+            </div>
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full font-body font-bold text-xs text-white uppercase tracking-widest" style="background:#495f84;">Prophetess</div>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Joyce Wangechi</h3>
+          <p class="font-body text-sm leading-relaxed max-w-xs mx-auto" style="color:#495f84;">A prophetic voice known for precision, healing, and deep intimacy with the Spirit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-24 relative overflow-hidden grain" style="background:#b5000b;">
+    <div class="blob w-80 h-80 opacity-20" style="position:absolute;top:-40px;right:-40px;background:rgba(255,255,255,0.2);filter:blur(60px);"></div>
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative z-10">
+      <h2 class="font-headline font-bold text-white mb-6" style="font-size:clamp(2rem,5vw,3.5rem);">Ready to Align Your Destiny?</h2>
+      <p class="font-body text-lg mb-12" style="color:rgba(255,255,255,0.85);">Subscribe for weekly prophetic words, service updates, and exclusive resources from Kingdom Calibration.</p>
+      <form id="subscribe-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onsubmit="handleSubscribe(event)">
+        <input type="email" name="email" autocomplete="email" placeholder="Enter your email address" required
+          class="flex-1 px-6 py-4 rounded-xl font-body text-sm outline-none transition-all"
+          style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;"
+          onfocus="this.style.background='rgba(255,255,255,0.25)'"
+          onblur="this.style.background='rgba(255,255,255,0.15)'"
+        />
+        <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true"/>
+        <button type="submit" class="px-8 py-4 rounded-xl font-body font-bold text-sm transition-all hover:opacity-90 active:scale-95" style="background:white;color:#b5000b;">Subscribe Now</button>
+      </form>
+      <div id="subscribe-success" class="hidden mt-6 font-body font-semibold text-white" aria-live="polite">
+        Welcome to the Kingdom family! You're now subscribed.
+      </div>
+      <div id="subscribe-error" class="hidden mt-6 font-body font-semibold" style="color:#ffe2e2;" aria-live="polite">
+        We could not save your email right now. Please try again in a moment.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: ABOUT ===================== -->
+<div id="page-about" class="page">
+  <!-- Hero -->
+  <header class="relative pt-32 pb-24 overflow-hidden" style="background:#f9f9fc;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="section-label mb-4">About Us</div>
+      <h1 class="font-headline font-light leading-tight" style="font-size:clamp(2.5rem,6vw,5rem);color:#1a1c1e;">
+        About the Church
+      </h1>
+      <p class="about-hero-copy font-body text-lg leading-relaxed max-w-xl mt-8" style="color:#5e3f3b;">Kingdom Calibration Church is an Apostolic and Prophetic ministry headquartered in Westlands Nairobi with one of its key mandates being to reach the Asian community, and to RECONCILE professional nations of influence (7 nations) back to Christ.</p>
+      <p class="font-body text-lg leading-relaxed max-w-xl mt-8" style="color:#5e3f3b;">Kingdom Calibration is more than a church &mdash; it is an apostolic hub dedicated to the precise spiritual alignment of believers with their divine purpose.</p>
+    </div>
+    <div class="absolute right-0 top-0 bottom-0 w-1/3 -z-0 -skew-x-6" style="background:#eeeef0;"></div>
+  </header>
+
+  <!-- Vision & Mission -->
+  <section class="py-28" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="reveal about-purpose-shell">
+        <div class="about-purpose-orb about-purpose-orb-one"></div>
+        <div class="about-purpose-orb about-purpose-orb-two"></div>
+        <div class="about-purpose-grid">
+          <article class="about-purpose-card about-vision-card">
+            <div class="about-purpose-kicker">Vision Statement</div>
+            <span class="about-vision-mark">&ldquo;</span>
+            <blockquote class="about-vision-quote">
+              "To Transform Lives and All Things By Aligning Them Back To God's Eternal Purpose"
+            </blockquote>
+            <p class="font-body font-bold text-sm tracking-[0.18em] uppercase mt-6" style="color:#b5000b;">Colossians 1:19-20</p>
+            <div class="about-vision-accent"></div>
+          </article>
+          <article class="about-purpose-card about-mission-card">
+            <div class="about-purpose-kicker">Mission Statement</div>
+            <p class="about-mission-copy">
+              We are centered on teaching the gospel of the Kingdom to all men, with an emphasis on healing, deliverance and equipping men for their Kingdom assignment, and demonstrating the power of God.
+            </p>
+            <div class="about-mission-divider"></div>
+            <div class="about-mission-note">Healing. Deliverance. Equipping. Demonstration.</div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="mb-16 reveal">
+        <div class="section-label mb-3">Stewards of the Vision</div>
+        <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Apostolic Leadership</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 stagger">
+        <!-- Apostle -->
+        <div class="flex flex-col sm:flex-row gap-8 items-start">
+          <div class="w-full sm:w-56 flex-shrink-0">
+            <div class="aspect-square rounded-2xl overflow-hidden leader-img-wrap" style="background:#e2e2e5;">
+              <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg"
+                alt="Apostle Boniface Nagi" class="w-full h-full object-cover"/>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Apostle Boniface Nagi</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Apostle Boniface is the visionary leader and foundational voice behind Kingdom Calibration Church, a ministry birthed by the Holy Spirit to raise, equip, and send believers into their God-given assignments. Called by God from humble beginnings, Apostle Boniface carries a strong apostolic mandate to plant, build, and establish a healthy church grounded on truth, order, and the power of the Holy Spirit.</p>
+          </div>
+        </div>
+        <!-- Prophetess -->
+        <div class="flex flex-col sm:flex-row gap-8 items-start">
+          <div class="w-full sm:w-56 flex-shrink-0">
+            <div class="aspect-square rounded-2xl overflow-hidden leader-img-wrap" style="background:#e2e2e5;">
+              <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg"
+                alt="Prophetess Joyce Wangechi" class="w-full h-full object-cover"/>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Prophetess Joyce Wangechi</h3>
+            <p class="font-body text-sm leading-relaxed" style="color:#495f84;">While the Apostle focuses on teaching, structure, and laying strong foundations, the Prophetess covers the ministry in prayer, intercession, and spiritual discernment. She serves as a watchman, sensing spiritual atmospheres, offering prophetic guidance, and helping keep the church aligned with the voice of God. Her support strengthens the Apostle and creates an environment where the Holy Spirit moves freely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="py-28" style="background:#eeeef0;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <div class="section-label mb-3">Our DNA</div>
+        <h2 class="font-headline font-bold italic" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Core Values that Calibrate Us</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
+        <div class="value-card p-10 rounded-2xl cursor-pointer" style="background:#ffffff;">
+          <span class="material-symbols-outlined text-4xl mb-6 block value-icon" style="color:#b5000b;">volunteer_activism</span>
+          <h4 class="font-headline font-bold text-xl mb-3" style="color:#1a1c1e;">Called to Serve</h4>
+          <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Humility is the bedrock of our influence. We serve as Christ served &mdash; without condition.</p>
+        </div>
+        <div class="value-card p-10 rounded-2xl cursor-pointer" style="background:#ffffff;">
+          <span class="material-symbols-outlined text-4xl mb-6 block value-icon" style="color:#b5000b;">favorite</span>
+          <h4 class="font-headline font-bold text-xl mb-3" style="color:#1a1c1e;">Love and Care</h4>
+          <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Every soul is a masterpiece of God's design. We treat each person as a sacred treasure.</p>
+        </div>
+        <div class="value-card p-10 rounded-2xl cursor-pointer" style="background:#ffffff;">
+          <span class="material-symbols-outlined text-4xl mb-6 block value-icon" style="color:#b5000b;">verified</span>
+          <h4 class="font-headline font-bold text-xl mb-3" style="color:#1a1c1e;">Excellence and Zeal</h4>
+          <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Doing God's work with the highest standard of quality and an unquenched passion.</p>
+        </div>
+        <div class="value-card p-10 rounded-2xl cursor-pointer" style="background:#ffffff;">
+          <span class="material-symbols-outlined text-4xl mb-6 block value-icon" style="color:#b5000b;">balance</span>
+          <h4 class="font-headline font-bold text-xl mb-3" style="color:#1a1c1e;">Accountability & Integrity</h4>
+          <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Living truthfully under the watchful eye of God and the trust of our community.</p>
+        </div>
+        <div class="value-card p-10 rounded-2xl cursor-pointer sm:col-span-2 lg:col-span-1" style="background:#ffffff;">
+          <span class="material-symbols-outlined text-4xl mb-6 block value-icon" style="color:#b5000b;">church</span>
+          <h4 class="font-headline font-bold text-xl mb-3" style="color:#1a1c1e;">Loyalty to God</h4>
+          <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Undivided devotion to the King and His Kingdom principles above all else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KLF Section -->
+  <section class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-16 lg:gap-20 items-center">
+      <div class="reveal">
+        <div class="klf-showcase" data-klf-slideshow>
+          <div class="klf-showcase-top">
+            <div>
+              <div class="klf-showcase-kicker">KLF in Motion</div>
+              <h3 class="klf-showcase-heading">Serving the House, One Team at a Time</h3>
+            </div>
+            <div class="klf-showcase-nav">
+              <button type="button" aria-label="Previous KLF photo" data-klf-prev>
+                <span class="material-symbols-outlined" style="font-size:20px;">arrow_back</span>
+              </button>
+              <button type="button" aria-label="Next KLF photo" data-klf-next>
+                <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="klf-stage">
+            <article class="klf-slide is-active" data-klf-slide data-title="Kingdom Labor Force" data-copy="A unified labor force carrying vision, excellence, and kingdom order across the house.">
+              <div class="klf-slide-backdrop" style="background-image:url('assets/KLF.jpg');"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="assets/KLF.jpg" alt="Kingdom Labor Force team gathering" class="klf-slide-image"/>
+              </div>
+              <span class="klf-slide-tag">KLF Team</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="Kingdom Media Force" data-copy="Capturing moments, amplifying the message, and stewarding the visual story of the ministry.">
+              <div class="klf-slide-backdrop" style="background-image:url('assets/Kingdom Media Force.jpg');"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="assets/Kingdom Media Force.jpg" alt="Kingdom Media Force at work" class="klf-slide-image"/>
+              </div>
+              <span class="klf-slide-tag">Kingdom Media Force</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="Sound of Revival" data-copy="Leading the house into worship with sensitivity, skill, and a prophetic sound.">
+              <div class="klf-slide-backdrop" style="background-image:url('Photos/Sound of Revival Team.jpg');"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="Photos/Sound of Revival Team.jpg" alt="Sound of Revival ministry team" class="klf-slide-image"/>
+              </div>
+              <span class="klf-slide-tag">Sound of Revival</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="Ushering" data-copy="Welcoming with excellence and shaping a dignified atmosphere for every gathering.">
+              <div class="klf-slide-backdrop" style="background-image:url('assets/Ushering.jpg'); background-position:center 18%;"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="assets/Ushering.jpg" alt="Ushering team member" class="klf-slide-image" style="object-position:center 18%;"/>
+              </div>
+              <span class="klf-slide-tag">Ushering</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="Hospitality" data-copy="Carrying warmth, care, and the culture of kingdom family to every guest and member.">
+              <div class="klf-slide-backdrop" style="background-image:url('Photos/Hospitality Team.jpg');"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="Photos/Hospitality Team.jpg" alt="Hospitality team members" class="klf-slide-image"/>
+              </div>
+              <span class="klf-slide-tag">Hospitality</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="Protocol" data-copy="Protecting flow, order, and honor so the ministry can move with precision.">
+              <div class="klf-slide-backdrop" style="background-image:url('Photos/Protocol team.jpg'); background-position:center top;"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="Photos/Protocol team.jpg" alt="Protocol team member" class="klf-slide-image" style="object-position:center top;"/>
+              </div>
+              <span class="klf-slide-tag">Protocol</span>
+            </article>
+
+            <article class="klf-slide" data-klf-slide data-title="LEA Children's Church" data-copy="Raising the next generation with biblical truth, creativity, and joyful discipleship.">
+              <div class="klf-slide-backdrop" style="background-image:url('assets/LEA Children''s Church.jpg');"></div>
+              <div class="klf-slide-image-wrap">
+                <img loading="lazy" decoding="async" src="assets/LEA Children's Church.jpg" alt="LEA Children's Church ministry" class="klf-slide-image"/>
+              </div>
+              <span class="klf-slide-tag">LEA Children's Church</span>
+            </article>
+          </div>
+
+          <div class="klf-showcase-footer">
+            <div>
+              <div class="klf-showcase-label">Currently Showing</div>
+              <h4 class="klf-showcase-current" data-klf-current-title>Kingdom Labor Force</h4>
+              <p class="klf-showcase-copy" data-klf-current-copy>A unified labor force carrying vision, excellence, and kingdom order across the house.</p>
+            </div>
+            <div class="klf-showcase-counter" data-klf-counter>01 <span>/ 07</span></div>
+          </div>
+
+          <div class="klf-progress" aria-label="KLF slideshow navigation">
+            <button type="button" class="klf-progress-item is-active" data-klf-trigger="0">
+              <span>01</span>
+              <strong>KLF Team</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="1">
+              <span>02</span>
+              <strong>Media Force</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="2">
+              <span>03</span>
+              <strong>Sound of Revival</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="3">
+              <span>04</span>
+              <strong>Ushering</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="4">
+              <span>05</span>
+              <strong>Hospitality</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="5">
+              <span>06</span>
+              <strong>Protocol</strong>
+            </button>
+            <button type="button" class="klf-progress-item" data-klf-trigger="6">
+              <span>07</span>
+              <strong>LEA Children's Church</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="klf-copy-panel">
+              <div class="section-label mb-4">The Team</div>
+          <h2 class="font-headline font-bold" style="font-size:clamp(2.6rem,5vw,4.2rem);color:#1a1c1e;line-height:1.02;">Kingdom Labor<br/>Force (KLF)</h2>
+          <p class="font-body text-lg leading-relaxed mt-8" style="color:#495f84;">The KLF is the engine of our ministry. We believe every believer is a laborer in the harvest field of their profession. Whether in technology, arts, governance, or commerce &mdash; our members are trained as apostolic ambassadors of the Kingdom.</p>
+
+          <div class="klf-copy-grid">
+            <div class="klf-copy-card">
+              <strong>Precision</strong>
+              <span>Skill Enhancement</span>
+            </div>
+            <div class="klf-copy-card">
+              <strong>Alignment</strong>
+              <span>Divine Assignment</span>
+            </div>
+          </div>
+
+          <button onclick="navigate('ministries')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold mt-10 inline-block">Explore Ministries &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: MINISTRIES ===================== -->
+<div id="page-ministries" class="page">
+  <!-- Hero -->
+  <section class="relative min-h-[60vh] flex items-center overflow-hidden" style="padding-top:80px;background:#f9f9fc;">
+    <div class="absolute inset-0 z-0 opacity-15">
+      <img loading="lazy" decoding="async" src="assets/KLF.jpg"
+        alt="Kingdom Labor Force" class="w-full h-full object-cover grayscale"/>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10 py-24">
+      <div class="max-w-3xl" style="animation:fadeIn 0.8s ease both;">
+        <div class="section-label mb-4">The Kingdom Labor Force</div>
+        <h1 class="font-headline font-extrabold leading-tight mb-8" style="font-size:clamp(2.5rem,7vw,5.5rem);color:#1a1c1e;">Join the KLF &mdash;<br/>We are called <span style="color:#b5000b;">to serve.</span></h1>
+        <p class="font-body text-lg leading-relaxed mb-10 max-w-xl" style="color:#495f84;">Calibration is not just a destination; it's a commitment to excellence. The KLF is the heartbeat of our ministry, where purpose meets practice.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#ministry-grid" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Find Your Fit</a>
+          <button onclick="navigate('about')" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Our Vision</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ministries Grid -->
+  <section id="ministry-grid" class="py-28" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+        <div>
+          <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">The Kingdom Labour Force</h2>
+          <p class="font-body text-base mt-3" style="color:#495f84;">Every hand that serves is a catalyst for transformation.</p>
+        </div>
+        <span class="font-body font-bold text-sm flex items-center gap-2 pb-1" style="color:#b5000b;border-bottom:2px solid #b5000b;">
+          View All Opportunities <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger">
+        <!-- Ministry Card Template -->
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="Photos/Sound of Revival Team.jpg"
+              alt="Sound of Revival" class="w-full h-full object-cover"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Sound of Revival</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Leading the congregation into the presence of God through skilled worship and prophetic praise.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="assets/Kingdom Media Force.jpg"
+              alt="Kingdom Media Force" class="w-full h-full object-cover"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Kingdom Media Force</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Amplifying the message through digital precision, photography, and high-impact visual storytelling.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="assets/Ushering.jpg"
+              alt="Ushering" class="w-full h-full object-cover" style="object-position:center 18%;"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Ushering</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Setting the order and ensuring every guest experiences a seamless and dignified worship environment.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="Photos/Hospitality Team.jpg"
+              alt="Hospitality" class="w-full h-full object-cover"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Hospitality</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Extending the warmth of the Kingdom through gracious service and nurturing care for all visitors.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="Photos/Protocol team.jpg"
+              alt="Protocol" class="w-full h-full object-cover" style="object-position:center top;"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Protocol</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Maintaining the dignity and security of the house, ensuring an atmosphere conducive to the move of God.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+
+        <div class="ministry-card rounded-2xl overflow-hidden group cursor-pointer transition-all hover:shadow-2xl" style="background:#ffffff;">
+          <div class="ministry-photo-landscape overflow-hidden">
+            <img loading="lazy" decoding="async" src="assets/LEA Children's Church.jpg"
+              alt="Lea Children's Church" class="w-full h-full object-cover"/>
+          </div>
+          <div class="p-8">
+            <h3 class="font-headline font-bold text-2xl mb-3" style="color:#1a1c1e;">Lea Children's Church</h3>
+            <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Molding the next generation of Kingdom leaders through biblical truth and creative engagement.</p>
+            <button type="button" onclick="scrollToRecruitmentCta()" class="font-body font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style="color:#b5000b;">Get Involved <span class="material-symbols-outlined" style="font-size:18px;">trending_flat</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recruitment CTA -->
+  <section id="recruitment-cta" class="py-24" style="background:#f9f9fc;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="rounded-2xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden" style="background:#d6e3ff;">
+        <div class="blob w-64 h-64 opacity-20" style="position:absolute;right:-30px;top:-30px;background:#495f84;filter:blur(60px);"></div>
+        <div class="max-w-xl relative z-10">
+          <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2rem,4vw,3rem);color:#001b3d;">Ready to align your destiny?</h2>
+          <p class="font-body text-lg leading-relaxed" style="color:#31476b;">Join the Kingdom Labor Force and find where your gifts meet the ministry's needs. We believe every believer has a calibration point.</p>
+        </div>
+        <button class="btn-primary px-10 py-5 rounded-xl font-body font-bold text-lg flex-shrink-0 relative z-10">Complete Recruitment Form &rarr;</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: VISIT ===================== -->
+<div id="page-visit" class="page">
+  <!-- Hero -->
+  <section class="relative min-h-[70vh] flex items-center overflow-hidden" style="display:none;padding-top:80px;background:#f9f9fc;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center py-24">
+      <div class="md:col-span-7" style="animation:fadeIn 0.8s ease both;">
+        <div class="section-label mb-4">Plan Your Visit</div>
+        <h1 class="font-headline leading-tight mb-6" style="font-size:clamp(2.5rem,6vw,5rem);color:#1a1c1e;">
+          Aligning Destinies<br/><span class="italic" style="color:#b5000b;">In the Heart of Westlands.</span>
+        </h1>
+        <p class="font-body text-lg leading-relaxed max-w-lg" style="color:#495f84;">Experience a ministry of apostolic precision and prophetic depth. Whether you're seeking a home or a moment of recalibration &mdash; our doors are open.</p>
+        <div class="flex flex-wrap gap-4 mt-10">
+          <a href="#schedule" class="btn-primary px-8 py-4 rounded-xl font-body font-bold">See Our Schedule</a>
+          <a href="#location" class="px-8 py-4 rounded-xl font-body font-bold border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Get Directions</a>
+        </div>
+      </div>
+      <div class="md:col-span-5 relative">
+        <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative z-10" style="transform:rotate(2deg) translateX(16px);">
+          <img loading="lazy" decoding="async" src="assets/Westlands Image.jpg"
+            alt="Sanctuary" class="w-full h-full object-cover"/>
+        </div>
+        <div class="absolute inset-0 border-2 rounded-2xl" style="transform:rotate(-3deg) translateX(-16px) translateY(16px);border-color:#ffb4aa;pointer-events:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Intro -->
+  <section class="relative overflow-hidden" style="padding-top:96px;background:#f9f9fc;">
+    <div class="absolute inset-x-0 top-0 h-40" style="background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0));"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 reveal" style="animation:fadeIn 0.8s ease both;">
+          <div class="section-label mb-4">Plan Your Visit</div>
+          <h1 class="font-headline leading-tight mb-6" style="font-size:clamp(2.4rem,6vw,4.8rem);color:#1a1c1e;">
+            Come Worship<br/><span class="italic" style="color:#b5000b;">With Us in Westlands.</span>
+          </h1>
+          <p class="font-body text-lg leading-relaxed max-w-2xl" style="color:#495f84;">Whether you are visiting for the first time or looking for a church home, you will find a warm atmosphere, clear direction, and room to encounter God.</p>
+          <div class="flex flex-wrap gap-4 mt-10">
+            <a href="#schedule" class="btn-primary px-8 py-4 rounded-xl font-body font-bold">See Our Schedule</a>
+            <a href="#location" class="px-8 py-4 rounded-xl font-body font-bold border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Get Directions</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 reveal">
+          <div class="relative">
+            <div class="absolute inset-0 rounded-3xl" style="transform:rotate(-2deg) translate(14px,18px);border:2px solid #ffb4aa;pointer-events:none;"></div>
+            <div class="relative rounded-3xl p-6 sm:p-8" style="background:#ffffff;box-shadow:0 24px 60px rgba(26,28,30,0.08);">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div class="sm:col-span-2 p-6 rounded-2xl" style="background:#f9f9fc;border:1px solid #f0f0f0;">
+                  <span class="material-symbols-outlined text-3xl mb-4 block" style="color:#b5000b;">location_on</span>
+                  <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#495f84;">Where We Meet</p>
+                  <h3 class="font-headline font-bold text-2xl leading-tight" style="color:#1a1c1e;">Woodvale Center, 2nd Floor</h3>
+                  <p class="font-body text-sm mt-2" style="color:#495f84;">Westlands, Nairobi, Kenya</p>
+                </div>
+                <div class="p-6 rounded-2xl" style="background:#f9f9fc;border:1px solid #f0f0f0;">
+                  <span class="material-symbols-outlined text-3xl mb-4 block" style="color:#b5000b;">church</span>
+                  <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#495f84;">Main Service</p>
+                  <h3 class="font-headline font-bold text-xl leading-tight" style="color:#1a1c1e;">Sunday</h3>
+                  <p class="font-body text-sm mt-2" style="color:#495f84;">10:00 AM - 1:00 PM</p>
+                </div>
+                <div class="p-6 rounded-2xl" style="background:#f9f9fc;border:1px solid #f0f0f0;">
+                  <span class="material-symbols-outlined text-3xl mb-4 block" style="color:#b5000b;">support_agent</span>
+                  <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#495f84;">Need Help?</p>
+                  <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Call us on +254 742 830 772 or +254 119 287 816.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" class="py-28" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden shadow-xl" style="background:#ffffff;">
+        <!-- Info -->
+        <div class="p-12 lg:p-20 flex flex-col justify-center reveal">
+          <span class="material-symbols-outlined text-4xl mb-6" style="color:#b5000b;">location_on</span>
+          <h2 class="font-headline font-bold mb-8 text-3xl" style="color:#1a1c1e;">Where to Find Us</h2>
+          <div class="space-y-8">
+            <div>
+              <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#495f84;">Physical Address</p>
+              <p class="font-body text-xl" style="color:#1a1c1e;">Woodvale Center, 2nd Floor</p>
+              <p class="font-body text-xl" style="color:#1a1c1e;">Westlands, Nairobi, Kenya</p>
+            </div>
+            <a href="https://maps.google.com?q=Woodvale+Center+Westlands+Nairobi" target="_blank" class="inline-flex items-center gap-2 font-body font-bold transition-all" style="color:#b5000b;" onmouseover="this.style.gap='12px'" onmouseout="this.style.gap='8px'">
+              Open in Google Maps <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+        <!-- Map -->
+        <div class="h-80 md:h-auto relative overflow-hidden" style="background:#e2e2e5;min-height:400px;">
+          <img loading="lazy" decoding="async" src="assets/City Image.jpg"
+            alt="Map of Westlands Nairobi" class="w-full h-full object-cover grayscale" style="contrast:1.2;"/>
+          <!-- Red pin -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="w-6 h-6 rounded-full pulse flex items-center justify-center" style="background:#b5000b;">
+              <div class="w-3 h-3 rounded-full" style="background:white;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3.5rem);color:#1a1c1e;">Weekly Schedule</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger">
+        <div class="schedule-card p-8 rounded-2xl" style="background:#f9f9fc;">
+          <div class="flex justify-between items-start mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(181,0,11,0.1);">
+              <span class="material-symbols-outlined" style="color:#b5000b;">church</span>
+            </div>
+            <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#b5000b;">WEEKLY</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Service</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">10:00 AM &mdash; 1:00 PM</p>
+          <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">Our primary gathering for corporate worship and apostolic calibration.</p>
+        </div>
+        <div class="schedule-card p-8 rounded-2xl" style="background:#f9f9fc;">
+          <div class="flex justify-between items-start mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(73,95,132,0.1);">
+              <span class="material-symbols-outlined" style="color:#495f84;">menu_book</span>
+            </div>
+            <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#495f84;">STUDY</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Tuesday</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">6:00 PM &mdash; 8:00 PM</p>
+          <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">Deep theological grounding and mid-week spiritual refreshment.</p>
+        </div>
+        <div class="schedule-card p-8 rounded-2xl" style="background:#f9f9fc;">
+          <div class="flex justify-between items-start mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(181,0,11,0.1);">
+              <img src="assets/prayer.png" alt="Prayer icon" class="w-6 h-6 object-contain" loading="lazy">
+            </div>
+            <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#b5000b;">PRAYER</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Upper Room Friday</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">5:30 PM &mdash; 7:30 PM</p>
+          <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">A consecrated time for intercession and prophetic ministry.</p>
+        </div>
+        <div class="schedule-card p-8 rounded-2xl" style="background:#b5000b;">
+          <div class="flex justify-between items-start mb-6">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(255,255,255,0.2);">
+              <span class="material-symbols-outlined text-white">history_toggle_off</span>
+            </div>
+            <span class="font-body font-bold text-xs px-2 py-1 rounded" style="background:white;color:#b5000b;">MONTHLY</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-2 text-white">6-Hour Prayer</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:rgba(255,255,255,0.8);">1st SAT | 8:00 AM &mdash; 2:00 PM</p>
+          <p class="font-body text-sm leading-relaxed" style="color:rgba(255,255,255,0.7);">An intensive atmosphere for spiritual breakthrough and mandate alignment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connect & Contact -->
+  <section class="py-28" style="background:#eeeef0;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <!-- Social Channels -->
+      <div class="flex flex-col justify-center reveal">
+        <div class="section-label mb-4">Join the Community</div>
+        <h2 class="font-headline font-bold mb-6 leading-tight" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Stay Connected<br/>Beyond Sunday.</h2>
+        <p class="font-body text-lg leading-relaxed mb-12 max-w-md" style="color:#495f84;">Follow our digital presence for daily revelations, sermon clips, and real-time ministry updates.</p>
+        <div class="space-y-6">
+          <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="social-link flex items-center gap-6 group" aria-label="YouTube">
+            <div class="social-icon w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all" style="border-color:#e9bcb6;color:#495f84;">
+              <img loading="lazy" decoding="async" src="assets/youtube Icon.png" alt="" style="width:1.65rem;height:1.65rem;object-fit:contain;display:block;"/>
+            </div>
+            <div>
+              <p class="font-body font-bold text-lg" style="color:#1a1c1e;">YouTube</p>
+              <p class="font-body text-sm" style="color:#495f84;">Sermons, live moments, and ministry updates</p>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/KingdomCalibrationChurch/" target="_blank" rel="noopener noreferrer" class="social-link flex items-center gap-6 group" aria-label="Facebook">
+            <div class="social-icon w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all" style="border-color:#e9bcb6;color:#495f84;">
+              <img loading="lazy" decoding="async" src="assets/facebook.png" alt="" style="width:1.65rem;height:1.65rem;object-fit:contain;display:block;"/>
+            </div>
+            <div>
+              <p class="font-body font-bold text-lg" style="color:#1a1c1e;">Facebook</p>
+              <p class="font-body text-sm" style="color:#495f84;">Church announcements and community highlights</p>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/kingdomcalibrationchurch_?igsh=ZDVjNnd6a3Jwdmsy" target="_blank" rel="noopener noreferrer" class="social-link flex items-center gap-6 group" aria-label="Instagram">
+            <div class="social-icon w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all" style="border-color:#e9bcb6;color:#495f84;">
+              <img loading="lazy" decoding="async" src="assets/instagram.png" alt="" style="width:1.65rem;height:1.65rem;object-fit:contain;display:block;"/>
+            </div>
+            <div>
+              <p class="font-body font-bold text-lg" style="color:#1a1c1e;">Instagram</p>
+              <p class="font-body text-sm" style="color:#495f84;">Photos, reels, and ministry highlights</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@kingdomcalibration?_r=1&_t=ZS-95X1Hz3Gb6z" target="_blank" rel="noopener noreferrer" class="social-link flex items-center gap-6 group" aria-label="TikTok">
+            <div class="social-icon w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all" style="border-color:#e9bcb6;color:#495f84;">
+              <img loading="lazy" decoding="async" src="assets/tik-tok.png" alt="" style="width:1.65rem;height:1.65rem;object-fit:contain;display:block;"/>
+            </div>
+            <div>
+              <p class="font-body font-bold text-lg" style="color:#1a1c1e;">TikTok</p>
+              <p class="font-body text-sm" style="color:#495f84;">Short clips, moments, and ministry snippets</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="p-8 md:p-12 rounded-2xl shadow-xl reveal" style="background:#ffffff;">
+        <h3 class="font-headline font-bold text-3xl mb-8" style="color:#1a1c1e;">Send us a message</h3>
+        <form id="contact-form" onsubmit="handleContact(event)" class="space-y-8">
+          <div>
+            <label class="font-body font-bold text-xs uppercase tracking-widest block mb-2" style="color:#495f84;">Full Name</label>
+            <input type="text" name="fullName" autocomplete="name" placeholder="Your name" required class="form-input" style="color:#1a1c1e;"/>
+          </div>
+          <div>
+            <label class="font-body font-bold text-xs uppercase tracking-widest block mb-2" style="color:#495f84;">Email Address</label>
+            <input type="email" name="email" autocomplete="email" placeholder="email@example.com" required class="form-input" style="color:#1a1c1e;"/>
+          </div>
+          <div>
+            <label class="font-body font-bold text-xs uppercase tracking-widest block mb-2" style="color:#495f84;">Message</label>
+            <textarea name="message" rows="4" placeholder="How can we help or pray for you?" required class="form-input resize-none" style="color:#1a1c1e;"></textarea>
+          </div>
+          <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true"/>
+          <button type="submit" class="btn-primary w-full py-4 rounded-xl font-body font-bold flex items-center justify-center gap-2">
+            Send Message <span class="material-symbols-outlined">send</span>
+          </button>
+          <div id="contact-success" class="hidden text-center font-body font-semibold py-3 rounded-xl" style="background:#f0fdf4;color:#166534;" aria-live="polite">
+            Success! Message sent! We'll be in touch soon.
+          </div>
+          <div id="contact-error" class="hidden text-center font-body font-semibold py-3 rounded-xl" style="background:#fff1f2;color:#be123c;" aria-live="polite">
+            We could not send your message right now. Please try again in a moment.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== SHARED FOOTER ===================== -->
+<footer style="background:#1a1c1e;" class="pt-20 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-14 pb-16" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <div class="mb-6">
+          <img loading="lazy" decoding="async" src="assets/kcc-logo-footer-light-full.png" alt="Kingdom Calibration Church" style="width:clamp(13.5rem,30vw,18.5rem);max-width:100%;height:auto;display:block;"/>
+        </div>
+        <p class="font-body text-sm leading-relaxed mb-8" style="color:rgba(255,255,255,0.5);">
+          &copy; 2026 Kingdom Calibration. Changing Lives, Aligning Destinies. An apostolic hub for global impact.
+        </p>
+        <p class="font-body text-sm leading-relaxed mb-8" style="display:none;color:rgba(255,255,255,0.5);">
+          &copy; 2024 Kingdom Calibration. Changing Lives, Aligning Destinies. An apostolic hub for global impact.
+        </p>
+        <div class="flex gap-4 flex-wrap">
+          <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:border-red-600" style="border-color:rgba(255,255,255,0.2);" aria-label="YouTube">
+            <img loading="lazy" decoding="async" src="assets/youtube Icon.png" alt="" style="width:1.1rem;height:1.1rem;object-fit:contain;display:block;"/>
+          </a>
+          <a href="https://www.facebook.com/KingdomCalibrationChurch/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:border-red-600" style="border-color:rgba(255,255,255,0.2);" aria-label="Facebook">
+            <img loading="lazy" decoding="async" src="assets/facebook.png" alt="" style="width:1.1rem;height:1.1rem;object-fit:contain;display:block;"/>
+          </a>
+          <a href="https://www.instagram.com/kingdomcalibrationchurch_?igsh=ZDVjNnd6a3Jwdmsy" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:border-red-600" style="border-color:rgba(255,255,255,0.2);" aria-label="Instagram">
+            <img loading="lazy" decoding="async" src="assets/instagram.png" alt="" style="width:1.1rem;height:1.1rem;object-fit:contain;display:block;"/>
+          </a>
+          <a href="https://www.tiktok.com/@kingdomcalibration?_r=1&_t=ZS-95X1Hz3Gb6z" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full border flex items-center justify-center transition-all hover:border-red-600" style="border-color:rgba(255,255,255,0.2);" aria-label="TikTok">
+            <img loading="lazy" decoding="async" src="assets/tik-tok.png" alt="" style="width:1.1rem;height:1.1rem;object-fit:contain;display:block;"/>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6" style="color:rgba(255,255,255,0.4);">Contact & Location</h4>
+        <ul class="space-y-4 font-body text-sm" style="color:rgba(255,255,255,0.6);">
+          <li class="flex gap-3 items-start">
+            <span class="material-symbols-outlined flex-shrink-0" style="font-size:18px;color:#b5000b;margin-top:1px;">location_on</span>
+            Woodvale Center, 2nd Floor, Westlands, Nairobi
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="material-symbols-outlined flex-shrink-0" style="font-size:18px;color:#b5000b;">mail</span>
+            info@kingdomcalibrationchurch.org
+          </li>
+          <li class="flex gap-3 items-center">
+            <span class="material-symbols-outlined flex-shrink-0" style="font-size:18px;color:#b5000b;">phone</span>
+            +254 742 830 772 / +254 119 287 816
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6" style="color:rgba(255,255,255,0.4);">Service Times</h4>
+        <ul class="space-y-4 font-body text-sm">
+          <li><span class="font-bold" style="color:#b5000b;">Sunday 10am &ndash; 1pm</span> <span style="color:rgba(255,255,255,0.5);">&middot; Main Service</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">Veritas Tuesday</span> <span style="color:rgba(255,255,255,0.5);">&middot; 6:30pm</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">Upper Room Friday</span> <span style="color:rgba(255,255,255,0.5);">&middot; 6:30pm</span></li>
+        </ul>
+        <button onclick="navigate('visit')" class="btn-primary mt-8 px-6 py-3 rounded-xl font-body font-bold text-sm">Plan Your Visit &rarr;</button>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
+      <div class="flex gap-8">
+        <a href="#" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(255,255,255,0.4);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy Policy</a>
+        <a href="#" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(255,255,255,0.4);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms of Service</a>
+        <a href="#desktop-give-button" onclick="scrollToGiveButton(event)" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(255,255,255,0.4);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Giving Portal</a>
+      </div>
+      <p class="font-body text-xs uppercase tracking-widest" style="color:rgba(255,255,255,0.25);">Designed with Excellence for the Kingdom</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navigation
+  function navigate(page) {
+    closeGivingMenu();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => {
+      l.classList.remove('active');
+      l.style.color = '#444';
+    });
+    const target = document.getElementById('page-' + page);
+    if (target) target.classList.add('active');
+    const link = document.querySelector(`[data-page="${page}"]`);
+    if (link) { link.classList.add('active'); link.style.color = '#b5000b'; }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(initReveal, 100);
+  }
+
+  // Mobile Menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('open');
+  }
+
+  function setGiveButtonState(isOpen) {
+    const ids = ['desktop-give-button', 'mobile-give-button'];
+    ids.forEach((id) => {
+      const button = document.getElementById(id);
+      if (!button) return;
+      button.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+
+  function toggleGivingMenu(forceState) {
+    const panel = document.getElementById('giving-panel');
+    if (!panel) return;
+    const shouldOpen = typeof forceState === 'boolean' ? forceState : !panel.classList.contains('open');
+    panel.classList.toggle('open', shouldOpen);
+    panel.setAttribute('aria-hidden', String(!shouldOpen));
+    setGiveButtonState(shouldOpen);
+  }
+
+  function closeGivingMenu() {
+    toggleGivingMenu(false);
+  }
+
+  function pulseGiveButton(button) {
+    if (!button) return;
+    button.classList.add('give-button-highlight');
+    window.setTimeout(() => button.classList.remove('give-button-highlight'), 1400);
+  }
+
+  function scrollToGiveButton(event) {
+    if (event) event.preventDefault();
+    const isMobile = window.innerWidth < 768;
+    const menu = document.getElementById('mobile-menu');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (isMobile && menu && !menu.classList.contains('open')) {
+      menu.classList.add('open');
+    }
+
+    window.setTimeout(() => {
+      const target = document.getElementById(isMobile ? 'mobile-give-button' : 'desktop-give-button') || document.getElementById('desktop-give-button');
+      if (!target) return;
+      target.focus({ preventScroll: true });
+      pulseGiveButton(target);
+    }, 450);
+  }
+
+  function scrollToRecruitmentCta() {
+    const target = document.getElementById('recruitment-cta');
+    if (!target) return;
+    navigate('ministries');
+    window.setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 160);
+  }
+
+  // Scroll Effects
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('main-header');
+    if (window.scrollY > 20) {
+      header.classList.add('header-scrolled');
+    } else {
+      header.classList.remove('header-scrolled');
+    }
+  });
+
+  // Scroll Reveal
+  function initReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal, .stagger').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  document.addEventListener('click', (event) => {
+    const panel = document.getElementById('giving-panel');
+    const desktopButton = document.getElementById('desktop-give-button');
+    const mobileButton = document.getElementById('mobile-give-button');
+
+    if (!panel || !panel.classList.contains('open')) return;
+    if (panel.contains(event.target)) return;
+    if (desktopButton && desktopButton.contains(event.target)) return;
+    if (mobileButton && mobileButton.contains(event.target)) return;
+
+    closeGivingMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeGivingMenu();
+    }
+  });
+
+  // Forms
+  const FILE_PROTOCOL_MESSAGE = 'Form sending works after the site is opened through Netlify or a local web server.';
+
+  function getFieldValue(form, name) {
+    const field = form.elements.namedItem(name);
+    return field && 'value' in field ? String(field.value).trim() : '';
+  }
+
+  function setFormStatus(successId, errorId, message, isError) {
+    const success = document.getElementById(successId);
+    const error = document.getElementById(errorId);
+    if (success) success.classList.add('hidden');
+    if (error) error.classList.add('hidden');
+
+    const target = isError ? error : success;
+    if (!target) return;
+
+    target.textContent = message;
+    target.classList.remove('hidden');
+  }
+
+  function setSubmitState(form, isSubmitting) {
+    const button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    button.disabled = isSubmitting;
+    button.setAttribute('aria-busy', String(isSubmitting));
+    button.style.opacity = isSubmitting ? '0.75' : '1';
+    button.style.cursor = isSubmitting ? 'wait' : 'pointer';
+  }
+
+  async function sendFormRequest(url, payload) {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    let data = {};
+    try {
+      data = await response.json();
+    } catch (error) {
+      data = {};
+    }
+
+    if (!response.ok) {
+      throw new Error(data.message || 'We could not save your request right now.');
+    }
+
+    return data;
+  }
+
+  async function handleSubscribe(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = getFieldValue(form, 'email').toLowerCase();
+    const company = getFieldValue(form, 'company');
+
+    if (window.location.protocol === 'file:') {
+      setFormStatus('subscribe-success', 'subscribe-error', FILE_PROTOCOL_MESSAGE, true);
+      return;
+    }
+
+    setSubmitState(form, true);
+
+    try {
+      const result = await sendFormRequest('/api/subscribe', { email, company });
+      setFormStatus('subscribe-success', 'subscribe-error', result.message || 'You are now subscribed.', false);
+      form.reset();
+    } catch (error) {
+      setFormStatus('subscribe-success', 'subscribe-error', error.message || 'We could not save your email right now.', true);
+    } finally {
+      setSubmitState(form, false);
+    }
+  }
+
+  async function handleContact(e) {
+    e.preventDefault();
+    const form = e.target;
+    const fullName = getFieldValue(form, 'fullName');
+    const email = getFieldValue(form, 'email').toLowerCase();
+    const message = getFieldValue(form, 'message');
+    const company = getFieldValue(form, 'company');
+
+    if (window.location.protocol === 'file:') {
+      setFormStatus('contact-success', 'contact-error', FILE_PROTOCOL_MESSAGE, true);
+      return;
+    }
+
+    setSubmitState(form, true);
+
+    try {
+      const result = await sendFormRequest('/api/contact', { fullName, email, message, company });
+      setFormStatus('contact-success', 'contact-error', result.message || 'Your message has been sent.', false);
+      form.reset();
+    } catch (error) {
+      setFormStatus('contact-success', 'contact-error', error.message || 'We could not send your message right now.', true);
+    } finally {
+      setSubmitState(form, false);
+    }
+  }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[char]));
+  }
+
+  function renderSermonPoster(player) {
+    const videoId = player.dataset.videoId;
+    const title = player.dataset.title || 'Sermon';
+    const safeTitle = escapeHtml(title);
+    player.innerHTML = `
+      <button type="button" class="sermon-player-trigger" aria-label="Play ${safeTitle} here" onclick="activateSermonPlayer(document.getElementById('featured-sermon-player'))">
+        <span class="sermon-player-backdrop" style="background-image:url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg');"></span>
+        <span class="sermon-player-badge">YouTube Sermon</span>
+        <span class="sermon-play-icon"><span class="material-symbols-outlined" style="font-size:2.3rem;">play_arrow</span></span>
+        <span class="sermon-player-copy">
+          <span class="sermon-player-title">${safeTitle}</span>
+          <span class="sermon-player-subtitle">Tap to watch this message right here</span>
+        </span>
+      </button>
+    `;
+  }
+
+  function syncFeaturedSermonMeta(player) {
+    const title = player.dataset.title || 'Latest sermon';
+    const url = player.dataset.url || '#';
+    const titleEl = document.getElementById('featured-sermon-title');
+    const linkEl = document.getElementById('featured-sermon-link');
+    if (titleEl) titleEl.textContent = title;
+    if (linkEl) linkEl.href = url;
+  }
+
+  function activateSermonPlayer(player) {
+    if (!player) return;
+    const videoId = player.dataset.videoId;
+    const title = player.dataset.title || 'Sermon video';
+    syncFeaturedSermonMeta(player);
+    player.innerHTML = `
+      <iframe
+        loading="lazy"
+        src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
+        title="${escapeHtml(title)}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    `;
+  }
+
+  function selectSermon(button) {
+    const player = document.getElementById('featured-sermon-player');
+    if (!player || !button) return;
+    player.dataset.videoId = button.dataset.sermonVideo;
+    player.dataset.title = button.dataset.sermonTitle;
+    player.dataset.url = button.dataset.sermonUrl;
+    document.querySelectorAll('.sermon-list-item').forEach(item => {
+      item.classList.toggle('is-active', item === button);
+    });
+    activateSermonPlayer(player);
+    if (window.innerWidth < 1024) {
+      player.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  function initSermonPlayer() {
+    const player = document.getElementById('featured-sermon-player');
+    if (!player) return;
+    syncFeaturedSermonMeta(player);
+    renderSermonPoster(player);
+  }
+
+  function initKlfSlideshow() {
+    const root = document.querySelector('[data-klf-slideshow]');
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll('[data-klf-slide]'));
+    const triggers = Array.from(root.querySelectorAll('[data-klf-trigger]'));
+    const prev = root.querySelector('[data-klf-prev]');
+    const next = root.querySelector('[data-klf-next]');
+    const title = root.querySelector('[data-klf-current-title]');
+    const copy = root.querySelector('[data-klf-current-copy]');
+    const counter = root.querySelector('[data-klf-counter]');
+
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    let intervalId = null;
+
+    function render(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === currentIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+
+      triggers.forEach((trigger, triggerIndex) => {
+        const isActive = triggerIndex === currentIndex;
+        trigger.classList.toggle('is-active', isActive);
+        trigger.setAttribute('aria-pressed', String(isActive));
+      });
+
+      const activeSlide = slides[currentIndex];
+      if (title) title.textContent = activeSlide.dataset.title || '';
+      if (copy) copy.textContent = activeSlide.dataset.copy || '';
+      if (counter) {
+        const current = String(currentIndex + 1).padStart(2, '0');
+        const total = String(slides.length).padStart(2, '0');
+        counter.innerHTML = `${current} <span>/ ${total}</span>`;
+      }
+    }
+
+    function stopAutoPlay() {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      intervalId = window.setInterval(() => render(currentIndex + 1), 4500);
+    }
+
+    if (prev) {
+      prev.addEventListener('click', () => {
+        render(currentIndex - 1);
+        startAutoPlay();
+      });
+    }
+
+    if (next) {
+      next.addEventListener('click', () => {
+        render(currentIndex + 1);
+        startAutoPlay();
+      });
+    }
+
+    triggers.forEach((trigger, index) => {
+      trigger.addEventListener('click', () => {
+        render(index);
+        startAutoPlay();
+      });
+    });
+
+    root.addEventListener('mouseenter', stopAutoPlay);
+    root.addEventListener('mouseleave', startAutoPlay);
+    root.addEventListener('focusin', stopAutoPlay);
+    root.addEventListener('focusout', startAutoPlay);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoPlay();
+      } else {
+        startAutoPlay();
+      }
+    });
+
+    render(0);
+    startAutoPlay();
+  }
+
+  const EVENT_CARD_THEMES = [
+    {
+      background: 'linear-gradient(135deg,#fffaf8 0%,#f9f9fc 100%)',
+      border: '#f0d7d1',
+      accent: '#b5000b',
+      accentSoft: '#ffdad5',
+      accentWash: '#fff1ee'
+    },
+    {
+      background: 'linear-gradient(135deg,#fffdf7 0%,#f7f4ff 100%)',
+      border: '#eadfc8',
+      accent: '#735c00',
+      accentSoft: '#ffe7a8',
+      accentWash: '#fff6dd'
+    },
+    {
+      background: 'linear-gradient(135deg,#f8fbff 0%,#f6f8ff 100%)',
+      border: '#dbe5ff',
+      accent: '#174ea6',
+      accentSoft: '#dce8ff',
+      accentWash: '#eef4ff'
+    }
+  ];
+
+  function formatEventDateRange(startValue, endValue) {
+    const start = new Date(startValue);
+    const end = new Date(endValue);
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+      return '';
+    }
+
+    const sameDay = start.toDateString() === end.toDateString();
+    if (sameDay) {
+      return start.toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    }
+
+    const startMonth = start.toLocaleDateString('en-US', { month: 'long' });
+    const endMonth = end.toLocaleDateString('en-US', { month: 'long' });
+    const sameMonth = start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth();
+
+    if (sameMonth) {
+      return `${start.toLocaleDateString('en-US', { weekday: 'long' })}, ${startMonth} ${start.getDate()} - ${end.toLocaleDateString('en-US', { weekday: 'long' })}, ${end.getDate()}, ${end.getFullYear()}`;
+    }
+
+    return `${start.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    })} - ${end.toLocaleDateString('en-US', {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    })}`;
+  }
+
+  function formatEventTimeLabel(event) {
+    if (event.timeLabel) {
+      return event.timeLabel;
+    }
+
+    const start = new Date(event.startAt);
+    const end = new Date(event.endAt);
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+      return 'Time to be confirmed';
+    }
+
+    const timeFormatter = new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit'
+    });
+
+    if (start.toDateString() === end.toDateString()) {
+      return `${timeFormatter.format(start)} - ${timeFormatter.format(end)}`;
+    }
+
+    return `${timeFormatter.format(start)} onward`;
+  }
+
+  function createEventMetaCard(label, value, icon, accentColor) {
+    if (!value) return '';
+
+    const iconMarkup = icon ? `
+      <span class="material-symbols-outlined" style="font-size:16px;">${icon}</span>
+    ` : '';
+
+    return `
+      <div class="rounded-2xl px-4 py-4" style="background:rgba(255,255,255,0.78);">
+        <span class="font-body font-bold text-xs uppercase tracking-widest block mb-2" style="color:${accentColor};">${escapeHtml(label)}</span>
+        <span class="font-body text-sm flex items-start gap-2" style="color:#495f84;">
+          ${iconMarkup}
+          <span>${escapeHtml(value)}</span>
+        </span>
+      </div>
+    `;
+  }
+
+  function renderEmptyEventsState() {
+    return `
+      <div class="xl:col-span-2">
+        <div class="rounded-3xl px-8 py-12 text-center" style="background:linear-gradient(135deg,#fffaf8 0%,#f8fbff 100%);border:1px solid #e7dcda;">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-5" style="background:#ffdad5;color:#b5000b;">
+            <span class="material-symbols-outlined" style="font-size:2rem;">event_busy</span>
+          </div>
+          <h3 class="font-headline font-bold text-3xl mb-3" style="color:#1a1c1e;">No Special Upcoming Events Right Now</h3>
+          <p class="font-body text-base leading-relaxed max-w-2xl mx-auto mb-8" style="color:#495f84;">
+            Join us for our regular weekly services and check back soon for the next gathering.
+          </p>
+          <button type="button" onclick="navigate('visit')" class="btn-primary px-8 py-4 rounded-2xl font-body font-bold">
+            Plan Your Visit
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderEventCards(events) {
+    return events.map((event, index) => {
+      const theme = EVENT_CARD_THEMES[index % EVENT_CARD_THEMES.length];
+      const startDate = String(event.startAt || '').slice(0, 10);
+      const start = new Date(event.startAt);
+      const day = Number.isNaN(start.getTime()) ? '--' : String(start.getDate()).padStart(2, '0');
+      const month = Number.isNaN(start.getTime()) ? 'TBD' : start.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+      const posterMarkup = event.posterUrl ? `
+        <div class="rounded-3xl overflow-hidden mb-6" style="background:#f5f0ed;border:1px solid ${theme.border};">
+          <img loading="lazy" decoding="async" src="${escapeHtml(event.posterUrl)}" alt="${escapeHtml(event.posterAlt || `${event.title} poster`)}" class="w-full h-64 object-cover"/>
+        </div>
+      ` : '';
+      const infoCards = [
+        createEventMetaCard('Time', formatEventTimeLabel(event), 'schedule', theme.accent),
+        createEventMetaCard('Venue', event.venue, 'location_on', theme.accent),
+        createEventMetaCard('Focus', event.focus, '', theme.accent),
+        createEventMetaCard('Details', event.details, '', theme.accent)
+      ].filter(Boolean).slice(0, 4).join('');
+      const ctaMarkup = event.ctaLabel && event.ctaUrl ? `
+        <a href="${escapeHtml(event.ctaUrl)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-2xl px-6 py-3 font-body font-bold text-sm mt-6 transition-all" style="background:${theme.accent};color:#ffffff;">
+          ${escapeHtml(event.ctaLabel)} &rarr;
+        </a>
+      ` : '';
+
+      return `
+        <article class="card-hover rounded-3xl p-8 md:p-10 h-full" style="background:${theme.background};border:1px solid ${theme.border};">
+          <div class="flex flex-col h-full">
+            <div class="flex items-start gap-5">
+              <div class="w-20 h-20 rounded-2xl flex flex-col items-center justify-center shrink-0" style="background:${theme.accentSoft};">
+                <span class="font-body font-bold text-3xl leading-none" style="color:${theme.accent};">${escapeHtml(day)}</span>
+                <span class="font-body font-bold text-xs uppercase tracking-[0.3em]" style="color:${theme.accent};">${escapeHtml(month)}</span>
+              </div>
+              <div class="flex-1 pt-1">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                  <div>
+                    <span class="inline-flex items-center rounded-full px-3 py-1 font-body font-bold text-xs uppercase tracking-widest" style="background:${theme.accent};color:#ffffff;">${escapeHtml(event.category || 'Special Event')}</span>
+                    <p class="font-body font-semibold text-sm mt-4" style="color:#495f84;">${escapeHtml(formatEventDateRange(event.startAt, event.endAt))}</p>
+                  </div>
+                  <div class="inline-flex items-center justify-center rounded-full px-4 py-2 font-body font-bold text-sm whitespace-nowrap upcoming-event-countdown" style="background:${theme.accentWash};color:${theme.accent};border:1px solid ${theme.border};" data-event-date="${escapeHtml(startDate)}">
+                    Coming soon
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            ${posterMarkup}
+
+            <div class="flex-1">
+              <h3 class="font-headline font-bold text-2xl md:text-3xl mb-3" style="color:#1a1c1e;">${escapeHtml(event.title)}</h3>
+              <p class="font-body text-base leading-relaxed mb-5" style="color:#495f84;">${escapeHtml(event.summary)}</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-5" style="border-top:1px solid ${theme.border};">
+                ${infoCards}
+              </div>
+
+              ${ctaMarkup}
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  async function loadUpcomingEvents() {
+    const grid = document.getElementById('events-grid');
+    const status = document.getElementById('events-status');
+    if (!grid || !status) return;
+
+    if (window.location.protocol === 'file:') {
+      status.textContent = 'Upcoming events will load here after the site is opened through Netlify or a local web server.';
+      grid.innerHTML = renderEmptyEventsState();
+      initReveal();
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/events');
+      let data = {};
+
+      try {
+        data = await response.json();
+      } catch (error) {
+        data = {};
+      }
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Upcoming events could not be loaded right now.');
+      }
+
+      const events = Array.isArray(data.events) ? data.events : [];
+      grid.innerHTML = events.length ? renderEventCards(events) : renderEmptyEventsState();
+      status.textContent = events.length
+        ? 'Upcoming events update automatically from the church backend.'
+        : 'The church team can add the next event from the backend at any time.';
+      initUpcomingEventCountdown();
+      initReveal();
+    } catch (error) {
+      grid.innerHTML = renderEmptyEventsState();
+      status.textContent = 'Upcoming events are temporarily unavailable. Please check back soon.';
+      initReveal();
+    }
+  }
+
+  function initUpcomingEventCountdown() {
+    const badges = Array.from(document.querySelectorAll('.upcoming-event-countdown'));
+    if (!badges.length) return;
+
+    function updateBadge(badge) {
+      const targetValue = badge.dataset.eventDate;
+      if (!targetValue) return;
+
+      const targetDate = new Date(`${targetValue}T00:00:00`);
+      if (Number.isNaN(targetDate.getTime())) return;
+
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const eventDay = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+      const diffDays = Math.round((eventDay - today) / 86400000);
+
+      if (diffDays > 1) {
+        badge.textContent = `${diffDays} days to go`;
+      } else if (diffDays === 1) {
+        badge.textContent = '1 day to go';
+      } else if (diffDays === 0) {
+        badge.textContent = 'Today';
+      } else {
+        badge.textContent = 'Event concluded';
+      }
+    }
+
+    function updateCountdowns() {
+      badges.forEach(updateBadge);
+    }
+
+    updateCountdowns();
+    window.setInterval(updateCountdowns, 3600000);
+  }
+
+  // Init
+  document.addEventListener('DOMContentLoaded', () => {
+    navigate('home');
+    initReveal();
+    initSermonPlayer();
+    initKlfSlideshow();
+    loadUpcomingEvents();
+  });
+
+  // Also init on page load
+  window.addEventListener('load', initReveal);
+</script>
+</body>
+</html>
+
