@@ -876,12 +876,9 @@
       <div class="text-center mb-16 reveal">
         <div class="section-label mb-3">Mark Your Calendar</div>
         <h2 class="font-headline font-bold" style="font-size:clamp(2rem,5vw,3.5rem);color:#1a1c1e;">Upcoming Events</h2>
-        <p class="font-body text-base leading-relaxed max-w-3xl mx-auto mt-5" style="color:#495f84;">
-          Special gatherings posted by the church team will appear here automatically.
-        </p>
       </div>
 
-      <p id="events-status" class="max-w-3xl mx-auto text-center font-body text-sm mb-8" style="color:#495f84;" aria-live="polite">
+      <p id="events-status" class="hidden max-w-3xl mx-auto text-center font-body text-sm mb-8" style="color:#495f84;" aria-live="polite">
         Loading upcoming events...
       </p>
 
@@ -2304,13 +2301,13 @@
 
       const events = Array.isArray(data.events) ? data.events : [];
       grid.innerHTML = events.length ? renderEventCards(events) : renderEmptyEventsState();
-      status.textContent = events.length
-        ? 'Upcoming events update automatically from the church backend.'
-        : 'The church team can add the next event from the backend at any time.';
+      status.classList.add('hidden');
+      status.textContent = '';
       initUpcomingEventCountdown();
       initReveal();
     } catch (error) {
       grid.innerHTML = renderEmptyEventsState();
+      status.classList.remove('hidden');
       status.textContent = 'Upcoming events are temporarily unavailable. Please check back soon.';
       initReveal();
     }
