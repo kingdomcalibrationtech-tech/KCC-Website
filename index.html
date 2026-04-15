@@ -169,7 +169,7 @@
       transform: translateY(-1px); border-color: rgba(181,0,11,0.4); background: white;
     }
     .klf-stage {
-      position: relative; aspect-ratio: 5 / 4; overflow: hidden; border-radius: 1.65rem;
+      position: relative; aspect-ratio: 5 / 3.7; overflow: hidden; border-radius: 1.65rem;
       background: linear-gradient(180deg, #d9c6ad, #e7ddd1);
       border: 1px solid rgba(255,255,255,0.6);
     }
@@ -216,7 +216,7 @@
       content: ''; width: 0.45rem; height: 0.45rem; border-radius: 999px; background: #b5000b;
     }
     .klf-showcase-footer {
-      position: relative; z-index: 1; margin-top: 1rem;
+      position: relative; z-index: 1; margin-top: 0.75rem;
       display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
       padding: 0 0.35rem;
     }
@@ -228,7 +228,7 @@
       font-weight: 700; line-height: 1.02; color: #1a1c1e;
     }
     .klf-showcase-copy {
-      margin-top: 0.5rem; max-width: 34rem; font-size: 0.96rem; line-height: 1.7; color: #495f84;
+      margin-top: 0.35rem; max-width: 34rem; font-size: 0.92rem; line-height: 1.6; color: #495f84;
     }
     .klf-showcase-counter {
       flex-shrink: 0; min-width: 5rem; text-align: right;
@@ -239,13 +239,13 @@
       text-transform: uppercase; color: #7a7d85;
     }
     .klf-progress {
-      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.15rem;
-      padding: 0 0.35rem 0.35rem;
+      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.9rem;
+      padding: 0 0.35rem 0.2rem;
     }
     .klf-progress-item {
-      flex: 1 1 calc(33.333% - 0.7rem); min-width: 9.25rem; border-radius: 1rem;
+      flex: 1 1 calc(33.333% - 0.6rem); min-width: 8.75rem; border-radius: 0.95rem;
       border: 1px solid rgba(26,28,30,0.08); background: rgba(255,255,255,0.72);
-      padding: 0.85rem 0.95rem; text-align: left;
+      padding: 0.75rem 0.85rem; text-align: left;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
     .klf-progress-item:hover, .klf-progress-item.is-active {
@@ -256,12 +256,18 @@
       display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #b5000b;
     }
     .klf-progress-item strong {
-      display: block; margin-top: 0.4rem; font-size: 0.92rem; line-height: 1.3; color: #1a1c1e;
+      display: block; margin-top: 0.35rem; font-size: 0.88rem; line-height: 1.25; color: #1a1c1e;
+    }
+    .klf-copy-shell {
+      display: flex;
+      align-items: center;
+      order: -1;
     }
     .klf-copy-panel {
-      position: relative; overflow: hidden; border-radius: 2rem; padding: 2rem 1.75rem;
+      position: relative; overflow: hidden; border-radius: 2rem; padding: 1.85rem 1.65rem;
       background: linear-gradient(180deg, #ffffff 0%, #fbf8f4 100%);
       border: 1px solid rgba(233,188,182,0.42); box-shadow: 0 24px 52px rgba(26,28,30,0.08);
+      width: 100%;
     }
     .klf-copy-panel::before {
       content: ''; position: absolute; inset: 0;
@@ -271,7 +277,7 @@
     }
     .klf-copy-panel > * { position: relative; z-index: 1; }
     .klf-copy-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem;
     }
     .klf-copy-card {
       border-radius: 1.25rem; padding: 1rem 1.05rem;
@@ -366,12 +372,17 @@
     }
     @media (max-width: 1023px) {
       .klf-showcase, .klf-copy-panel { border-radius: 1.7rem; }
+      .klf-showcase-top { margin-bottom: 0.85rem; }
+      .klf-stage { aspect-ratio: 1 / 0.94; }
       .about-purpose-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .klf-copy-shell { order: 0; }
     }
     @media (max-width: 640px) {
       .klf-showcase-top, .klf-showcase-footer { padding-left: 0.1rem; padding-right: 0.1rem; }
-      .klf-stage { aspect-ratio: 1 / 1.06; }
-      .klf-progress-item { flex-basis: calc(50% - 0.7rem); min-width: 0; }
+      .klf-stage { aspect-ratio: 1 / 0.98; }
+      .klf-progress-item { flex-basis: calc(50% - 0.6rem); min-width: 0; }
       .klf-copy-grid { grid-template-columns: 1fr; }
       .klf-showcase-counter { text-align: left; min-width: 0; }
       .klf-showcase-footer { flex-direction: column; align-items: flex-start; }
@@ -1232,11 +1243,13 @@
         </div>
       </div>
 
-      <div class="reveal">
+      <div class="reveal klf-copy-shell">
         <div class="klf-copy-panel">
               <div class="section-label mb-4">The Team</div>
           <h2 class="font-headline font-bold" style="font-size:clamp(2.6rem,5vw,4.2rem);color:#1a1c1e;line-height:1.02;">Kingdom Labor<br/>Force (KLF)</h2>
           <p class="font-body text-lg leading-relaxed mt-8" style="color:#495f84;">The KLF is the engine of our ministry. We believe every believer is a laborer in the harvest field of their profession. Whether in technology, arts, governance, or commerce &mdash; our members are trained as apostolic ambassadors of the Kingdom.</p>
+
+          <button onclick="navigate('ministries')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold mt-8 inline-block">Explore Ministries &rarr;</button>
 
           <div class="klf-copy-grid">
             <div class="klf-copy-card">
@@ -1248,8 +1261,6 @@
               <span>Divine Assignment</span>
             </div>
           </div>
-
-          <button onclick="navigate('ministries')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold mt-10 inline-block">Explore Ministries &rarr;</button>
         </div>
       </div>
     </div>
