@@ -75,6 +75,32 @@
     }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link.active { color: var(--primary); font-weight: 700; }
+    .partner-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: #000D59;
+      transition: color 0.2s ease;
+    }
+    .partner-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: rgba(0,13,89,0.24);
+      transform: scaleX(0.4);
+      transform-origin: left;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .partner-link:hover {
+      color: #b5000b;
+    }
+    .partner-link:hover::after {
+      background: #b5000b;
+      transform: scaleX(1);
+    }
 
     /* Cards */
     .card-hover { transition: all 0.3s ease; }
@@ -825,6 +851,137 @@
       .sermon-list-item { align-items: flex-start; }
       .sermon-list-thumb { width: 5.8rem; }
     }
+    .sermons-hero-shell {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      gap: 2rem; align-items: stretch;
+    }
+    .sermons-hero-copy,
+    .sermons-feature-card,
+    .sermons-series-card,
+    .sermons-series-note,
+    .sermons-detail-shell {
+      border-radius: 1.9rem;
+      border: 1px solid #ead0ca;
+      box-shadow: 0 24px 60px rgba(26,28,30,0.08);
+    }
+    .sermons-hero-copy {
+      padding: clamp(2rem, 4vw, 3.4rem);
+      background: linear-gradient(160deg, #fffdfd 0%, #f8f5f6 100%);
+    }
+    .sermons-hero-copy p {
+      max-width: 35rem;
+    }
+    .sermons-feature-card {
+      position: relative; overflow: hidden; min-height: 22rem;
+      background: linear-gradient(180deg, rgba(8,15,58,0.28) 0%, rgba(8,15,58,0.78) 100%),
+        url('https://i.ytimg.com/vi/WzmT96LnZ-0/hqdefault.jpg') center/cover no-repeat;
+      padding: 2rem; color: white; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .sermons-feature-card::before {
+      content: ''; position: absolute; inset: 1rem; border-radius: 1.35rem;
+      border: 1px solid rgba(255,255,255,0.2); pointer-events: none;
+    }
+    .sermons-feature-card-copy {
+      position: relative; z-index: 1; max-width: 26rem;
+    }
+    .sermons-feature-label {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.6rem 0.95rem; border-radius: 999px;
+      background: rgba(181,0,11,0.92); color: #fff6f4;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .sermons-feature-title {
+      margin-top: 1rem; font-family: 'Newsreader', serif; font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 0.98; font-weight: 700;
+    }
+    .sermons-feature-copy p {
+      margin-top: 1rem; color: rgba(246,248,255,0.86); line-height: 1.7;
+    }
+    .sermons-stat-row {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;
+    }
+    .sermons-stat-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 2.5rem; padding: 0.55rem 0.95rem; border-radius: 999px;
+      border: 1px solid rgba(73,95,132,0.15); background: rgba(255,255,255,0.8);
+      color: #31476b; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .sermons-library-grid {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+    }
+    .sermons-series-card {
+      overflow: hidden; background: #fffdfd;
+      display: grid; grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+    }
+    .sermons-series-card-media {
+      min-height: 18rem; position: relative;
+      background: linear-gradient(180deg, rgba(8,15,58,0.16) 0%, rgba(8,15,58,0.7) 100%),
+        url('https://i.ytimg.com/vi/WzmT96LnZ-0/hqdefault.jpg') center/cover no-repeat;
+    }
+    .sermons-series-card-media::after {
+      content: ''; position: absolute; inset: 1rem; border-radius: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .sermons-series-card-body {
+      padding: clamp(1.7rem, 3vw, 2.4rem);
+    }
+    .sermons-series-card-body h3,
+    .sermons-series-note h3 {
+      font-family: 'Newsreader', serif; font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.02; font-weight: 700; color: #000D59;
+    }
+    .sermons-series-card-body p,
+    .sermons-series-note p {
+      margin-top: 1rem; color: #495f84; line-height: 1.75;
+    }
+    .sermons-series-note {
+      padding: clamp(1.7rem, 3vw, 2.4rem);
+      background: linear-gradient(165deg, #fefaf9 0%, #f7f7fb 100%);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .sermons-detail-shell {
+      padding: clamp(1.5rem, 3vw, 2rem);
+      background: linear-gradient(165deg, #fffdfd 0%, #f9f9fc 100%);
+    }
+    .sermons-detail-head {
+      display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+      gap: 1.5rem; margin-bottom: 2rem;
+    }
+    .sermons-detail-head p {
+      max-width: 38rem;
+    }
+    .sermons-message-meta {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;
+    }
+    .sermons-message-meta span {
+      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #31476b; background: #ffffff; border: 1px solid #e2e2e5;
+      border-radius: 999px; padding: 0.55rem 0.9rem;
+    }
+    @media (max-width: 1024px) {
+      .sermons-hero-shell,
+      .sermons-series-card {
+        grid-template-columns: 1fr;
+      }
+      .sermons-feature-card {
+        min-height: 20rem;
+      }
+    }
+    @media (max-width: 640px) {
+      .sermons-hero-copy,
+      .sermons-feature-card,
+      .sermons-series-card-body,
+      .sermons-series-note,
+      .sermons-detail-shell {
+        padding: 1.4rem;
+      }
+      .sermons-feature-card {
+        min-height: 17rem;
+      }
+      .sermons-detail-head {
+        margin-bottom: 1.5rem;
+      }
+    }
 
     /* Sticky header shadow on scroll */
     .header-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
@@ -1046,6 +1203,115 @@
         font-size: clamp(1.95rem, 9vw, 2.75rem);
       }
     }
+    @media (max-width: 767px) {
+      .mobile-menu.open { max-height: 560px; }
+      #main-header .max-w-7xl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      #main-header nav {
+        padding-top: 0.85rem;
+        padding-bottom: 0.85rem;
+      }
+      #main-header [aria-label="Kingdom Calibration Church home"] img {
+        height: 3rem !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .px-6 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      .py-28 {
+        padding-top: 4.75rem !important;
+        padding-bottom: 4.75rem !important;
+      }
+      .py-24 {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+      }
+      .pt-20 {
+        padding-top: 4rem !important;
+      }
+      .pt-32 {
+        padding-top: 6rem !important;
+      }
+      .pb-24 {
+        padding-bottom: 4rem !important;
+      }
+      .home-hero {
+        min-height: auto !important;
+        padding-top: 96px !important;
+      }
+      .hero-scroll-indicator {
+        display: none;
+      }
+      .home-leader-avatar {
+        width: 12rem !important;
+        height: 12rem !important;
+      }
+      .recruitment-shell {
+        padding: 1.75rem !important;
+        gap: 1.5rem !important;
+        align-items: flex-start !important;
+      }
+      .recruitment-button,
+      .footer-visit-button {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+      }
+      .visit-feature-frame {
+        padding: 1.1rem !important;
+      }
+      .visit-feature-grid {
+        gap: 0.9rem !important;
+      }
+      .visit-feature-grid > div {
+        padding: 1rem !important;
+      }
+      .visit-location-panel {
+        padding: 1.5rem !important;
+      }
+      .visit-map-panel {
+        min-height: 18rem !important;
+        height: 18rem !important;
+      }
+      .contact-panel {
+        padding: 1.35rem !important;
+      }
+      footer {
+        padding-top: 4rem !important;
+      }
+      .footer-meta-row {
+        align-items: flex-start !important;
+      }
+      .footer-meta-links {
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem !important;
+      }
+      #page-sermons .sermon-list-item {
+        padding: 0.8rem;
+      }
+      #page-sermons .sermon-list-thumb {
+        width: 5.2rem;
+      }
+      #page-sermons .sermon-list-copy strong {
+        font-size: 0.92rem;
+      }
+      #page-sermons .sermons-stat-row {
+        gap: 0.55rem;
+      }
+      #page-sermons .sermons-stat-pill {
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        padding: 0.5rem 0.75rem;
+      }
+      #page-sermons .sermons-detail-head {
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1063,6 +1329,7 @@
       <div class="hidden md:flex items-center gap-8">
         <button onclick="navigate('home')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="home">Home</button>
         <button onclick="navigate('about')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="about">About Us</button>
+        <button onclick="navigate('sermons')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="sermons">Sermons</button>
         <button onclick="navigate('ministries')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="ministries">Ministries</button>
         <button onclick="navigate('visit')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="visit">Visit</button>
       </div>
@@ -1070,6 +1337,7 @@
       <!-- CTA -->
       <div class="hidden md:flex items-center gap-4">
         <button id="desktop-give-button" type="button" class="font-body font-semibold text-sm transition-colors" style="color:#b5000b;" onmouseover="this.style.color='#8a0008'" onmouseout="this.style.color='#b5000b'" onclick="toggleGivingMenu()" aria-expanded="false" aria-controls="giving-panel">Give</button>
+        <button id="desktop-partner-button" type="button" onclick="openPartnerPanel()" class="partner-link font-body font-semibold text-sm" aria-expanded="false" aria-controls="giving-panel">Partner</button>
         <button onclick="navigate('visit')" class="btn-primary px-6 py-2.5 rounded-xl font-body font-bold text-sm">Join Us &rarr;</button>
       </div>
 
@@ -1086,9 +1354,11 @@
       <div class="pb-6 flex flex-col gap-4 border-t" style="border-color:#e9bcb6;">
         <button onclick="navigate('home');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Home</button>
         <button onclick="navigate('about');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">About Us</button>
+        <button onclick="navigate('sermons');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
         <button onclick="navigate('ministries');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
         <button onclick="navigate('visit');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
         <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
+        <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit" aria-expanded="false" aria-controls="giving-panel">Partner</button>
         <button onclick="navigate('visit');toggleMenu()" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Join Us &rarr;</button>
       </div>
     </div>
@@ -1140,7 +1410,7 @@
 <div id="page-home" class="page active">
 
   <!-- Hero -->
-  <section class="relative min-h-screen flex items-center overflow-hidden" style="padding-top:80px;">
+  <section class="relative min-h-screen flex items-center overflow-hidden home-hero" style="padding-top:80px;">
     <div class="blob w-96 h-96 top-20 right-10 opacity-60" style="position:absolute;"></div>
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 z-10 hero-overlay"></div>
@@ -1168,7 +1438,7 @@
       </div>
     </div>
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60" style="animation:fadeIn 1.5s ease both;">
+    <div class="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60" style="animation:fadeIn 1.5s ease both;">
       <span class="font-body text-xs tracking-widest uppercase" style="color:#495f84;">Scroll</span>
       <div class="w-0.5 h-12 rounded-full" style="background:linear-gradient(to bottom,#b5000b,transparent);"></div>
     </div>
@@ -1261,10 +1531,13 @@
         <a href="https://www.youtube.com/playlist?list=PLrQK6G-Wm69qr3p2E4S6nFPXo4S8Tqy7N" target="_blank" rel="noopener noreferrer" class="font-body font-bold text-sm pb-1 transition-colors" style="color:#b5000b;border-bottom:2px solid #b5000b;">Browse Archive &rarr;</a>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10" data-sermon-experience>
         <!-- Featured Sermon -->
         <div class="lg:col-span-2 reveal">
           <div id="featured-sermon-player" class="sermon-player shadow-2xl"
+            data-sermon-player
+            data-title-target="featured-sermon-title"
+            data-link-target="featured-sermon-link"
             data-video-id="WzmT96LnZ-0"
             data-title="Forged by Grace - The Heart of Jesus' Ministry 1"
             data-url="https://www.youtube.com/watch?v=WzmT96LnZ-0">
@@ -1276,7 +1549,7 @@
               <p class="font-body text-sm mt-3" style="color:#495f84;">Watch directly on the page or open the full message on YouTube.</p>
             </div>
             <div class="flex flex-wrap gap-3">
-              <button type="button" onclick="activateSermonPlayer(document.getElementById('featured-sermon-player'))" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm">Play Here</button>
+              <button type="button" onclick="activateSermonPlayerById('featured-sermon-player')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm">Play Here</button>
               <a id="featured-sermon-link" href="https://www.youtube.com/watch?v=WzmT96LnZ-0" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl font-body font-bold text-sm border transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Watch on YouTube</a>
             </div>
           </div>
@@ -1403,7 +1676,7 @@
         <!-- Apostle -->
         <div class="text-center group">
           <div class="relative inline-block mb-6">
-            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap" style="border:4px solid #ffdad5;box-shadow:0 20px 60px rgba(181,0,11,0.15);">
+            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap home-leader-avatar" style="border:4px solid #ffdad5;box-shadow:0 20px 60px rgba(181,0,11,0.15);">
               <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg"
                 alt="Apostle Boniface Nagi" class="w-full h-full object-cover"/>
             </div>
@@ -1415,7 +1688,7 @@
         <!-- Prophetess -->
         <div class="text-center group">
           <div class="relative inline-block mb-6">
-            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap" style="border:4px solid #d6e3ff;box-shadow:0 20px 60px rgba(73,95,132,0.15);">
+            <div class="w-56 h-56 mx-auto rounded-full overflow-hidden leader-img-wrap home-leader-avatar" style="border:4px solid #d6e3ff;box-shadow:0 20px 60px rgba(73,95,132,0.15);">
               <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg"
                 alt="Prophetess Joyce Wangechi" class="w-full h-full object-cover"/>
             </div>
@@ -1449,6 +1722,189 @@
       </div>
       <div id="subscribe-error" class="hidden mt-6 font-body font-semibold" style="color:#ffe2e2;" aria-live="polite">
         We could not save your email right now. Please try again in a moment.
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: SERMONS ===================== -->
+<div id="page-sermons" class="page">
+  <header class="relative pt-32 pb-24 overflow-hidden" style="background:#f6f5f8;">
+    <div class="blob w-80 h-80 opacity-30" style="position:absolute;right:-60px;top:-30px;background:rgba(0,13,89,0.12);filter:blur(70px);"></div>
+    <div class="blob w-64 h-64 opacity-20" style="position:absolute;left:-30px;bottom:-40px;background:rgba(181,0,11,0.12);filter:blur(70px);"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="section-label mb-4">Sermons</div>
+      <h1 class="font-headline font-light leading-tight" style="font-size:clamp(2.7rem,6vw,5.4rem);color:#000D59;">
+        Sermons in<br/><span class="italic" style="color:#b5000b;">Series.</span>
+      </h1>
+      <p class="font-body text-lg leading-relaxed max-w-2xl mt-8" style="color:#495f84;">Follow the teaching journey of Kingdom Calibration Church through sermon series that can be watched in order, one message at a time.</p>
+      <div class="flex flex-wrap gap-4 mt-10">
+        <a href="#sermons-series-detail" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Start This Series</a>
+        <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Visit YouTube Channel</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-24" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="sermons-hero-shell reveal">
+        <article class="sermons-hero-copy">
+          <div class="section-label mb-3">Current Series</div>
+          <h2 class="font-headline font-bold leading-tight" style="font-size:clamp(2rem,4vw,3.3rem);color:#000D59;">Forged by Grace</h2>
+          <p class="font-body text-base leading-relaxed mt-5" style="color:#495f84;">This teaching journey follows the heart of Jesus&apos; ministry and what grace produces in the life of a believer. It moves from the nature of Christ&apos;s ministry into new creation realities, wisdom, and transformation.</p>
+          <div class="sermons-stat-row">
+            <span class="sermons-stat-pill">5 Messages</span>
+            <span class="sermons-stat-pill">Apostle Boniface</span>
+            <span class="sermons-stat-pill">Grace Series</span>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href="#sermons-series-detail" class="btn-primary px-7 py-3.5 rounded-xl font-body font-bold text-sm">Open the Series</a>
+            <a href="https://www.youtube.com/playlist?list=PLrQK6G-Wm69qr3p2E4S6nFPXo4S8Tqy7N" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-xl font-body font-bold text-sm border transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Open Playlist</a>
+          </div>
+        </article>
+
+        <article class="sermons-feature-card">
+          <div class="sermons-feature-card-copy">
+            <span class="sermons-feature-label">Featured Series</span>
+            <h3 class="sermons-feature-title">Follow the full journey of the message.</h3>
+            <p class="font-body text-base">Move through the teaching in sequence and stay close to the heart of what the house is carrying.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sermons-series-library" class="py-24" style="background:#f3f3f6;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-14 reveal">
+        <div>
+          <div class="section-label mb-3">Series Library</div>
+          <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Start With a Series</h2>
+        </div>
+        <p class="font-body text-base max-w-2xl" style="color:#495f84;">Start with the current series and follow each message in order.</p>
+      </div>
+
+      <div class="sermons-library-grid stagger">
+        <article class="sermons-series-card">
+          <div class="sermons-series-card-media"></div>
+          <div class="sermons-series-card-body">
+            <div class="section-label mb-3">Current Series</div>
+            <h3>Forged by Grace</h3>
+            <p class="font-body">A series on the heart of Jesus&apos; ministry, what grace forms in a believer, and how divine wisdom shapes people into transformation.</p>
+            <div class="sermons-stat-row">
+              <span class="sermons-stat-pill">5 Messages</span>
+              <span class="sermons-stat-pill">Apostle Boniface</span>
+            </div>
+            <a href="#sermons-series-detail" class="inline-flex items-center gap-2 font-body font-bold text-sm mt-8 pb-1" style="color:#b5000b;border-bottom:2px solid #b5000b;">Open Series <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sermons-series-detail" class="py-28" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="sermons-detail-shell reveal">
+        <div class="sermons-detail-head">
+          <div>
+            <div class="section-label mb-3">Inside the Series</div>
+            <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3rem);color:#000D59;">Forged by Grace</h2>
+            <p class="font-body text-base leading-relaxed mt-4" style="color:#495f84;">Open one message at a time, follow the order of the series, and move through the teaching journey without leaving the page unless you want the full YouTube experience.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://www.youtube.com/playlist?list=PLrQK6G-Wm69qr3p2E4S6nFPXo4S8Tqy7N" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl font-body font-bold text-sm border transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Open Playlist</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10" data-sermon-experience>
+          <div class="lg:col-span-2">
+            <div id="series-sermon-player" class="sermon-player shadow-2xl"
+              data-sermon-player
+              data-title-target="series-sermon-title"
+              data-link-target="series-sermon-link"
+              data-video-id="WzmT96LnZ-0"
+              data-title="Forged by Grace - The Heart of Jesus' Ministry 1"
+              data-url="https://www.youtube.com/watch?v=WzmT96LnZ-0">
+            </div>
+            <div class="mt-6 flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+              <div>
+                <div class="sermons-message-meta">
+                  <span>Part 1 of 5</span>
+                  <span>Series Message</span>
+                </div>
+                <h3 id="series-sermon-title" class="font-headline font-bold mt-4" style="font-size:clamp(1.6rem,3vw,2.4rem);color:#1a1c1e;">Forged by Grace - The Heart of Jesus' Ministry 1</h3>
+                <p class="font-body text-sm mt-3" style="color:#495f84;">Play the selected message here or open it directly on YouTube.</p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <button type="button" onclick="activateSermonPlayerById('series-sermon-player')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm">Play Here</button>
+                <a id="series-sermon-link" href="https://www.youtube.com/watch?v=WzmT96LnZ-0" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl font-body font-bold text-sm border transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Watch on YouTube</a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6 pb-4" style="color:#495f84;border-bottom:1px solid #e9bcb6;">Series Messages</h4>
+            <div class="space-y-4">
+              <button type="button" class="sermon-list-item is-active" data-sermon-video="WzmT96LnZ-0" data-sermon-title="Forged by Grace - The Heart of Jesus' Ministry 1" data-sermon-url="https://www.youtube.com/watch?v=WzmT96LnZ-0" onclick="selectSermon(this)">
+                <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/WzmT96LnZ-0/hqdefault.jpg');">
+                  <span class="sermon-list-number">01</span>
+                </span>
+                <span class="sermon-list-copy">
+                  <strong>Forged by Grace - The Heart of Jesus&apos; Ministry 1</strong>
+                  <span>Load in Player</span>
+                </span>
+              </button>
+              <button type="button" class="sermon-list-item" data-sermon-video="kkRSyith_TM" data-sermon-title="Forged by Grace - The Heart of Jesus' Ministry 2" data-sermon-url="https://www.youtube.com/watch?v=kkRSyith_TM" onclick="selectSermon(this)">
+                <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/kkRSyith_TM/hqdefault.jpg');">
+                  <span class="sermon-list-number">02</span>
+                </span>
+                <span class="sermon-list-copy">
+                  <strong>Forged by Grace - The Heart of Jesus&apos; Ministry 2</strong>
+                  <span>Load in Player</span>
+                </span>
+              </button>
+              <button type="button" class="sermon-list-item" data-sermon-video="clABECH10Xg" data-sermon-title="Forged by Grace - New Creation Realities" data-sermon-url="https://www.youtube.com/watch?v=clABECH10Xg" onclick="selectSermon(this)">
+                <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/clABECH10Xg/hqdefault.jpg');">
+                  <span class="sermon-list-number">03</span>
+                </span>
+                <span class="sermon-list-copy">
+                  <strong>Forged by Grace - New Creation Realities</strong>
+                  <span>Load in Player</span>
+                </span>
+              </button>
+              <button type="button" class="sermon-list-item" data-sermon-video="F1YxjVc_lic" data-sermon-title="Forged by Grace - Principle of Wisdom in Forging Men" data-sermon-url="https://www.youtube.com/watch?v=F1YxjVc_lic" onclick="selectSermon(this)">
+                <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/F1YxjVc_lic/hqdefault.jpg');">
+                  <span class="sermon-list-number">04</span>
+                </span>
+                <span class="sermon-list-copy">
+                  <strong>Forged by Grace - Principle of Wisdom in Forging Men</strong>
+                  <span>Load in Player</span>
+                </span>
+              </button>
+              <button type="button" class="sermon-list-item" data-sermon-video="ZwrdKZK1KME" data-sermon-title="Forged by Grace - Forged into Transformation" data-sermon-url="https://www.youtube.com/watch?v=ZwrdKZK1KME" onclick="selectSermon(this)">
+                <span class="sermon-list-thumb" style="background-image:url('https://i.ytimg.com/vi/ZwrdKZK1KME/hqdefault.jpg');">
+                  <span class="sermon-list-number">05</span>
+                </span>
+                <span class="sermon-list-copy">
+                  <strong>Forged by Grace - Forged into Transformation</strong>
+                  <span>Load in Player</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" style="background:#f9f9fc;">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center reveal">
+      <div class="section-label mb-3">Watch More</div>
+      <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3.3rem);color:#1a1c1e;">Keep following the teaching.</h2>
+      <p class="font-body text-lg leading-relaxed mt-6" style="color:#495f84;">For more messages, livestream replays, and new uploads, continue on the church YouTube channel.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-10">
+        <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Visit YouTube Channel</a>
+        <a href="https://www.youtube.com/playlist?list=PLrQK6G-Wm69qr3p2E4S6nFPXo4S8Tqy7N" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;">Open Sermon Playlist</a>
       </div>
     </div>
   </section>
@@ -2059,13 +2515,13 @@
   <!-- Recruitment CTA -->
   <section id="recruitment-cta" class="py-24" style="background:#f9f9fc;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="rounded-2xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden" style="background:#d6e3ff;">
+      <div class="rounded-2xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden recruitment-shell" style="background:#d6e3ff;">
         <div class="blob w-64 h-64 opacity-20" style="position:absolute;right:-30px;top:-30px;background:#495f84;filter:blur(60px);"></div>
         <div class="max-w-xl relative z-10">
           <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2rem,4vw,3rem);color:#001b3d;">Ready to align your destiny?</h2>
           <p class="font-body text-lg leading-relaxed" style="color:#31476b;">Join the Kingdom Labor Force and find where your gifts meet the ministry's needs. We believe every believer has a calibration point.</p>
         </div>
-        <button class="btn-primary px-10 py-5 rounded-xl font-body font-bold text-lg flex-shrink-0 relative z-10">Complete Recruitment Form &rarr;</button>
+        <button class="btn-primary px-10 py-5 rounded-xl font-body font-bold text-lg flex-shrink-0 relative z-10 recruitment-button">Complete Recruitment Form &rarr;</button>
       </div>
     </div>
   </section>
@@ -2116,8 +2572,8 @@
         <div class="lg:col-span-5 reveal">
           <div class="relative">
             <div class="absolute inset-0 rounded-3xl" style="transform:rotate(-2deg) translate(14px,18px);border:2px solid #ffb4aa;pointer-events:none;"></div>
-            <div class="relative rounded-3xl p-6 sm:p-8" style="background:#ffffff;box-shadow:0 24px 60px rgba(26,28,30,0.08);">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="relative rounded-3xl p-6 sm:p-8 visit-feature-frame" style="background:#ffffff;box-shadow:0 24px 60px rgba(26,28,30,0.08);">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 visit-feature-grid">
                 <div class="sm:col-span-2 p-6 rounded-2xl" style="background:#f9f9fc;border:1px solid #f0f0f0;">
                   <span class="material-symbols-outlined text-3xl mb-4 block" style="color:#b5000b;">location_on</span>
                   <p class="font-body font-bold text-xs uppercase tracking-widest mb-2" style="color:#495f84;">Where We Meet</p>
@@ -2148,7 +2604,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden shadow-xl" style="background:#ffffff;">
         <!-- Info -->
-        <div class="p-12 lg:p-20 flex flex-col justify-center reveal">
+        <div class="p-12 lg:p-20 flex flex-col justify-center reveal visit-location-panel">
           <span class="material-symbols-outlined text-4xl mb-6" style="color:#b5000b;">location_on</span>
           <h2 class="font-headline font-bold mb-8 text-3xl" style="color:#1a1c1e;">Where to Find Us</h2>
           <div class="space-y-8">
@@ -2163,7 +2619,7 @@
           </div>
         </div>
         <!-- Map -->
-        <div class="h-80 md:h-auto relative overflow-hidden" style="background:#e2e2e5;min-height:400px;">
+        <div class="h-80 md:h-auto relative overflow-hidden visit-map-panel" style="background:#e2e2e5;min-height:400px;">
           <img loading="lazy" decoding="async" src="assets/City Image.jpg"
             alt="Map of Westlands Nairobi" class="w-full h-full object-cover grayscale" style="contrast:1.2;"/>
           <!-- Red pin -->
@@ -2281,7 +2737,7 @@
       </div>
 
       <!-- Contact Form -->
-      <div class="p-8 md:p-12 rounded-2xl shadow-xl reveal" style="background:#ffffff;">
+      <div class="p-8 md:p-12 rounded-2xl shadow-xl reveal contact-panel" style="background:#ffffff;">
         <h3 class="font-headline font-bold text-3xl mb-8" style="color:#1a1c1e;">Send us a message</h3>
         <form id="contact-form" onsubmit="handleContact(event)" class="space-y-8">
           <div>
@@ -2367,12 +2823,12 @@
           <li><span class="font-bold" style="color:#b5000b;">Veritas Tuesday</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
           <li><span class="font-bold" style="color:#b5000b;">Upper Room Friday</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
         </ul>
-        <button onclick="navigate('visit')" class="btn-primary mt-8 px-6 py-3 rounded-xl font-body font-bold text-sm">Plan Your Visit &rarr;</button>
+        <button onclick="navigate('visit')" class="btn-primary mt-8 px-6 py-3 rounded-xl font-body font-bold text-sm footer-visit-button">Plan Your Visit &rarr;</button>
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
-      <div class="flex gap-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 footer-meta-row">
+      <div class="flex gap-8 footer-meta-links">
         <a href="#" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(213,223,244,0.46);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(213,223,244,0.46)'">Privacy Policy</a>
         <a href="#" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(213,223,244,0.46);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(213,223,244,0.46)'">Terms of Service</a>
         <a href="#desktop-give-button" onclick="scrollToGiveButton(event)" class="font-body text-xs uppercase tracking-widest transition-colors" style="color:rgba(213,223,244,0.46);" onmouseover="this.style.color='#b5000b'" onmouseout="this.style.color='rgba(213,223,244,0.46)'">Giving Portal</a>
@@ -2409,7 +2865,7 @@
   }
 
   function setGiveButtonState(isOpen) {
-    const ids = ['desktop-give-button', 'mobile-give-button'];
+    const ids = ['desktop-give-button', 'mobile-give-button', 'desktop-partner-button', 'mobile-partner-button'];
     ids.forEach((id) => {
       const button = document.getElementById(id);
       if (!button) return;
@@ -2428,6 +2884,17 @@
 
   function closeGivingMenu() {
     toggleGivingMenu(false);
+  }
+
+  function openPartnerPanel(closeMobileMenu = false) {
+    if (closeMobileMenu) {
+      const menu = document.getElementById('mobile-menu');
+      if (menu && menu.classList.contains('open')) {
+        menu.classList.remove('open');
+      }
+    }
+
+    toggleGivingMenu(true);
   }
 
   function pulseGiveButton(button) {
@@ -2675,12 +3142,19 @@
     }[char]));
   }
 
+  function activateSermonPlayerById(playerId) {
+    const player = document.getElementById(playerId);
+    if (!player) return;
+    activateSermonPlayer(player);
+  }
+
   function renderSermonPoster(player) {
     const videoId = player.dataset.videoId;
     const title = player.dataset.title || 'Sermon';
     const safeTitle = escapeHtml(title);
+    const playerId = player.id || '';
     player.innerHTML = `
-      <button type="button" class="sermon-player-trigger" aria-label="Play ${safeTitle} here" onclick="activateSermonPlayer(document.getElementById('featured-sermon-player'))">
+      <button type="button" class="sermon-player-trigger" aria-label="Play ${safeTitle} here" onclick="activateSermonPlayerById('${playerId}')">
         <span class="sermon-player-backdrop" style="background-image:url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg');"></span>
         <span class="sermon-player-badge">YouTube Sermon</span>
         <span class="sermon-play-icon"><span class="material-symbols-outlined" style="font-size:2.3rem;">play_arrow</span></span>
@@ -2692,11 +3166,13 @@
     `;
   }
 
-  function syncFeaturedSermonMeta(player) {
+  function syncSermonMeta(player) {
     const title = player.dataset.title || 'Latest sermon';
     const url = player.dataset.url || '#';
-    const titleEl = document.getElementById('featured-sermon-title');
-    const linkEl = document.getElementById('featured-sermon-link');
+    const titleTarget = player.dataset.titleTarget;
+    const linkTarget = player.dataset.linkTarget;
+    const titleEl = titleTarget ? document.getElementById(titleTarget) : null;
+    const linkEl = linkTarget ? document.getElementById(linkTarget) : null;
     if (titleEl) titleEl.textContent = title;
     if (linkEl) linkEl.href = url;
   }
@@ -2705,7 +3181,7 @@
     if (!player) return;
     const videoId = player.dataset.videoId;
     const title = player.dataset.title || 'Sermon video';
-    syncFeaturedSermonMeta(player);
+    syncSermonMeta(player);
     player.innerHTML = `
       <iframe
         loading="lazy"
@@ -2719,12 +3195,14 @@
   }
 
   function selectSermon(button) {
-    const player = document.getElementById('featured-sermon-player');
+    const experience = button ? button.closest('[data-sermon-experience]') : null;
+    const player = experience ? experience.querySelector('[data-sermon-player]') : document.getElementById('featured-sermon-player');
     if (!player || !button) return;
     player.dataset.videoId = button.dataset.sermonVideo;
     player.dataset.title = button.dataset.sermonTitle;
     player.dataset.url = button.dataset.sermonUrl;
-    document.querySelectorAll('.sermon-list-item').forEach(item => {
+    const items = experience ? experience.querySelectorAll('.sermon-list-item') : document.querySelectorAll('.sermon-list-item');
+    items.forEach(item => {
       item.classList.toggle('is-active', item === button);
     });
     activateSermonPlayer(player);
@@ -2733,11 +3211,11 @@
     }
   }
 
-  function initSermonPlayer() {
-    const player = document.getElementById('featured-sermon-player');
-    if (!player) return;
-    syncFeaturedSermonMeta(player);
-    renderSermonPoster(player);
+  function initSermonPlayers() {
+    document.querySelectorAll('[data-sermon-player]').forEach((player) => {
+      syncSermonMeta(player);
+      renderSermonPoster(player);
+    });
   }
 
   function initKlfSlideshow() {
@@ -3048,8 +3526,8 @@
       initReveal();
     } catch (error) {
       grid.innerHTML = renderEmptyEventsState();
-      status.classList.remove('hidden');
-      status.textContent = 'Upcoming events are temporarily unavailable. Please check back soon.';
+      status.classList.add('hidden');
+      status.textContent = '';
       initReveal();
     }
   }
@@ -3101,7 +3579,7 @@
     navigate('home');
     initReveal();
     initLeaderStories();
-    initSermonPlayer();
+    initSermonPlayers();
     initKlfSlideshow();
     loadUpcomingEvents();
   });
