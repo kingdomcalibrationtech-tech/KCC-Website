@@ -1,4 +1,17 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        ".env*"
+      ]
+    }
+  ],
   "hosting": {
     "public": ".",
     "ignore": [
@@ -6,6 +19,7 @@
       "**/.*",
       "**/node_modules/**",
       "README.md",
+      "functions/**",
       "netlify.toml",
       "netlify/**",
       "supabase/**",
@@ -47,6 +61,29 @@
             "value": "public, max-age=31536000, immutable"
           }
         ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/api/subscribe",
+        "function": {
+          "functionId": "subscribe",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/api/contact",
+        "function": {
+          "functionId": "contact",
+          "region": "europe-west1"
+        }
+      },
+      {
+        "source": "/api/events",
+        "function": {
+          "functionId": "events",
+          "region": "europe-west1"
+        }
       }
     ]
   }
