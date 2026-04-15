@@ -169,7 +169,7 @@
       transform: translateY(-1px); border-color: rgba(181,0,11,0.4); background: white;
     }
     .klf-stage {
-      position: relative; aspect-ratio: 5 / 4; overflow: hidden; border-radius: 1.65rem;
+      position: relative; aspect-ratio: 5 / 3.7; overflow: hidden; border-radius: 1.65rem;
       background: linear-gradient(180deg, #d9c6ad, #e7ddd1);
       border: 1px solid rgba(255,255,255,0.6);
     }
@@ -239,13 +239,19 @@
       text-transform: uppercase; color: #7a7d85;
     }
     .klf-progress {
-      position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.15rem;
-      padding: 0 0.35rem 0.35rem;
+      position: relative; z-index: 1; display: flex; flex-wrap: nowrap; gap: 0.7rem; margin-top: 1rem;
+      padding: 0 0.35rem 0.45rem;
+      overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none;
+      scroll-snap-type: x proximity;
+    }
+    .klf-progress::-webkit-scrollbar {
+      display: none;
     }
     .klf-progress-item {
-      flex: 1 1 calc(33.333% - 0.7rem); min-width: 9.25rem; border-radius: 1rem;
+      flex: 0 0 10.75rem; min-width: 10.75rem; border-radius: 1rem;
       border: 1px solid rgba(26,28,30,0.08); background: rgba(255,255,255,0.72);
       padding: 0.85rem 0.95rem; text-align: left;
+      scroll-snap-align: start;
       transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
     .klf-progress-item:hover, .klf-progress-item.is-active {
@@ -258,10 +264,19 @@
     .klf-progress-item strong {
       display: block; margin-top: 0.4rem; font-size: 0.92rem; line-height: 1.3; color: #1a1c1e;
     }
+    .klf-copy-shell {
+      display: flex;
+      align-items: center;
+      min-height: 100%;
+    }
     .klf-copy-panel {
-      position: relative; overflow: hidden; border-radius: 2rem; padding: 2rem 1.75rem;
+      position: relative; overflow: hidden; border-radius: 2rem; padding: 1.8rem 1.65rem;
       background: linear-gradient(180deg, #ffffff 0%, #fbf8f4 100%);
       border: 1px solid rgba(233,188,182,0.42); box-shadow: 0 24px 52px rgba(26,28,30,0.08);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .klf-copy-panel::before {
       content: ''; position: absolute; inset: 0;
@@ -271,7 +286,7 @@
     }
     .klf-copy-panel > * { position: relative; z-index: 1; }
     .klf-copy-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.6rem;
     }
     .klf-copy-card {
       border-radius: 1.25rem; padding: 1rem 1.05rem;
@@ -370,8 +385,8 @@
     }
     @media (max-width: 640px) {
       .klf-showcase-top, .klf-showcase-footer { padding-left: 0.1rem; padding-right: 0.1rem; }
-      .klf-stage { aspect-ratio: 1 / 1.06; }
-      .klf-progress-item { flex-basis: calc(50% - 0.7rem); min-width: 0; }
+      .klf-stage { aspect-ratio: 1 / 0.94; }
+      .klf-progress-item { flex: 0 0 9.75rem; min-width: 9.75rem; }
       .klf-copy-grid { grid-template-columns: 1fr; }
       .klf-showcase-counter { text-align: left; min-width: 0; }
       .klf-showcase-footer { flex-direction: column; align-items: flex-start; }
@@ -1133,7 +1148,7 @@
           </div>
 
           <div class="klf-stage">
-            <article class="klf-slide is-active" data-klf-slide data-title="Kingdom Labor Force" data-copy="A unified labor force carrying vision, excellence, and kingdom order across the house.">
+            <article class="klf-slide is-active" data-klf-slide data-title="Kingdom Labor Force" data-copy="A unified labor force carrying vision, excellence, and kingdom order across the house." data-panel-title="Kingdom Labor Force (KLF)" data-panel-copy="The KLF is the engine of our ministry. We believe every believer is a laborer in the harvest field of their profession. Whether in technology, arts, governance, or commerce - our members are trained as apostolic ambassadors of the Kingdom.">
               <div class="klf-slide-backdrop" style="background-image:url('assets/KLF.jpg');"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="assets/KLF.jpg" alt="Kingdom Labor Force team gathering" class="klf-slide-image"/>
@@ -1141,7 +1156,7 @@
               <span class="klf-slide-tag">KLF Team</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="Kingdom Media Force" data-copy="Capturing moments, amplifying the message, and stewarding the visual story of the ministry.">
+            <article class="klf-slide" data-klf-slide data-title="Kingdom Media Force" data-copy="Capturing moments, amplifying the message, and stewarding the visual story of the ministry." data-panel-title="Kingdom Media Force" data-panel-copy="From cameras to storytelling, this team helps carry the message with clarity, creativity, and excellence across every gathering.">
               <div class="klf-slide-backdrop" style="background-image:url('assets/Kingdom Media Force.jpg');"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="assets/Kingdom Media Force.jpg" alt="Kingdom Media Force at work" class="klf-slide-image"/>
@@ -1149,7 +1164,7 @@
               <span class="klf-slide-tag">Kingdom Media Force</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="Sound of Revival" data-copy="Leading the house into worship with sensitivity, skill, and a prophetic sound.">
+            <article class="klf-slide" data-klf-slide data-title="Sound of Revival" data-copy="Leading the house into worship with sensitivity, skill, and a prophetic sound." data-panel-title="Sound of Revival" data-panel-copy="This team leads the house into worship with sensitivity, skill, and a prophetic sound that creates room for God's presence to move.">
               <div class="klf-slide-backdrop" style="background-image:url('Photos/Sound of Revival Team.jpg');"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="Photos/Sound of Revival Team.jpg" alt="Sound of Revival ministry team" class="klf-slide-image"/>
@@ -1157,7 +1172,7 @@
               <span class="klf-slide-tag">Sound of Revival</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="Ushering" data-copy="Welcoming with excellence and shaping a dignified atmosphere for every gathering.">
+            <article class="klf-slide" data-klf-slide data-title="Ushering" data-copy="Welcoming with excellence and shaping a dignified atmosphere for every gathering." data-panel-title="Ushering" data-panel-copy="The ushering team welcomes with excellence and helps create a peaceful, dignified atmosphere for every service and event.">
               <div class="klf-slide-backdrop" style="background-image:url('assets/Ushering.jpg'); background-position:center 18%;"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="assets/Ushering.jpg" alt="Ushering team member" class="klf-slide-image" style="object-position:center 18%;"/>
@@ -1165,7 +1180,7 @@
               <span class="klf-slide-tag">Ushering</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="Hospitality" data-copy="Carrying warmth, care, and the culture of kingdom family to every guest and member.">
+            <article class="klf-slide" data-klf-slide data-title="Hospitality" data-copy="Carrying warmth, care, and the culture of kingdom family to every guest and member." data-panel-title="Hospitality" data-panel-copy="Hospitality carries warmth, care, and the culture of kingdom family to every guest and member who walks through our doors.">
               <div class="klf-slide-backdrop" style="background-image:url('Photos/Hospitality Team.jpg');"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="Photos/Hospitality Team.jpg" alt="Hospitality team members" class="klf-slide-image"/>
@@ -1173,7 +1188,7 @@
               <span class="klf-slide-tag">Hospitality</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="Protocol" data-copy="Protecting flow, order, and honor so the ministry can move with precision.">
+            <article class="klf-slide" data-klf-slide data-title="Protocol" data-copy="Protecting flow, order, and honor so the ministry can move with precision." data-panel-title="Protocol" data-panel-copy="Protocol protects flow, order, and honor so ministry moments can move with clarity, precision, and grace.">
               <div class="klf-slide-backdrop" style="background-image:url('Photos/Protocol team.jpg'); background-position:center top;"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="Photos/Protocol team.jpg" alt="Protocol team member" class="klf-slide-image" style="object-position:center top;"/>
@@ -1181,7 +1196,7 @@
               <span class="klf-slide-tag">Protocol</span>
             </article>
 
-            <article class="klf-slide" data-klf-slide data-title="LEA Children's Church" data-copy="Raising the next generation with biblical truth, creativity, and joyful discipleship.">
+            <article class="klf-slide" data-klf-slide data-title="LEA Children's Church" data-copy="Raising the next generation with biblical truth, creativity, and joyful discipleship." data-panel-title="LEA Children's Church" data-panel-copy="This team raises the next generation with biblical truth, creativity, joy, and age-appropriate discipleship.">
               <div class="klf-slide-backdrop" style="background-image:url('assets/LEA Children''s Church.jpg');"></div>
               <div class="klf-slide-image-wrap">
                 <img loading="lazy" decoding="async" src="assets/LEA Children's Church.jpg" alt="LEA Children's Church ministry" class="klf-slide-image"/>
@@ -1232,11 +1247,11 @@
         </div>
       </div>
 
-      <div class="reveal">
+      <div class="reveal klf-copy-shell">
         <div class="klf-copy-panel">
               <div class="section-label mb-4">The Team</div>
-          <h2 class="font-headline font-bold" style="font-size:clamp(2.6rem,5vw,4.2rem);color:#1a1c1e;line-height:1.02;">Kingdom Labor<br/>Force (KLF)</h2>
-          <p class="font-body text-lg leading-relaxed mt-8" style="color:#495f84;">The KLF is the engine of our ministry. We believe every believer is a laborer in the harvest field of their profession. Whether in technology, arts, governance, or commerce &mdash; our members are trained as apostolic ambassadors of the Kingdom.</p>
+          <h2 class="font-headline font-bold" data-klf-panel-title style="font-size:clamp(2.6rem,5vw,4.2rem);color:#1a1c1e;line-height:1.02;">Kingdom Labor Force (KLF)</h2>
+          <p class="font-body text-lg leading-relaxed mt-6" data-klf-panel-copy style="color:#495f84;">The KLF is the engine of our ministry. We believe every believer is a laborer in the harvest field of their profession. Whether in technology, arts, governance, or commerce &mdash; our members are trained as apostolic ambassadors of the Kingdom.</p>
 
           <div class="klf-copy-grid">
             <div class="klf-copy-card">
@@ -1249,7 +1264,7 @@
             </div>
           </div>
 
-          <button onclick="navigate('ministries')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold mt-10 inline-block">Explore Ministries &rarr;</button>
+          <button onclick="navigate('ministries')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold mt-8 inline-block">Explore Ministries &rarr;</button>
         </div>
       </div>
     </div>
@@ -1998,6 +2013,7 @@
   function initKlfSlideshow() {
     const root = document.querySelector('[data-klf-slideshow]');
     if (!root) return;
+    const section = root.closest('section');
 
     const slides = Array.from(root.querySelectorAll('[data-klf-slide]'));
     const triggers = Array.from(root.querySelectorAll('[data-klf-trigger]'));
@@ -2006,13 +2022,15 @@
     const title = root.querySelector('[data-klf-current-title]');
     const copy = root.querySelector('[data-klf-current-copy]');
     const counter = root.querySelector('[data-klf-counter]');
+    const panelTitle = section ? section.querySelector('[data-klf-panel-title]') : null;
+    const panelCopy = section ? section.querySelector('[data-klf-panel-copy]') : null;
 
     if (!slides.length) return;
 
     let currentIndex = 0;
     let intervalId = null;
 
-    function render(index) {
+    function render(index, options = {}) {
       currentIndex = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
         const isActive = slideIndex === currentIndex;
@@ -2029,10 +2047,20 @@
       const activeSlide = slides[currentIndex];
       if (title) title.textContent = activeSlide.dataset.title || '';
       if (copy) copy.textContent = activeSlide.dataset.copy || '';
+      if (panelTitle) panelTitle.textContent = activeSlide.dataset.panelTitle || activeSlide.dataset.title || '';
+      if (panelCopy) panelCopy.textContent = activeSlide.dataset.panelCopy || activeSlide.dataset.copy || '';
       if (counter) {
         const current = String(currentIndex + 1).padStart(2, '0');
         const total = String(slides.length).padStart(2, '0');
         counter.innerHTML = `${current} <span>/ ${total}</span>`;
+      }
+
+      if (options.centerTrigger && triggers[currentIndex]) {
+        triggers[currentIndex].scrollIntoView({
+          behavior: options.instant ? 'auto' : 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
       }
     }
 
@@ -2045,26 +2073,30 @@
 
     function startAutoPlay() {
       stopAutoPlay();
-      intervalId = window.setInterval(() => render(currentIndex + 1), 4500);
+      intervalId = window.setInterval(() => {
+        render(currentIndex + 1, {
+          centerTrigger: window.innerWidth < 1024
+        });
+      }, 4500);
     }
 
     if (prev) {
       prev.addEventListener('click', () => {
-        render(currentIndex - 1);
+        render(currentIndex - 1, { centerTrigger: true });
         startAutoPlay();
       });
     }
 
     if (next) {
       next.addEventListener('click', () => {
-        render(currentIndex + 1);
+        render(currentIndex + 1, { centerTrigger: true });
         startAutoPlay();
       });
     }
 
     triggers.forEach((trigger, index) => {
       trigger.addEventListener('click', () => {
-        render(index);
+        render(index, { centerTrigger: true });
         startAutoPlay();
       });
     });
@@ -2081,7 +2113,10 @@
       }
     });
 
-    render(0);
+    render(0, {
+      centerTrigger: window.innerWidth < 1024,
+      instant: true
+    });
     startAutoPlay();
   }
 
