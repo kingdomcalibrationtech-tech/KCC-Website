@@ -87,6 +87,5 @@ export default async (req: Request) => {
 };
 
 export const config = {
-  path: "/api/events",
-  preferStatic: true
+  path: "/api/events"
 };
