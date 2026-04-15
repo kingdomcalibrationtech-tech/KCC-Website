@@ -391,6 +391,281 @@
       .about-vision-mark { right: 1rem; top: 1rem; }
     }
 
+    /* Leaders editorial page */
+    .leaders-story-teaser {
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      margin-top: 3.5rem; padding: 1.5rem; border-radius: 1.85rem;
+      background: linear-gradient(140deg, #fff8f4 0%, #ffffff 58%, #f5f8fd 100%);
+      border: 1px solid rgba(233,188,182,0.4);
+      box-shadow: 0 22px 54px rgba(26,28,30,0.06);
+    }
+    .leaders-story-teaser-copy {
+      max-width: 38rem;
+    }
+    .leaders-story-teaser-title {
+      font-family: 'Newsreader', serif; font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700; line-height: 0.98; color: #1a1c1e;
+    }
+    .leaders-story-page-hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(181,0,11,0.09), transparent 24%),
+        radial-gradient(circle at top right, rgba(73,95,132,0.12), transparent 28%),
+        linear-gradient(180deg, #fff9f5 0%, #f8f5f2 52%, #f7fafc 100%);
+    }
+    .leaders-story-page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.5) 100%);
+      pointer-events: none;
+    }
+    .leaders-story-back {
+      display: inline-flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem;
+      padding: 0.8rem 1rem; border-radius: 999px; border: 1px solid rgba(233,188,182,0.55);
+      background: rgba(255,255,255,0.86); color: #1a1c1e; font-size: 0.88rem; font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .leaders-story-back:hover {
+      transform: translateY(-1px); border-color: rgba(181,0,11,0.34); box-shadow: 0 14px 32px rgba(26,28,30,0.08);
+    }
+    .leaders-story-hero-grid {
+      position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 2rem; align-items: center;
+    }
+    .leaders-story-title {
+      font-family: 'Newsreader', serif; font-weight: 700; line-height: 0.92;
+      font-size: clamp(2.8rem, 7vw, 5.6rem); color: #1a1c1e;
+    }
+    .leaders-story-lead {
+      margin-top: 1.5rem; max-width: 43rem; color: #495f84; font-size: 1.04rem; line-height: 1.9;
+    }
+    .leaders-story-subnote {
+      margin-top: 1.75rem; max-width: 31rem; padding-left: 1rem; border-left: 3px solid rgba(181,0,11,0.18);
+      color: #6b737f; font-size: 0.92rem; line-height: 1.8;
+    }
+    .leaders-portrait-montage {
+      position: relative; min-height: 33rem;
+    }
+    .leaders-portrait-card {
+      position: absolute; overflow: hidden; border-radius: 2rem; background: white;
+      border: 1px solid rgba(233,188,182,0.42); box-shadow: 0 26px 62px rgba(26,28,30,0.12);
+    }
+    .leaders-portrait-card img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+    }
+    .leaders-portrait-card-primary {
+      inset: 0 auto 3.25rem 0; width: min(23rem, 92%); height: 27rem; transform: rotate(-3deg);
+    }
+    .leaders-portrait-card-secondary {
+      inset: 5rem 0 0 auto; width: min(19rem, 72%); height: 21rem; transform: rotate(4deg);
+    }
+    .leaders-portrait-caption {
+      position: absolute; left: 1rem; right: 1rem; bottom: 1rem;
+      display: inline-flex; justify-content: space-between; gap: 1rem; align-items: center;
+      padding: 0.8rem 1rem; border-radius: 1rem; background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(12px);
+    }
+    .leaders-portrait-caption strong {
+      font-family: 'Newsreader', serif; font-size: 1.2rem; font-weight: 700; color: #1a1c1e;
+    }
+    .leaders-portrait-caption span {
+      font-size: 0.74rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #b5000b;
+    }
+    .leaders-portrait-note {
+      position: absolute; right: 1rem; bottom: 1.25rem; z-index: 2;
+      max-width: 16rem; padding: 1.1rem 1.15rem; border-radius: 1.4rem;
+      background: linear-gradient(145deg, #0f1c63 0%, #132051 100%); color: rgba(255,255,255,0.82);
+      box-shadow: 0 24px 54px rgba(15,28,99,0.28);
+    }
+    .leaders-portrait-note strong {
+      display: block; font-family: 'Newsreader', serif; font-size: 1.35rem; font-weight: 700; line-height: 1; color: white;
+    }
+    .leaders-portrait-note span {
+      display: block; margin-top: 0.55rem; font-size: 0.78rem; line-height: 1.6; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .leaders-story-selectors {
+      position: relative; overflow: hidden; border-radius: 2rem; padding: 1.2rem;
+      background: linear-gradient(155deg, #fff9f5 0%, #ffffff 48%, #f4f7fb 100%);
+      border: 1px solid rgba(233,188,182,0.38); box-shadow: 0 22px 54px rgba(26,28,30,0.06);
+    }
+    .leaders-story-selector-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem;
+    }
+    .leaders-selector-card {
+      position: relative; overflow: hidden; min-height: 12.5rem; padding: 1.3rem;
+      border-radius: 1.5rem; text-align: left; border: 1px solid rgba(233,188,182,0.36);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(252,249,245,0.92) 100%);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .leaders-selector-card:hover, .leaders-selector-card.is-active {
+      transform: translateY(-2px); border-color: rgba(181,0,11,0.26); box-shadow: 0 18px 38px rgba(26,28,30,0.08);
+      background: linear-gradient(180deg, #ffffff 0%, #fff6f4 100%);
+    }
+    .leaders-selector-card.is-active::after {
+      content: ''; position: absolute; inset: 0 auto 0 0; width: 0.28rem; background: linear-gradient(180deg, #b5000b, #e30613);
+    }
+    .leaders-selector-number {
+      display: inline-flex; width: 2.2rem; height: 2.2rem; align-items: center; justify-content: center;
+      border-radius: 999px; background: rgba(181,0,11,0.08); color: #b5000b;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .leaders-selector-title {
+      display: block; margin-top: 1rem; font-family: 'Newsreader', serif; font-size: 2rem; font-weight: 700; line-height: 0.98; color: #1a1c1e;
+    }
+    .leaders-selector-meta {
+      display: block; margin-top: 0.75rem; color: #495f84; font-size: 0.92rem; line-height: 1.65;
+    }
+    .leaders-story-shell {
+      margin-top: 1.5rem;
+    }
+    .leaders-story-empty {
+      border-radius: 2rem; padding: 2rem 1.7rem;
+      background: linear-gradient(145deg, #f6f8fb 0%, #ffffff 100%);
+      border: 1px dashed rgba(181,0,11,0.24); color: #5f6673;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.82);
+    }
+    .leaders-story-empty strong {
+      display: block; font-family: 'Newsreader', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 0.96; color: #1a1c1e;
+    }
+    .leaders-story-empty span {
+      display: block; margin-top: 0.75rem; max-width: 34rem; line-height: 1.8;
+    }
+    .leaders-story-panel[hidden] {
+      display: none !important;
+    }
+    .leaders-story-panel {
+      animation: fadeIn 0.45s ease;
+    }
+    .leaders-story-article {
+      position: relative; overflow: hidden; border-radius: 2.1rem; padding: 1.3rem;
+      background: linear-gradient(155deg, #fff9f5 0%, #ffffff 50%, #f7fafc 100%);
+      border: 1px solid rgba(233,188,182,0.42); box-shadow: 0 30px 70px rgba(26,28,30,0.08);
+    }
+    .leaders-story-article::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(73,95,132,0.08), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(181,0,11,0.07), transparent 26%);
+      pointer-events: none;
+    }
+    .leaders-story-article > * {
+      position: relative; z-index: 1;
+    }
+    .leaders-story-head {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem;
+    }
+    .leaders-story-kicker {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #b5000b;
+    }
+    .leaders-story-heading {
+      margin-top: 0.5rem; font-family: 'Newsreader', serif; font-size: clamp(2.2rem, 5vw, 3.9rem); font-weight: 700; line-height: 0.94; color: #1a1c1e;
+    }
+    .leaders-story-deck {
+      max-width: 42rem; color: #495f84; line-height: 1.8;
+    }
+    .leaders-story-layout {
+      display: grid; grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr); gap: 1.4rem; align-items: start;
+    }
+    .leaders-story-figure {
+      overflow: hidden; border-radius: 1.7rem; background: #f2f2f5; border: 1px solid rgba(233,188,182,0.32);
+      box-shadow: 0 18px 46px rgba(26,28,30,0.08);
+    }
+    .leaders-story-figure img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+    }
+    .leaders-story-figure figcaption {
+      padding: 1rem 1.1rem 1.15rem; background: rgba(255,255,255,0.95);
+      color: #495f84; font-size: 0.86rem; line-height: 1.7;
+    }
+    .leaders-story-copy {
+      min-width: 0;
+    }
+    .leaders-story-lead-copy {
+      color: #1a1c1e; font-family: 'Newsreader', serif; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.3;
+    }
+    .leaders-story-chapters {
+      display: grid; gap: 0.9rem; margin-top: 1.4rem;
+    }
+    .leaders-story-chapter {
+      border-radius: 1.4rem; padding: 1.15rem 1.15rem 1.2rem;
+      background: rgba(255,255,255,0.86); border: 1px solid rgba(233,188,182,0.3);
+    }
+    .leaders-story-chapter h3 {
+      font-family: 'Newsreader', serif; font-size: 1.45rem; font-weight: 700; color: #1a1c1e;
+    }
+    .leaders-story-chapter p {
+      margin-top: 0.55rem; color: #495f84; line-height: 1.8;
+    }
+    .leaders-story-pullquote {
+      margin-top: 1rem; padding: 1.35rem 1.25rem; border-radius: 1.55rem;
+      background: linear-gradient(145deg, #101d64 0%, #172455 100%); color: rgba(255,255,255,0.82);
+      box-shadow: 0 24px 52px rgba(16,29,100,0.24);
+    }
+    .leaders-story-pullquote strong {
+      display: block; font-family: 'Newsreader', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; line-height: 1.18; color: white;
+    }
+    .leaders-story-pullquote span {
+      display: block; margin-top: 0.7rem; font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .leaders-story-duo {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; padding: 0.75rem;
+    }
+    .leaders-story-duo .leaders-story-duo-card {
+      overflow: hidden; border-radius: 1.25rem;
+    }
+    .leaders-story-duo .leaders-story-duo-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    @media (max-width: 1023px) {
+      .leaders-story-teaser {
+        flex-direction: column; align-items: flex-start;
+      }
+      .leaders-story-hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .leaders-portrait-montage {
+        min-height: 31rem; margin-top: 1rem;
+      }
+      .leaders-story-selector-grid {
+        grid-template-columns: 1fr;
+      }
+      .leaders-story-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .leaders-story-page-hero {
+        background: linear-gradient(180deg, #fff9f5 0%, #f8f5f2 50%, #f7fafc 100%);
+      }
+      .leaders-story-teaser {
+        padding: 1.2rem;
+      }
+      .leaders-portrait-montage {
+        min-height: 25rem;
+      }
+      .leaders-portrait-card-primary {
+        width: 76%; height: 18rem; inset: 0 auto auto 0;
+      }
+      .leaders-portrait-card-secondary {
+        width: 58%; height: 14rem; inset: 5rem 0 auto auto;
+      }
+      .leaders-portrait-note {
+        left: 0.5rem; right: 0.5rem; bottom: 0; max-width: none;
+      }
+      .leaders-story-selectors, .leaders-story-article {
+        padding: 0.9rem;
+      }
+      .leaders-selector-card {
+        min-height: 10.8rem; padding: 1rem;
+      }
+      .leaders-story-head {
+        flex-direction: column; align-items: flex-start;
+      }
+      .leaders-story-empty {
+        padding: 1.45rem 1.15rem;
+      }
+    }
+
     /* Sermons */
     .sermon-player {
       position: relative; aspect-ratio: 16 / 9; background: #111214;
@@ -1188,6 +1463,16 @@
           </div>
         </div>
       </div>
+      <div class="reveal">
+        <div class="leaders-story-teaser">
+          <div class="leaders-story-teaser-copy">
+            <div class="section-label mb-3">Beyond the Brief Introduction</div>
+            <h3 class="leaders-story-teaser-title">Step into the story behind their stewardship.</h3>
+            <p class="font-body text-base leading-relaxed mt-4" style="color:#495f84;">Move from the short profile into a more intimate editorial feature on Apostle Boniface, Prophetess Joyce, and the journey they carry together.</p>
+          </div>
+          <button type="button" onclick="navigate('leaders')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Read Their Story</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1367,6 +1652,215 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: LEADERS ===================== -->
+<div id="page-leaders" class="page">
+  <header class="leaders-story-page-hero pt-32 pb-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <button type="button" onclick="navigate('about')" class="leaders-story-back">
+        <span class="material-symbols-outlined" style="font-size:18px;">west</span>
+        Back to About Us
+      </button>
+
+      <div class="leaders-story-hero-grid">
+        <div class="reveal">
+          <div class="section-label mb-4">The Journey Behind the Mandate</div>
+          <h1 class="leaders-story-title">Read Their Story</h1>
+          <p class="font-body leaders-story-lead">Behind the public ministry is a quieter journey of calling, prayer, obedience, and shared stewardship. This page is designed as a slower editorial feature so someone can step into one story at a time and feel the heart behind the leadership of Kingdom Calibration Church.</p>
+          <p class="font-body leaders-story-subnote">Choose one story below to begin. Nothing opens until a reader selects a journey, so the page stays calm, personal, and easy to take in.</p>
+        </div>
+
+        <div class="leaders-portrait-montage reveal">
+          <figure class="leaders-portrait-card leaders-portrait-card-primary">
+            <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg" alt="Apostle Boniface Nagi portrait"/>
+            <figcaption class="leaders-portrait-caption">
+              <strong>Apostle Boniface Nagi</strong>
+              <span>Apostolic Voice</span>
+            </figcaption>
+          </figure>
+          <figure class="leaders-portrait-card leaders-portrait-card-secondary">
+            <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg" alt="Prophetess Joyce Wangechi portrait"/>
+            <figcaption class="leaders-portrait-caption">
+              <strong>Prophetess Joyce Wangechi</strong>
+              <span>Prophetic Watchman</span>
+            </figcaption>
+          </figure>
+          <div class="leaders-portrait-note">
+            <strong>One mandate. Two voices.</strong>
+            <span>Shared stewardship in truth, prayer, healing, and alignment.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-24" style="background:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="leaders-story-selectors reveal">
+        <div class="leaders-story-selector-grid stagger">
+          <button type="button" class="leaders-selector-card" data-leader-story-trigger="apostle" aria-pressed="false">
+            <span class="leaders-selector-number">01</span>
+            <strong class="leaders-selector-title">Apostle's<br/>Journey</strong>
+            <span class="leaders-selector-meta">A closer look at the calling, burden, and apostolic foundation carried by Boniface Nagi.</span>
+          </button>
+          <button type="button" class="leaders-selector-card" data-leader-story-trigger="prophetess" aria-pressed="false">
+            <span class="leaders-selector-number">02</span>
+            <strong class="leaders-selector-title">Prophetess'<br/>Journey</strong>
+            <span class="leaders-selector-meta">A quieter pathway of prayer, discernment, healing, and deep intimacy with the Spirit.</span>
+          </button>
+          <button type="button" class="leaders-selector-card" data-leader-story-trigger="together" aria-pressed="false">
+            <span class="leaders-selector-number">03</span>
+            <strong class="leaders-selector-title">Their Journey<br/>Together</strong>
+            <span class="leaders-selector-meta">How two different graces have been woven into one shared stewardship over the house.</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="leaders-story-shell" class="leaders-story-shell reveal">
+        <div class="leaders-story-empty" data-leader-story-empty>
+          <strong>Choose a journey to begin.</strong>
+          <span>Select Apostle's Journey, Prophetess' Journey, or Their Journey Together above. The full editorial story will open here one at a time.</span>
+        </div>
+
+        <article class="leaders-story-panel" data-leader-story-panel="apostle" hidden>
+          <div class="leaders-story-article">
+            <div class="leaders-story-head">
+              <div>
+                <div class="leaders-story-kicker">Apostle's Journey</div>
+                <h2 class="leaders-story-heading">Boniface Nagi</h2>
+              </div>
+              <p class="font-body leaders-story-deck">An apostolic story marked by calling, foundation-laying, and a burden to see lives aligned with the eternal purpose of God.</p>
+            </div>
+
+            <div class="leaders-story-layout">
+              <figure class="leaders-story-figure">
+                <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg" alt="Apostle Boniface Nagi ministering"/>
+                <figcaption>The public voice carries authority, but the journey beneath it is one of obedience, formation, and surrender to what God has entrusted.</figcaption>
+              </figure>
+
+              <div class="leaders-story-copy">
+                <p class="leaders-story-lead-copy">Apostle Boniface is presented not simply as a leader of a church, but as a man carrying the weight of a house, a people, and a clear kingdom assignment.</p>
+
+                <div class="leaders-story-chapters">
+                  <section class="leaders-story-chapter">
+                    <h3>A call from humble beginnings</h3>
+                    <p class="font-body">His story is rooted in obedience. From humble beginnings, he has carried a growing conviction that God was not only shaping his life, but preparing him to raise, equip, and send others into their own assignments.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>Building with truth and order</h3>
+                    <p class="font-body">The grace on his life is apostolic. It shows in the desire to plant, build, and establish a healthy church grounded in truth, order, and the power of the Holy Spirit rather than noise, pressure, or performance.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>A burden for alignment</h3>
+                    <p class="font-body">At the center of his journey is a burden to see believers aligned with divine purpose. His leadership carries both vision and structure, calling people beyond attendance into maturity, assignment, and kingdom authority.</p>
+                  </section>
+                </div>
+
+                <div class="leaders-story-pullquote">
+                  <strong>"Apostolic leadership, for him, is not about position. It is about stewarding people into the purposes of God."</strong>
+                  <span>Stewardship, vision, foundation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="leaders-story-panel" data-leader-story-panel="prophetess" hidden>
+          <div class="leaders-story-article">
+            <div class="leaders-story-head">
+              <div>
+                <div class="leaders-story-kicker">Prophetess' Journey</div>
+                <h2 class="leaders-story-heading">Joyce Wangechi</h2>
+              </div>
+              <p class="font-body leaders-story-deck">A story shaped in the secret place, carried through intercession, and expressed with prophetic sensitivity, healing grace, and spiritual discernment.</p>
+            </div>
+
+            <div class="leaders-story-layout">
+              <figure class="leaders-story-figure">
+                <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg" alt="Prophetess Joyce Wangechi portrait"/>
+                <figcaption>Her strength is not loudness but sensitivity: sensing atmospheres, carrying people in prayer, and helping the house remain attentive to the voice of God.</figcaption>
+              </figure>
+
+              <div class="leaders-story-copy">
+                <p class="leaders-story-lead-copy">Prophetess Joyce carries a ministry that feels deeply personal and prayer-soaked, shaped more by intimacy with the Spirit than by outward display.</p>
+
+                <div class="leaders-story-chapters">
+                  <section class="leaders-story-chapter">
+                    <h3>Formed in the place of prayer</h3>
+                    <p class="font-body">Her journey reflects a life hidden with God. The strength of her ministry flows from prayer, intercession, and a watchful sensitivity that discerns what the Spirit is saying in the life of the church.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>The grace of discernment and healing</h3>
+                    <p class="font-body">She is known for prophetic precision, healing, and spiritual attentiveness. That grace helps people feel seen, covered, and shepherded with gentleness as well as conviction.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>Keeping the house aligned</h3>
+                    <p class="font-body">Her role is deeply strategic even when it appears quiet. She serves as a watchman over atmospheres, offering prophetic guidance and helping preserve an environment where the Holy Spirit can move freely.</p>
+                  </section>
+                </div>
+
+                <div class="leaders-story-pullquote">
+                  <strong>"Her support is not secondary. It is foundational to the prayer, discernment, and spiritual covering of the house."</strong>
+                  <span>Prayer, prophecy, intimacy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="leaders-story-panel" data-leader-story-panel="together" hidden>
+          <div class="leaders-story-article">
+            <div class="leaders-story-head">
+              <div>
+                <div class="leaders-story-kicker">Their Journey Together</div>
+                <h2 class="leaders-story-heading">One Stewardship,<br/>Two Graces</h2>
+              </div>
+              <p class="font-body leaders-story-deck">Their shared story is one of complement, not competition: structure and discernment, teaching and prayer, foundation and atmosphere.</p>
+            </div>
+
+            <div class="leaders-story-layout">
+              <figure class="leaders-story-figure">
+                <div class="leaders-story-duo">
+                  <div class="leaders-story-duo-card">
+                    <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg" alt="Apostle Boniface Nagi portrait"/>
+                  </div>
+                  <div class="leaders-story-duo-card">
+                    <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg" alt="Prophetess Joyce Wangechi portrait"/>
+                  </div>
+                </div>
+                <figcaption>Together they model a ministry partnership where different callings strengthen one another and create space for the church to grow in truth, prayer, and kingdom alignment.</figcaption>
+              </figure>
+
+              <div class="leaders-story-copy">
+                <p class="leaders-story-lead-copy">Their journey together is not simply about serving alongside one another. It is about stewarding one mandate through two distinct but deeply complementary graces.</p>
+
+                <div class="leaders-story-chapters">
+                  <section class="leaders-story-chapter">
+                    <h3>Different expressions, one burden</h3>
+                    <p class="font-body">Where Apostle Boniface carries structure, teaching, and apostolic foundation, Prophetess Joyce brings prayer, discernment, and prophetic covering. Their differences do not divide the work. They deepen it.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>A house covered in both order and prayer</h3>
+                    <p class="font-body">Together they help shape a ministry environment where the Word is taught clearly, the Spirit is honoured fully, and people are invited into both formation and encounter.</p>
+                  </section>
+                  <section class="leaders-story-chapter">
+                    <h3>A shared witness</h3>
+                    <p class="font-body">Their partnership tells its own story: a witness of stewardship, agreement, and endurance. It reflects a shared commitment to calibrate lives, strengthen families, and see believers restored to God's eternal purpose.</p>
+                  </section>
+                </div>
+
+                <div class="leaders-story-pullquote">
+                  <strong>"Together they steward a house where truth, prayer, healing, and alignment can flourish side by side."</strong>
+                  <span>Shared mandate, shared stewardship</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1822,6 +2316,9 @@
     if (target) target.classList.add('active');
     const link = document.querySelector(`[data-page="${page}"]`);
     if (link) { link.classList.add('active'); link.style.color = '#b5000b'; }
+    if (page === 'leaders') {
+      window.setTimeout(() => resetLeaderStories(), 40);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(initReveal, 100);
   }
@@ -1886,6 +2383,59 @@
     window.setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 160);
+  }
+
+  function applyLeaderStorySelection(storyId, shouldScroll = false) {
+    const triggers = Array.from(document.querySelectorAll('[data-leader-story-trigger]'));
+    const panels = Array.from(document.querySelectorAll('[data-leader-story-panel]'));
+    const emptyState = document.querySelector('[data-leader-story-empty]');
+    const normalizedStory = storyId || '';
+
+    if (!triggers.length || !panels.length) return;
+
+    triggers.forEach((trigger) => {
+      const isActive = trigger.dataset.leaderStoryTrigger === normalizedStory;
+      trigger.classList.toggle('is-active', isActive);
+      trigger.setAttribute('aria-pressed', String(isActive));
+    });
+
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.leaderStoryPanel === normalizedStory;
+      panel.hidden = !isActive;
+      panel.classList.toggle('is-active', isActive);
+    });
+
+    if (emptyState) {
+      emptyState.hidden = Boolean(normalizedStory);
+    }
+
+    if (normalizedStory && shouldScroll) {
+      const shell = document.getElementById('leaders-story-shell');
+      if (shell) {
+        window.setTimeout(() => {
+          shell.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 70);
+      }
+    }
+  }
+
+  function resetLeaderStories() {
+    applyLeaderStorySelection('', false);
+  }
+
+  function initLeaderStories() {
+    const triggers = Array.from(document.querySelectorAll('[data-leader-story-trigger]'));
+    if (!triggers.length) return;
+
+    triggers.forEach((trigger) => {
+      if (trigger.dataset.leaderStoryBound === 'true') return;
+      trigger.dataset.leaderStoryBound = 'true';
+      trigger.addEventListener('click', () => {
+        applyLeaderStorySelection(trigger.dataset.leaderStoryTrigger, true);
+      });
+    });
+
+    resetLeaderStories();
   }
 
   // Scroll Effects
@@ -2471,6 +3021,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     navigate('home');
     initReveal();
+    initLeaderStories();
     initSermonPlayer();
     initKlfSlideshow();
     loadUpcomingEvents();
