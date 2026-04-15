@@ -44,6 +44,17 @@ The website will only show events whose end time has not passed yet. If there ar
 - `SUPABASE_SERVICE_ROLE_KEY` must stay inside Netlify environment variables only.
 - Do not paste that key into `index.html`, GitHub, or any public file.
 
+## Future upgrade note
+
+- Keep the current setup for now because it is simpler and fits the website in its current stage.
+- Consider upgrading to `Next.js` much later if the site grows into a larger content platform.
+- That future move may make more sense when the website includes:
+  - sermon archives
+  - a blog
+  - a devotion area
+  - a news area
+- Do not treat this as a current task. It is only a future direction to revisit when the website becomes much bigger.
+
 ## Local testing
 
 - If you double-click `index.html` and open it directly in the browser, the forms will not send data.
