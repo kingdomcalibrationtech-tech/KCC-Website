@@ -552,40 +552,131 @@
       transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease;
     }
     .giving-panel.open {
-      max-height: 900px;
+      max-height: 2200px;
       opacity: 1;
       padding: 0.75rem 0 1rem;
     }
+    .giving-panel-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 24px 60px rgba(0,13,89,0.38);
+      background:
+        radial-gradient(circle at 14% 18%, rgba(88, 116, 255, 0.22) 0%, rgba(88, 116, 255, 0) 28%),
+        radial-gradient(circle at 84% 12%, rgba(28, 163, 110, 0.16) 0%, rgba(28, 163, 110, 0) 24%),
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 32%),
+        linear-gradient(145deg, #03175f 0%, #000D59 46%, #06123d 100%);
+    }
+    .giving-panel-shell::before {
+      content: "";
+      position: absolute;
+      inset: 1rem;
+      border-radius: 1.4rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    .giving-panel-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .giving-panel-header .section-label {
+      color: rgba(255,255,255,0.78);
+    }
+    .giving-panel-header h3 {
+      color: #ffffff;
+    }
     .giving-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.15rem;
     }
     .giving-card {
+      position: relative;
       border-radius: 1.5rem;
-      padding: 1.35rem;
+      padding: 1.4rem;
       min-height: 100%;
-      border: 1px solid rgba(233,188,182,0.4);
-      box-shadow: 0 18px 48px rgba(26,28,30,0.08);
+      color: #ffffff;
+      background: linear-gradient(180deg, rgba(9,24,83,0.97) 0%, rgba(6,19,63,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 42px rgba(0, 7, 34, 0.32);
+    }
+    .giving-card::after {
+      content: "";
+      position: absolute;
+      inset: 0.7rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      pointer-events: none;
     }
     .giving-card h4 {
       font-family: 'Newsreader', serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.55rem, 2vw, 1.9rem);
       font-weight: 700;
-      color: #1a1c1e;
+      color: #ffffff;
     }
     .giving-card strong {
       display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+    }
+    .giving-card-brand {
+      display: inline-flex;
+      align-items: center;
+      min-height: 3rem;
+      padding: 0.75rem 1rem;
+      border-radius: 1rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.16);
+    }
+    .giving-card--dtb .giving-card-brand {
+      background: linear-gradient(135deg, #f3164c 0%, #cc0030 100%);
+    }
+    .giving-card--mpesa .giving-card-brand {
+      background: linear-gradient(135deg, #1a9d54 0%, #116a3a 100%);
+    }
+    .giving-card--paybill .giving-card-brand {
+      background: linear-gradient(135deg, #149244 0%, #0f7035 100%);
+    }
+    .giving-card-copy {
+      position: relative;
+      z-index: 1;
+    }
+    .giving-label {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(224,232,255,0.82);
     }
     .giving-card .giving-big {
       display: block;
-      font-size: clamp(1.9rem, 3vw, 2.7rem);
-      line-height: 1;
+      font-size: clamp(2rem, 3vw, 2.95rem);
+      line-height: 0.98;
       font-weight: 800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
+      color: #ffffff;
+    }
+    .giving-card-note {
+      color: rgba(232,238,255,0.84);
+    }
+    .giving-card-accent {
+      color: #ffffff;
     }
     .give-button-highlight {
       box-shadow: 0 0 0 4px rgba(181,0,11,0.16);
@@ -593,6 +684,22 @@
     }
     @media (max-width: 900px) {
       .giving-grid { grid-template-columns: 1fr; }
+      .giving-panel.open { max-height: 2600px; }
+      .giving-panel-shell { padding: 1rem; }
+      .giving-panel-header {
+        text-align: left;
+        margin-bottom: 1.1rem;
+      }
+      .giving-card {
+        padding: 1.15rem;
+      }
+      .giving-card-brand {
+        min-height: 2.75rem;
+        font-size: 0.82rem;
+      }
+      .giving-card .giving-big {
+        font-size: clamp(1.95rem, 9vw, 2.75rem);
+      }
     }
   </style>
 </head>
@@ -642,37 +749,43 @@
     </div>
 
     <div id="giving-panel" class="giving-panel" aria-hidden="true">
-      <div class="rounded-3xl p-6 md:p-8" style="background:#000D59;border:1px solid rgba(255,255,255,0.12);box-shadow:0 24px 60px rgba(0,13,89,0.35);">
-        <div class="mb-6">
+      <div class="giving-panel-shell">
+        <div class="giving-panel-header">
           <div class="section-label mb-2">Ways To Give</div>
-          <h3 class="font-headline font-bold text-3xl" style="color:#ffffff;">Tithes and Offerings</h3>
+          <h3 class="font-headline font-bold text-3xl">Tithes and Offerings</h3>
         </div>
 
         <div class="giving-grid">
-          <article class="giving-card" style="background:linear-gradient(160deg,#fff6f5 0%,#ffffff 100%);">
-            <strong style="color:#b5000b;">DTB Bank</strong>
-            <h4 class="mt-3">089-GTC Branch</h4>
-            <p class="font-body text-sm mt-4" style="color:#495f84;">Account</p>
-            <span class="font-body giving-big mt-2" style="color:#1a1c1e;">0485 664 001</span>
-            <p class="font-body text-sm mt-4" style="color:#495f84;">Kingdom Calibration Church</p>
+          <article class="giving-card giving-card--dtb">
+            <div class="giving-card-copy">
+              <div class="giving-card-brand">DTB Bank</div>
+              <h4 class="mt-5">089-GTC Branch</h4>
+              <span class="giving-label">Account</span>
+              <span class="font-body giving-big mt-3">0485 664 001</span>
+              <p class="font-body text-sm mt-5 giving-card-note">Kingdom Calibration Church</p>
+            </div>
           </article>
 
-          <article class="giving-card" style="background:linear-gradient(160deg,#f7fbff 0%,#ffffff 100%);">
-            <strong style="color:#00695c;">M-PESA</strong>
-            <h4 class="mt-3">Send Money</h4>
-            <span class="font-body giving-big mt-5" style="color:#1a1c1e;">0742 830 772</span>
-            <p class="font-body text-sm mt-5" style="color:#495f84;">Kingdom Calibration Church</p>
+          <article class="giving-card giving-card--mpesa">
+            <div class="giving-card-copy">
+              <div class="giving-card-brand">M-PESA</div>
+              <h4 class="mt-5">Send Money</h4>
+              <span class="font-body giving-big mt-6">0742 830 772</span>
+              <p class="font-body text-sm mt-5 giving-card-note">Kingdom Calibration Church</p>
+            </div>
           </article>
 
-          <article class="giving-card" style="background:linear-gradient(160deg,#f7fbff 0%,#ffffff 100%);">
-            <strong style="color:#0a7d34;">Safaricom Paybill</strong>
-            <span class="font-body giving-big mt-4" style="color:#1a1c1e;">51 66 00</span>
-            <p class="font-body text-sm mt-4" style="color:#495f84;">A/C No</p>
-            <span class="font-body giving-big mt-2" style="color:#1a1c1e;">94 54 48</span>
-            <p class="font-body text-sm mt-4" style="color:#495f84;">Kingdom C C</p>
-            <p class="font-body text-sm mt-5" style="color:#495f84;">To specify your giving:</p>
-            <p class="font-body font-bold text-base mt-2" style="color:#1a1c1e;">A/C No: 9454 48#</p>
-            <p class="font-body text-sm mt-2" style="color:#495f84;">Offering / Tithe / Partnership</p>
+          <article class="giving-card giving-card--paybill">
+            <div class="giving-card-copy">
+              <div class="giving-card-brand">Safaricom Paybill</div>
+              <span class="font-body giving-big mt-5">51 66 00</span>
+              <span class="giving-label">A/C No</span>
+              <span class="font-body giving-big mt-3">94 54 48</span>
+              <p class="font-body text-sm mt-4 giving-card-note">Kingdom C C</p>
+              <span class="giving-label">To specify your giving</span>
+              <p class="font-body font-bold text-base mt-3 giving-card-accent">A/C No: 9454 48#</p>
+              <p class="font-body text-sm mt-2 giving-card-note">Offering / Tithe / Partnership</p>
+            </div>
           </article>
         </div>
       </div>
