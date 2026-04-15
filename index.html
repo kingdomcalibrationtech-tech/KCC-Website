@@ -1934,7 +1934,7 @@
   });
 
   // Forms
-  const FILE_PROTOCOL_MESSAGE = 'Form sending works after the site is opened through a real website address or a local web server.';
+  const FILE_PROTOCOL_MESSAGE = 'Form sending works after the site is opened through Netlify or a local web server.';
 
   function getFieldValue(form, name) {
     const field = form.elements.namedItem(name);
@@ -2391,7 +2391,7 @@
     if (!grid || !status) return;
 
     if (window.location.protocol === 'file:') {
-      status.textContent = 'Upcoming events will load here after the site is opened through a real website address or a local web server.';
+      status.textContent = 'Upcoming events will load here after the site is opened through Netlify or a local web server.';
       grid.innerHTML = renderEmptyEventsState();
       initReveal();
       return;
