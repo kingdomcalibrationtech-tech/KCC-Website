@@ -1,4 +1,5 @@
 .netlify/
+.firebase/
 .env
 .env.*
 !.env.example
@@ -6,3 +7,4 @@ node_modules/
 dist/
 coverage/
 *.log
+firebase-debug.log
