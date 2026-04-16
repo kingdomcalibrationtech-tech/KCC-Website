@@ -1413,14 +1413,14 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu lg:hidden" id="mobile-menu" aria-hidden="true">
       <div class="pb-6 flex flex-col gap-4 border-t" style="border-color:#e9bcb6;">
-        <button onclick="navigate('home');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Home</button>
-        <button onclick="navigate('about');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">About Us</button>
-        <button onclick="navigate('sermons');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
-        <button onclick="navigate('ministries');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
-        <button onclick="navigate('visit');toggleMenu()" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
+        <button onclick="navigate('home')" class="text-left font-body font-semibold py-2" style="color:#444;">Home</button>
+        <button onclick="navigate('about')" class="text-left font-body font-semibold py-2" style="color:#444;">About Us</button>
+        <button onclick="navigate('sermons')" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
+        <button onclick="navigate('ministries')" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
+        <button onclick="navigate('visit')" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
         <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
         <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit" aria-expanded="false" aria-controls="giving-panel">Partner</button>
-        <button onclick="navigate('visit');toggleMenu()" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Join Us &rarr;</button>
+        <button onclick="navigate('visit')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Join Us &rarr;</button>
       </div>
     </div>
 
@@ -1436,8 +1436,10 @@
             <div class="giving-card-copy">
               <div class="giving-card-brand">DTB Bank</div>
               <h4 class="mt-5">089-GTC Branch</h4>
-              <span class="giving-label">Account</span>
+              <span class="giving-label">KSH Account</span>
               <span class="font-body giving-big mt-3">0485 664 001</span>
+              <span class="giving-label">Dollar Account</span>
+              <span class="font-body giving-big mt-3">0485 664 002</span>
             </div>
           </article>
 
@@ -1510,17 +1512,17 @@
     <div class="ticker-inner flex gap-12 whitespace-nowrap" style="width:max-content;">
       <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Sunday 10am&ndash;1pm</span>
       <span class="text-white opacity-40">&middot;</span>
-      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Tuesday 6:30pm</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Bible Study 6:30pm</span>
       <span class="text-white opacity-40">&middot;</span>
-      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Upper Room Friday 6:30pm</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">The Upper Room Experience 6:30pm</span>
       <span class="text-white opacity-40">&middot;</span>
       <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Woodvale Center, Westlands</span>
       <span class="text-white opacity-40">&middot;</span>
       <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Sunday 10am&ndash;1pm</span>
       <span class="text-white opacity-40">&middot;</span>
-      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Tuesday 6:30pm</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Veritas Bible Study 6:30pm</span>
       <span class="text-white opacity-40">&middot;</span>
-      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Upper Room Friday 6:30pm</span>
+      <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">The Upper Room Experience 6:30pm</span>
       <span class="text-white opacity-40">&middot;</span>
       <span class="font-body font-bold text-sm text-white tracking-widest uppercase opacity-90">Woodvale Center, Westlands</span>
       <span class="text-white opacity-40">&middot;</span>
@@ -1545,7 +1547,7 @@
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6 pulse" style="background:rgba(181,0,11,0.1);">
           <span class="material-symbols-outlined" style="color:#b5000b;font-size:22px;">church</span>
         </div>
-        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Service</h3>
+        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Gathering</h3>
         <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Sunday &middot; 10:00 AM &mdash; 1:00 PM</p>
         <p class="font-body text-sm leading-relaxed mb-6" style="color:#495f84;">Our main gathering for worship, the word, and corporate realignment with heaven's agenda.</p>
         <button onclick="navigate('visit')" class="font-body font-bold text-sm flex items-center gap-2 transition-colors group-hover:gap-3" style="color:#b5000b;">
@@ -1561,7 +1563,7 @@
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(73,95,132,0.1);">
           <span class="material-symbols-outlined" style="color:#495f84;font-size:22px;">menu_book</span>
         </div>
-        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Tuesday</h3>
+        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Bible Study</h3>
         <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Tuesday &middot; 6:30 PM &mdash; 8:00 PM</p>
         <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Diving deep into Truth (Veritas). An intensive discipleship and biblical school for the hungry.</p>
         </div>
@@ -1574,7 +1576,7 @@
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(115,92,0,0.1);">
           <img src="assets/prayer.png" alt="Prayer icon" class="w-6 h-6 object-contain" loading="lazy">
         </div>
-        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Upper Room</h3>
+        <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">The Upper Room Experience</h3>
         <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Friday &middot; 6:30 PM &mdash; 8:00 PM</p>
         <p class="font-body text-sm leading-relaxed" style="color:#495f84;">An evening of deep intercession and prophetic activation. Touching the heavens from Nairobi.</p>
       </div>
@@ -2693,8 +2695,8 @@
             </div>
             <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#b5000b;">WEEKLY</span>
           </div>
-          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Service</h3>
-          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">10:00 AM &mdash; 1:00 PM</p>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Sunday Gathering</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">Every Sunday &middot; 10:00 AM &mdash; 1:00 PM</p>
           <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">Our primary gathering for corporate worship and apostolic calibration.</p>
         </div>
         <div class="schedule-card p-8 rounded-2xl" style="background:#f9f9fc;">
@@ -2704,8 +2706,8 @@
             </div>
             <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#495f84;">STUDY</span>
           </div>
-          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Tuesday</h3>
-          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">6:00 PM &mdash; 8:00 PM</p>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Bible Study</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">Every Tuesday &middot; 6:00 PM &mdash; 8:00 PM</p>
           <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">Deep theological grounding and mid-week spiritual refreshment.</p>
         </div>
         <div class="schedule-card p-8 rounded-2xl" style="background:#f9f9fc;">
@@ -2715,8 +2717,8 @@
             </div>
             <span class="font-body font-bold text-xs px-2 py-1 rounded text-white" style="background:#b5000b;">PRAYER</span>
           </div>
-          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Upper Room Friday</h3>
-          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">5:30 PM &mdash; 7:30 PM</p>
+          <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">The Upper Room Experience</h3>
+          <p class="font-body font-semibold text-sm mb-4" style="color:#495f84;">Every Friday &middot; 5:30 PM &mdash; 7:30 PM</p>
           <p class="font-body text-sm leading-relaxed" style="color:#5e3f3b;">A consecrated time for intercession and prophetic ministry.</p>
         </div>
         <div class="schedule-card p-8 rounded-2xl" style="background:#b5000b;">
@@ -2863,8 +2865,8 @@
         <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6" style="color:rgba(213,223,244,0.5);">Service Times</h4>
         <ul class="space-y-4 font-body text-sm">
           <li><span class="font-bold" style="color:#b5000b;">Sunday 10am &ndash; 1pm</span> <span style="color:rgba(225,232,246,0.56);">&middot; Main Service</span></li>
-          <li><span class="font-bold" style="color:#b5000b;">Veritas Tuesday</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
-          <li><span class="font-bold" style="color:#b5000b;">Upper Room Friday</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">Veritas Bible Study</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">The Upper Room Experience</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
         </ul>
         <button onclick="navigate('visit')" class="btn-primary mt-8 px-6 py-3 rounded-xl font-body font-bold text-sm footer-visit-button">Plan Your Visit &rarr;</button>
       </div>
