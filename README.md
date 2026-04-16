@@ -4,7 +4,7 @@ This folder is now prepared for:
 
 - GitHub source control
 - Netlify hosting
-- Supabase form storage
+- Supabase storage for forms and events
 
 ## What is already set up
 
@@ -13,20 +13,23 @@ This folder is now prepared for:
 - `netlify/functions/contact.mts` stores contact messages in Supabase.
 - `netlify/functions/events.mts` reads upcoming events from Supabase.
 - `netlify/functions/subscribe.mts` stores newsletter signups in Supabase.
+- The homepage, About, Ministries, Visit, and Sermons sections all live in `index.html`.
+- The website domain is now `https://kingdomcalibrationchurch.org/`.
 - `supabase/schema.sql` gives you the database tables you need.
 - `.gitignore` keeps local and secret files out of GitHub.
 - `.env.example` shows which secret values belong in Netlify.
 
-## What you need to do next
+## How we are working on the site now
 
-1. Open this folder in VS Code.
-2. Create a new GitHub repository and push this folder to it.
-3. In Supabase, open the SQL editor and run the file `supabase/schema.sql`.
-4. In Netlify, create a new site from your GitHub repository.
-5. In Netlify site settings, add these environment variables:
-   - `SUPABASE_URL`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-6. Trigger a new deploy in Netlify.
+- We now make changes locally first.
+- We only push to GitHub and let Netlify deploy when a bigger batch is ready.
+- This helps reduce unnecessary deploys and avoids using up credits on tiny edits.
+
+## Main connected services
+
+1. GitHub stores the site code.
+2. Netlify hosts the live website and runs the backend functions.
+3. Supabase stores newsletter signups, contact form messages, and events.
 
 ## How to manage events without touching code
 
@@ -38,6 +41,12 @@ This folder is now prepared for:
 6. Leave `is_published` turned on for events you want shown on the website.
 
 The website will only show events whose end time has not passed yet. If there are no upcoming events, the page will show a friendly message instead of an empty space.
+
+## Sermons
+
+- The site now has a sermons page inside `index.html`.
+- Sermons are designed to be organized in series.
+- Video content should stay on YouTube so the site does not use storage for sermon files.
 
 ## Important note about secrets
 

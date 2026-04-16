@@ -1,12 +1,8 @@
-import { insertIntoSupabase, isValidEmail, jsonResponse, readJsonBody } from "./_shared/supabase.mts";
+import { insertIntoSupabase, isValidEmail, jsonResponse, readJsonBody, validatePublicFormRequest } from "./_shared/supabase.mts";
 
 export default async (req: Request) => {
-  if (req.method !== "POST") {
-    return jsonResponse(405, {
-      ok: false,
-      message: "Only POST requests are allowed."
-    });
-  }
+  const requestGuard = validatePublicFormRequest(req, { maxBodyBytes: 8_000 });
+  if (requestGuard) return requestGuard;
 
   const body = await readJsonBody(req);
   if (!body || typeof body !== "object") {
@@ -55,6 +51,5 @@ export default async (req: Request) => {
 };
 
 export const config = {
-  path: "/api/subscribe",
-  preferStatic: true
+  path: "/api/subscribe"
 };
