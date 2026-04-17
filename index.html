@@ -1393,13 +1393,14 @@
         <button onclick="navigate('sermons')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="sermons">Sermons</button>
         <button onclick="navigate('ministries')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="ministries">Ministries</button>
         <button onclick="navigate('visit')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="visit">Visit</button>
+        <button onclick="openContactSection()" class="nav-link font-body font-600 text-sm" style="color:#444;">Contact Us</button>
       </div>
 
       <!-- CTA -->
       <div class="hidden lg:flex items-center gap-4">
         <button id="desktop-give-button" type="button" class="font-body font-semibold text-sm transition-colors" style="color:#b5000b;" onmouseover="this.style.color='#8a0008'" onmouseout="this.style.color='#b5000b'" onclick="toggleGivingMenu()" aria-expanded="false" aria-controls="giving-panel">Give</button>
         <button id="desktop-partner-button" type="button" onclick="openPartnerPanel()" class="partner-link font-body font-semibold text-sm" aria-expanded="false" aria-controls="giving-panel">Partner</button>
-        <button onclick="navigate('visit')" class="btn-primary px-6 py-2.5 rounded-xl font-body font-bold text-sm">Join Us &rarr;</button>
+        <button onclick="navigate('visit')" class="btn-primary px-6 py-2.5 rounded-xl font-body font-bold text-sm">Plan Your Visit &rarr;</button>
       </div>
 
       <!-- Mobile Hamburger -->
@@ -1418,9 +1419,10 @@
         <button onclick="navigate('sermons')" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
         <button onclick="navigate('ministries')" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
         <button onclick="navigate('visit')" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
+        <button onclick="openContactSection()" class="text-left font-body font-semibold py-2" style="color:#444;">Contact Us</button>
         <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
         <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit" aria-expanded="false" aria-controls="giving-panel">Partner</button>
-        <button onclick="navigate('visit')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Join Us &rarr;</button>
+        <button onclick="navigate('visit')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Plan Your Visit &rarr;</button>
       </div>
     </div>
 
@@ -1482,14 +1484,16 @@
     </div>
     <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full py-24">
       <div class="max-w-2xl" style="animation:fadeIn 0.8s ease both;">
-        <div class="section-label mb-6">Apostolic & Prophetic Ministry &middot; Nairobi, Kenya</div>
         <h1 class="font-headline font-bold leading-none mb-8" style="font-size:clamp(3rem,8vw,6rem);color:#1a1c1e;">
           <span style="color:#000D59;">Kingdom</span><br/><span style="color:#000D59;">Calibration</span>
           <span class="italic" style="color:#b5000b;"> Church,</span><br/><span style="color:#000D59;">Westlands.</span>
         </h1>
-        <p class="font-body text-lg leading-relaxed mb-12 max-w-xl" style="color:#495f84;">
-          Changing Lives, Aligning Destinies
-        </p>
+        <div class="inline-flex max-w-xl mb-12 rounded-2xl px-5 py-3" style="background:rgba(255,255,255,0.38);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.42);box-shadow:0 12px 32px rgba(9,28,67,0.08);">
+          <p class="font-body text-lg leading-relaxed" style="color:#495f84;">
+            Changing Lives, Aligning Destinies
+          </p>
+        </div>
+        <div class="section-label mb-6">An Apostolic &amp; Prophetic Ministry - Nairobi, Kenya</div>
         <div class="flex flex-col sm:flex-row gap-4">
           <button onclick="navigate('visit')" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base flex items-center justify-center gap-2">
             <span class="material-symbols-outlined">church</span> Join Our Sunday Service
@@ -1565,7 +1569,7 @@
         </div>
         <h3 class="font-headline font-bold text-2xl mb-2" style="color:#1a1c1e;">Veritas Bible Study</h3>
         <p class="font-body font-bold text-sm mb-5" style="color:#b5000b;">Every Tuesday &middot; 6:30 PM &mdash; 8:00 PM</p>
-        <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Diving deep into Truth (Veritas). An intensive discipleship and biblical school for the hungry.</p>
+        <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Diving deep into Truth (Veritas). An intensive discipleship and biblical school for the spiritually hungry.</p>
         </div>
 
         <!-- Friday -->
@@ -1713,17 +1717,17 @@
         </p>
         <div class="grid grid-cols-2 gap-8 mb-10">
           <div>
-            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Apostolic</p>
+            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Apostolic Dimension</p>
             <div class="stat-bar mb-3"><div class="stat-bar-fill" style="width:85%;"></div></div>
             <p class="font-body text-sm" style="color:#495f84;">Building order & government in the body of Christ.</p>
           </div>
           <div>
-            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Prophetic</p>
+            <p class="font-headline font-bold text-2xl mb-2" style="color:#b5000b;">Prophetic Dimension</p>
             <div class="stat-bar mb-3"><div class="stat-bar-fill" style="width:92%;"></div></div>
             <p class="font-body text-sm" style="color:#495f84;">Discerning the times & speaking heaven's mind.</p>
           </div>
         </div>
-        <button onclick="navigate('about')" class="font-body font-bold text-sm pb-1 transition-colors" style="color:#b5000b;border-bottom:2px solid #b5000b;">Our Full Vision Statement &rarr;</button>
+        <button onclick="navigate('about')" class="font-body font-bold text-sm pb-1 transition-colors" style="color:#b5000b;border-bottom:2px solid #b5000b;">Our Vision and Mission &rarr;</button>
       </div>
     </div>
   </section>
@@ -1768,7 +1772,7 @@
   <section class="py-24 relative overflow-hidden grain" style="background:#b5000b;">
     <div class="blob w-80 h-80 opacity-20" style="position:absolute;top:-40px;right:-40px;background:rgba(255,255,255,0.2);filter:blur(60px);"></div>
     <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center relative z-10">
-      <h2 class="font-headline font-bold text-white mb-6" style="font-size:clamp(2rem,5vw,3.5rem);">Ready to Align Your Destiny?</h2>
+        <h2 class="font-headline font-bold text-white mb-6" style="font-size:clamp(2rem,5vw,3.5rem);">Ready to get your life aligned?</h2>
       <p class="font-body text-lg mb-12" style="color:rgba(255,255,255,0.85);">Subscribe for weekly service updates, and exclusive resources from Kingdom Calibration Church.</p>
       <form id="subscribe-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onsubmit="handleSubscribe(event)">
         <input type="email" name="email" autocomplete="email" placeholder="Enter your email address" required
@@ -2075,11 +2079,11 @@
   </section>
 
   <!-- Core Values -->
-  <section class="py-28" style="background:#eeeef0;">
+  <section id="contact-section" class="py-28" style="background:#eeeef0;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <div class="section-label mb-3">Our DNA</div>
-        <h2 class="font-headline font-bold italic" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Core Values that Calibrate Us</h2>
+        <h2 class="font-headline font-bold italic" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Core Values that Align Us</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
         <div class="value-card p-10 rounded-2xl cursor-pointer" style="background:#ffffff;">
@@ -2485,7 +2489,7 @@
       <div class="max-w-3xl" style="animation:fadeIn 0.8s ease both;">
         <div class="section-label mb-4">The Kingdom Labor Force</div>
         <h1 class="font-headline font-extrabold leading-tight mb-8" style="font-size:clamp(2.5rem,7vw,5.5rem);color:#000D59;">Join the KLF &mdash;<br/>We are called <span style="color:#b5000b;">to serve.</span></h1>
-        <p class="font-body text-lg leading-relaxed mb-10 max-w-xl" style="color:#495f84;">Calibration is not just a destination; it's a commitment to excellence. The KLF is the heartbeat of our ministry, where purpose meets practice.</p>
+          <p class="font-body text-lg leading-relaxed mb-10 max-w-xl" style="color:#495f84;">Calibration is not just a destination; it's a commitment to excellence. The KLF is the heartbeat of our ministry, where purpose meets practice as we touch the King of Kings with our service.</p>
         <div class="flex flex-wrap gap-4">
           <a href="#ministry-grid" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Find Your Fit</a>
           <button onclick="navigate('about')" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Our Vision</button>
@@ -2590,8 +2594,8 @@
       <div class="rounded-2xl p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden recruitment-shell" style="background:#d6e3ff;">
         <div class="blob w-64 h-64 opacity-20" style="position:absolute;right:-30px;top:-30px;background:#495f84;filter:blur(60px);"></div>
         <div class="max-w-xl relative z-10">
-          <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2rem,4vw,3rem);color:#001b3d;">Ready to align your destiny?</h2>
-          <p class="font-body text-lg leading-relaxed" style="color:#31476b;">Join the Kingdom Labor Force and find where your gifts meet the ministry's needs. We believe every believer has a calibration point.</p>
+        <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2rem,4vw,3rem);color:#001b3d;">Ready to get your life aligned?</h2>
+          <p class="font-body text-lg leading-relaxed" style="color:#31476b;">Join the Kingdom Labor Force and find where your gifts meet the ministry's needs. We believe every believer has a calibration point that enables them to align to God's eternal purpose.</p>
         </div>
         <button class="btn-primary px-10 py-5 rounded-xl font-body font-bold text-lg flex-shrink-0 relative z-10 recruitment-button">Complete Recruitment Form &rarr;</button>
       </div>
@@ -2737,7 +2741,7 @@
   </section>
 
   <!-- Connect & Contact -->
-  <section class="py-28" style="background:#eeeef0;">
+  <section id="contact-section" class="py-28" style="background:#eeeef0;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
       <!-- Social Channels -->
       <div class="flex flex-col justify-center reveal">
@@ -2864,9 +2868,9 @@
       <div>
         <h4 class="font-body font-bold text-xs uppercase tracking-widest mb-6" style="color:rgba(213,223,244,0.5);">Service Times</h4>
         <ul class="space-y-4 font-body text-sm">
-          <li><span class="font-bold" style="color:#b5000b;">Sunday 10am &ndash; 1pm</span> <span style="color:rgba(225,232,246,0.56);">&middot; Main Service</span></li>
-          <li><span class="font-bold" style="color:#b5000b;">Veritas Bible Study</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
-          <li><span class="font-bold" style="color:#b5000b;">The Upper Room Experience</span> <span style="color:rgba(225,232,246,0.56);">&middot; 6:30pm</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">Sunday Gathering</span> <span style="color:rgba(225,232,246,0.56);">&middot; Every Sunday 10:00 AM &ndash; 1:00 PM</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">Veritas Bible Study</span> <span style="color:rgba(225,232,246,0.56);">&middot; Every Tuesday 6:30 PM &ndash; 8:00 PM</span></li>
+          <li><span class="font-bold" style="color:#b5000b;">The Upper Room Experience</span> <span style="color:rgba(225,232,246,0.56);">&middot; Every Friday 6:30 PM &ndash; 8:00 PM</span></li>
         </ul>
         <button onclick="navigate('visit')" class="btn-primary mt-8 px-6 py-3 rounded-xl font-body font-bold text-sm footer-visit-button">Plan Your Visit &rarr;</button>
       </div>
@@ -3011,6 +3015,15 @@
     if (!target) return;
     navigate('ministries');
     window.setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 160);
+  }
+
+  function openContactSection() {
+    const target = document.getElementById('contact-section');
+    navigate('visit');
+    window.setTimeout(() => {
+      if (!target) return;
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 160);
   }
