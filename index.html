@@ -1066,6 +1066,138 @@
     /* Quote decorative */
     .big-quote::before { content: '"'; font-family: 'Newsreader', serif; font-size: 8rem; color: rgba(181,0,11,0.08); position: absolute; top: -20px; left: -10px; line-height: 1; }
 
+    /* Header contact card */
+    #main-header .max-w-7xl {
+      position: relative;
+    }
+    .contact-card-popup {
+      position: absolute;
+      top: calc(100% + 0.85rem);
+      right: 1.5rem;
+      width: min(24rem, calc(100vw - 2rem));
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      z-index: 65;
+    }
+    .contact-card-popup.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .contact-card-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.6rem;
+      padding: 1.35rem;
+      border: 1px solid rgba(233,188,182,0.45);
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 28px 54px rgba(26,28,30,0.18);
+    }
+    .contact-card-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0.8rem;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(181,0,11,0.08);
+      pointer-events: none;
+    }
+    .contact-card-kicker {
+      position: relative;
+      z-index: 1;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b5000b;
+    }
+    .contact-card-title {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.45rem;
+      font-family: 'Newsreader', serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: #1a1c1e;
+    }
+    .contact-card-copy {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.7rem;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: #495f84;
+    }
+    .contact-card-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .contact-card-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 0.85rem 0.95rem;
+      border-radius: 1rem;
+      background: rgba(249,249,252,0.88);
+      border: 1px solid rgba(226,226,229,0.9);
+    }
+    .contact-card-item .material-symbols-outlined {
+      color: #b5000b;
+      font-size: 1.15rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .contact-card-item strong {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #7a7d85;
+    }
+    .contact-card-item span,
+    .contact-card-item a {
+      display: block;
+      margin-top: 0.16rem;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: #1a1c1e;
+    }
+    .contact-card-item a {
+      text-decoration: none;
+    }
+    .contact-card-item a:hover {
+      color: #b5000b;
+    }
+    .contact-card-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 0.85rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-card-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(226,226,229,0.9);
+      color: #1a1c1e;
+      background: rgba(255,255,255,0.88);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .contact-card-secondary:hover {
+      border-color: rgba(181,0,11,0.32);
+      color: #b5000b;
+    }
+
     /* Giving panel */
     .giving-panel {
       max-height: 0;
@@ -1226,6 +1358,26 @@
     @media (max-width: 767px) {
       html { scroll-padding-top: 6.5rem; }
       [id] { scroll-margin-top: 6.5rem; }
+      .contact-card-popup {
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        top: calc(100% + 0.55rem);
+      }
+      .contact-card-shell {
+        padding: 1rem;
+        border-radius: 1.35rem;
+      }
+      .contact-card-title {
+        font-size: 1.65rem;
+      }
+      .contact-card-actions {
+        flex-direction: column;
+      }
+      .contact-card-actions > * {
+        width: 100%;
+        justify-content: center;
+      }
       #main-header.giving-panel-active {
         max-height: 100vh;
         overflow-y: auto;
@@ -1393,7 +1545,7 @@
         <button onclick="navigate('sermons')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="sermons">Sermons</button>
         <button onclick="navigate('ministries')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="ministries">Ministries</button>
         <button onclick="navigate('visit')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="visit">Visit</button>
-        <button onclick="openContactSection()" class="nav-link font-body font-600 text-sm" style="color:#444;">Contact Us</button>
+        <button id="desktop-contact-button" type="button" onclick="toggleContactCard()" class="nav-link font-body font-600 text-sm" style="color:#444;" aria-expanded="false" aria-controls="contact-card">Contact Us</button>
       </div>
 
       <!-- CTA -->
@@ -1419,10 +1571,45 @@
         <button onclick="navigate('sermons')" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
         <button onclick="navigate('ministries')" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
         <button onclick="navigate('visit')" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
-        <button onclick="openContactSection()" class="text-left font-body font-semibold py-2" style="color:#444;">Contact Us</button>
+        <button id="mobile-contact-button" type="button" onclick="openContactCard(true)" class="text-left font-body font-semibold py-2" style="color:#444;" aria-expanded="false" aria-controls="contact-card">Contact Us</button>
         <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
         <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit" aria-expanded="false" aria-controls="giving-panel">Partner</button>
         <button onclick="navigate('visit')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Plan Your Visit &rarr;</button>
+      </div>
+    </div>
+
+    <div id="contact-card" class="contact-card-popup" aria-hidden="true">
+      <div class="contact-card-shell">
+        <div class="contact-card-kicker">Contact Us</div>
+        <h3 class="contact-card-title">Reach the House</h3>
+        <p class="font-body contact-card-copy">For prayer, pastoral help, or general questions, reach us directly here.</p>
+        <div class="contact-card-list">
+          <div class="contact-card-item">
+            <span class="material-symbols-outlined">phone</span>
+            <div>
+              <strong>Call</strong>
+              <a href="tel:+254742830772">+254 742 830 772</a>
+              <a href="tel:+254119287816">+254 119 287 816</a>
+            </div>
+          </div>
+          <div class="contact-card-item">
+            <span class="material-symbols-outlined">mail</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:info@kingdomcalibrationchurch.org">info@kingdomcalibrationchurch.org</a>
+            </div>
+          </div>
+          <div class="contact-card-item">
+            <span class="material-symbols-outlined">location_on</span>
+            <div>
+              <strong>Location</strong>
+              <span>Woodvale Center, 2nd Floor, Westlands, Nairobi</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card-actions">
+          <a href="mailto:info@kingdomcalibrationchurch.org" class="contact-card-secondary font-body font-semibold text-sm">Email Us <span class="material-symbols-outlined" style="font-size:1rem;">north_east</span></a>
+        </div>
       </div>
     </div>
 
@@ -2741,13 +2928,13 @@
   </section>
 
   <!-- Connect & Contact -->
-  <section id="contact-section" class="py-28" style="background:#eeeef0;">
+  <section id="contact-section" class="py-28" style="background:#eeeef0;scroll-margin-top:7.5rem;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-20">
       <!-- Social Channels -->
       <div class="flex flex-col justify-center reveal">
-        <div class="section-label mb-4">Join the Community</div>
-        <h2 class="font-headline font-bold mb-6 leading-tight" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Stay Connected<br/>Beyond Sunday.</h2>
-        <p class="font-body text-lg leading-relaxed mb-12 max-w-md" style="color:#495f84;">Follow our digital presence for daily revelations, sermon clips, and real-time ministry updates.</p>
+        <div class="section-label mb-4">Contact Us</div>
+        <h2 class="font-headline font-bold mb-6 leading-tight" style="font-size:clamp(2rem,4vw,3rem);color:#1a1c1e;">Get in Touch<br/>Beyond Sunday.</h2>
+        <p class="font-body text-lg leading-relaxed mb-12 max-w-md" style="color:#495f84;">Reach out for prayer, questions, pastoral support, or real-time ministry updates across our digital channels.</p>
         <div class="space-y-6">
           <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="social-link flex items-center gap-6 group" aria-label="YouTube">
             <div class="social-icon w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all" style="border-color:#e9bcb6;color:#495f84;">
@@ -2891,6 +3078,7 @@
   // Navigation
   function navigate(page) {
     closeGivingMenu();
+    closeContactCard();
     closeMobileMenu();
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(l => {
@@ -2939,6 +3127,7 @@
     const shouldOpen = !menu.classList.contains('open');
     if (shouldOpen) {
       closeGivingMenu();
+      closeContactCard();
     }
     menu.classList.toggle('open', shouldOpen);
     syncMenuButtonState(shouldOpen);
@@ -2959,12 +3148,28 @@
     });
   }
 
+  function syncContactCardState(isOpen) {
+    const card = document.getElementById('contact-card');
+    const ids = ['desktop-contact-button', 'mobile-contact-button'];
+    ids.forEach((id) => {
+      const button = document.getElementById(id);
+      if (!button) return;
+      button.setAttribute('aria-expanded', String(isOpen));
+    });
+    if (card) {
+      card.setAttribute('aria-hidden', String(!isOpen));
+    }
+  }
+
   function toggleGivingMenu(forceState) {
     const panel = document.getElementById('giving-panel');
     if (!panel) return;
     const shouldOpen = typeof forceState === 'boolean' ? forceState : !panel.classList.contains('open');
     if (shouldOpen && isMobileViewport()) {
       closeMobileMenu();
+    }
+    if (shouldOpen) {
+      closeContactCard();
     }
     panel.classList.toggle('open', shouldOpen);
     panel.setAttribute('aria-hidden', String(!shouldOpen));
@@ -2976,11 +3181,37 @@
     toggleGivingMenu(false);
   }
 
+  function toggleContactCard(forceState) {
+    const card = document.getElementById('contact-card');
+    if (!card) return;
+    const shouldOpen = typeof forceState === 'boolean' ? forceState : !card.classList.contains('open');
+    if (shouldOpen) {
+      closeGivingMenu();
+      if (isMobileViewport()) {
+        closeMobileMenu();
+      }
+    }
+    card.classList.toggle('open', shouldOpen);
+    syncContactCardState(shouldOpen);
+  }
+
+  function closeContactCard() {
+    toggleContactCard(false);
+  }
+
+  function openContactCard(shouldCloseMobileMenu = false) {
+    if (shouldCloseMobileMenu || isMobileViewport()) {
+      closeMobileMenu();
+    }
+    toggleContactCard(true);
+  }
+
   function openPartnerPanel(shouldCloseMobileMenu = false) {
     if (shouldCloseMobileMenu || isMobileViewport()) {
       closeMobileMenu();
     }
 
+    closeContactCard();
     toggleGivingMenu(true);
   }
 
@@ -3020,12 +3251,16 @@
   }
 
   function openContactSection() {
-    const target = document.getElementById('contact-section');
+    closeContactCard();
     navigate('visit');
     window.setTimeout(() => {
+      const target = document.getElementById('contact-section');
+      const header = document.getElementById('main-header');
       if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 160);
+      const headerOffset = header ? header.offsetHeight + 24 : 24;
+      const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
+    }, 220);
   }
 
   function applyLeaderStorySelection(storyId, shouldScroll = false) {
@@ -3113,25 +3348,39 @@
     const mobileButton = document.getElementById('mobile-give-button');
     const desktopPartnerButton = document.getElementById('desktop-partner-button');
     const mobilePartnerButton = document.getElementById('mobile-partner-button');
+    const contactCard = document.getElementById('contact-card');
+    const desktopContactButton = document.getElementById('desktop-contact-button');
+    const mobileContactButton = document.getElementById('mobile-contact-button');
 
-    if (!panel || !panel.classList.contains('open')) return;
-    if (panel.contains(event.target)) return;
-    if (desktopButton && desktopButton.contains(event.target)) return;
-    if (mobileButton && mobileButton.contains(event.target)) return;
-    if (desktopPartnerButton && desktopPartnerButton.contains(event.target)) return;
-    if (mobilePartnerButton && mobilePartnerButton.contains(event.target)) return;
+    if (panel && panel.classList.contains('open')) {
+      if (!panel.contains(event.target)
+        && !(desktopButton && desktopButton.contains(event.target))
+        && !(mobileButton && mobileButton.contains(event.target))
+        && !(desktopPartnerButton && desktopPartnerButton.contains(event.target))
+        && !(mobilePartnerButton && mobilePartnerButton.contains(event.target))) {
+        closeGivingMenu();
+      }
+    }
 
-    closeGivingMenu();
+    if (contactCard && contactCard.classList.contains('open')) {
+      if (!contactCard.contains(event.target)
+        && !(desktopContactButton && desktopContactButton.contains(event.target))
+        && !(mobileContactButton && mobileContactButton.contains(event.target))) {
+        closeContactCard();
+      }
+    }
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeGivingMenu();
+      closeContactCard();
       closeMobileMenu();
     }
   });
 
   window.addEventListener('resize', () => {
+    closeContactCard();
     if (!isMobileViewport()) {
       closeMobileMenu();
     }
