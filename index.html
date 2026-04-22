@@ -121,6 +121,86 @@
       background: #b5000b;
       transform: scaleX(1);
     }
+    .dropdown-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.18rem;
+    }
+    .dropdown-caret {
+      font-size: 1.15rem;
+      transition: transform 0.2s ease;
+    }
+    .dropdown-toggle.is-open .dropdown-caret {
+      transform: rotate(180deg);
+    }
+    .site-dropdown {
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 50%;
+      z-index: 30;
+      width: min(17rem, calc(100vw - 2rem));
+      padding: 0.55rem;
+      border-radius: 1.5rem;
+      background: rgba(255,255,255,0.97);
+      border: 1px solid rgba(233,188,182,0.72);
+      box-shadow: 0 30px 70px rgba(26,28,30,0.15);
+      transform: translateX(-50%) translateY(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .site-dropdown.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .site-dropdown-grid {
+      display: grid;
+      gap: 0.25rem;
+    }
+    .site-dropdown-link {
+      width: 100%;
+      display: block;
+      padding: 0.8rem 0.95rem;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1c1e;
+      border-radius: 1rem;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .site-dropdown-link:hover {
+      border-color: rgba(233,188,182,0.7);
+      background: #fff8f7;
+      color: #b5000b;
+    }
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      margin: 0 0 0 0.6rem;
+      padding-left: 0.95rem;
+      border-left: 1px solid #e9bcb6;
+      transition: max-height 0.35s ease, margin-top 0.35s ease;
+    }
+    .mobile-submenu.open {
+      max-height: 480px;
+      margin-top: -0.25rem;
+    }
+    .mobile-submenu a {
+      display: block;
+      width: 100%;
+      padding: 0.65rem 0;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #495f84;
+      transition: color 0.2s ease;
+    }
+    .mobile-submenu a:hover {
+      color: #b5000b;
+    }
 
     /* Cards */
     .card-hover { transition: all 0.3s ease; }
@@ -506,6 +586,40 @@
       margin-top: 1.7rem; max-width: 31rem; padding-left: 1rem; border-left: 3px solid rgba(181,0,11,0.18);
       color: #6b6e75; font-size: 0.92rem; line-height: 1.8;
     }
+    .leaders-coming-soon {
+      max-width: 52rem; margin: 0 auto; padding: 2.3rem 2rem; border-radius: 2rem;
+      background: linear-gradient(145deg, #fff8f4 0%, #ffffff 62%, #f5f8fd 100%);
+      border: 1px solid rgba(233,188,182,0.45);
+      box-shadow: 0 24px 54px rgba(26,28,30,0.06);
+      text-align: center;
+    }
+    .leaders-coming-soon-kicker {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.55rem 0.95rem; border-radius: 999px;
+      background: rgba(181,0,11,0.08); color: #b5000b;
+      font-size: 0.76rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .leaders-coming-soon-title {
+      margin-top: 1.2rem; font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 0.97; letter-spacing: -0.03em; color: #000D59;
+    }
+    .leaders-coming-soon-copy {
+      margin: 1.1rem auto 0; max-width: 34rem;
+      color: #6b6e75; font-family: 'Newsreader', serif;
+      font-size: clamp(1.05rem, 2vw, 1.28rem); font-style: italic; line-height: 1.7;
+    }
+    .leaders-story-page-hero-coming-soon {
+      min-height: 100vh;
+    }
+    .leaders-coming-soon-stage {
+      position: relative; z-index: 1;
+      min-height: calc(100vh - 18rem);
+      display: grid; place-items: center;
+    }
+    .leaders-coming-soon-page-card {
+      width: min(100%, 58rem);
+      padding: clamp(2.5rem, 5vw, 3.75rem) clamp(1.6rem, 4vw, 3rem);
+    }
     .leaders-portrait-montage {
       position: relative; min-height: 33rem;
     }
@@ -553,6 +667,103 @@
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
       border-top: 1px solid #e2d8cc; border-bottom: 1px solid #e2d8cc;
       background: rgba(255,255,255,0.38);
+    }
+    .partner-link.active {
+      color: #b5000b;
+    }
+    .partner-link.active::after {
+      background: #b5000b;
+      transform: scaleX(1);
+    }
+    .kbn-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .kbn-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(6, 10, 22, 0.82) 0%, rgba(6, 10, 22, 0.7) 18%, rgba(17, 15, 10, 0.44) 42%, rgba(18, 14, 10, 0.2) 64%, rgba(10, 8, 6, 0.46) 100%),
+        linear-gradient(180deg, rgba(7, 7, 6, 0.38) 0%, rgba(7, 7, 6, 0.1) 28%, rgba(7, 7, 6, 0.4) 100%);
+    }
+    .kbn-mist {
+      position: absolute;
+      inset: auto 0 -12% 0;
+      height: 38%;
+      background: linear-gradient(180deg, rgba(244,232,211,0) 0%, rgba(244,232,211,0.18) 36%, rgba(244,232,211,0.54) 100%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .kbn-shell {
+      background:
+        radial-gradient(circle at top left, rgba(181,0,11,0.08), transparent 34%),
+        radial-gradient(circle at top right, rgba(0,13,89,0.08), transparent 34%),
+        linear-gradient(180deg, #faf7f2 0%, #f7f1ea 48%, #ffffff 100%);
+    }
+    .kbn-stat-card {
+      border: 1px solid rgba(181,0,11,0.12);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 24px 70px rgba(16,25,47,0.06);
+      backdrop-filter: blur(10px);
+    }
+    .kbn-story-card {
+      border: 1px solid rgba(0,13,89,0.1);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 18px 56px rgba(16,25,47,0.05);
+    }
+    .kbn-path-card {
+      border: 1px solid rgba(181,0,11,0.12);
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(16,25,47,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .kbn-path-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 72px rgba(16,25,47,0.08);
+    }
+    .kbn-scripture-block {
+      border-left: 3px solid rgba(181,0,11,0.42);
+      background: rgba(255,255,255,0.78);
+      box-shadow: 0 16px 48px rgba(16,25,47,0.05);
+      backdrop-filter: blur(8px);
+    }
+    .kbn-cta-shell {
+      background: linear-gradient(135deg, #001b3d 0%, #0c2f63 44%, #1a1c1e 100%);
+      box-shadow: 0 30px 80px rgba(16,25,47,0.18);
+    }
+    .kbn-title-line {
+      display: block;
+    }
+    .kbn-title-builders {
+      position: relative;
+      display: inline-block;
+      color: #f0c77c;
+      padding-bottom: 0.2em;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    }
+    .kbn-title-builders::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 14%;
+      bottom: 0.08em;
+      height: 0.06em;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(240,199,124,0.98) 0%, rgba(240,199,124,0.42) 72%, transparent 100%);
+      box-shadow: 0 0 0 1px rgba(240,199,124,0.08);
+    }
+    .kbn-title-builders::after {
+      content: '';
+      position: absolute;
+      right: 7%;
+      bottom: -0.02em;
+      width: 1px;
+      height: 0.42em;
+      background: linear-gradient(180deg, rgba(240,199,124,0.8) 0%, rgba(240,199,124,0) 100%);
     }
     .leaders-selector-card {
       --story-accent: #b5000b;
@@ -979,6 +1190,14 @@
       font-size: 0.74rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
       color: #31476b; background: #ffffff; border: 1px solid #e2e2e5;
       border-radius: 999px; padding: 0.55rem 0.9rem;
+    }
+    .sermons-coming-soon-hero {
+      min-height: 100vh;
+    }
+    .sermons-coming-soon-stage {
+      min-height: calc(100vh - 16rem);
+      display: grid;
+      place-items: center;
     }
     @media (max-width: 1024px) {
       .sermons-hero-shell,
@@ -1546,6 +1765,22 @@
         <button onclick="navigate('about')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="about">About Us</button>
         <button onclick="navigate('sermons')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="sermons">Sermons</button>
         <button onclick="navigate('ministries')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="ministries">Ministries</button>
+        <button onclick="navigate('kbn')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="kbn">KBN</button>
+        <div class="relative">
+          <button id="desktop-past-events-button" type="button" onclick="togglePastEventsMenu()" class="nav-link dropdown-toggle font-body font-600 text-sm" style="color:#444;" aria-expanded="false" aria-controls="past-events-dropdown">
+            <span>Past Events</span>
+            <span class="material-symbols-outlined dropdown-caret" aria-hidden="true">expand_more</span>
+          </button>
+          <div id="past-events-dropdown" class="site-dropdown" aria-hidden="true">
+            <div class="site-dropdown-grid">
+              <a href="past-events/street-worship.html" class="site-dropdown-link">Street Worship</a>
+              <a href="past-events/divine-positioning-conference.html" class="site-dropdown-link">Divine Positioning Conference</a>
+              <a href="past-events/kingdom-builders-network.html" class="site-dropdown-link">Kingdom Builders Network</a>
+              <a href="past-events/klf-hangouts.html" class="site-dropdown-link">KLF Hangouts</a>
+              <a href="past-events/anniversaries.html" class="site-dropdown-link">Anniversaries</a>
+            </div>
+          </div>
+        </div>
         <button onclick="navigate('visit')" class="nav-link font-body font-600 text-sm" style="color:#444;" data-page="visit">Visit</button>
         <button id="desktop-contact-button" type="button" onclick="toggleContactCard()" class="nav-link font-body font-600 text-sm" style="color:#444;" aria-expanded="false" aria-controls="contact-card">Contact Us</button>
       </div>
@@ -1553,7 +1788,7 @@
       <!-- CTA -->
       <div class="hidden lg:flex items-center gap-4">
         <button id="desktop-give-button" type="button" class="font-body font-semibold text-sm transition-colors" style="color:#b5000b;" onmouseover="this.style.color='#8a0008'" onmouseout="this.style.color='#b5000b'" onclick="toggleGivingMenu()" aria-expanded="false" aria-controls="giving-panel">Give</button>
-        <button id="desktop-partner-button" type="button" onclick="openPartnerPanel()" class="partner-link font-body font-semibold text-sm" aria-expanded="false" aria-controls="giving-panel">Partner</button>
+        <button id="desktop-partner-button" type="button" onclick="openPartnerPanel()" class="partner-link font-body font-semibold text-sm" data-page="kbn">Partner</button>
         <button onclick="navigate('visit')" class="btn-primary px-6 py-2.5 rounded-xl font-body font-bold text-sm">Plan Your Visit &rarr;</button>
       </div>
 
@@ -1572,10 +1807,22 @@
         <button onclick="navigate('about')" class="text-left font-body font-semibold py-2" style="color:#444;">About Us</button>
         <button onclick="navigate('sermons')" class="text-left font-body font-semibold py-2" style="color:#444;">Sermons</button>
         <button onclick="navigate('ministries')" class="text-left font-body font-semibold py-2" style="color:#444;">Ministries</button>
+        <button onclick="navigate('kbn')" class="text-left font-body font-semibold py-2" style="color:#444;">KBN</button>
+        <button id="mobile-past-events-button" type="button" onclick="toggleMobilePastEventsMenu()" class="dropdown-toggle flex items-center justify-between text-left font-body font-semibold py-2 w-full" style="color:#444;" aria-expanded="false" aria-controls="mobile-past-events-menu">
+          <span>Past Events</span>
+          <span class="material-symbols-outlined dropdown-caret" aria-hidden="true">expand_more</span>
+        </button>
+        <div id="mobile-past-events-menu" class="mobile-submenu" aria-hidden="true">
+          <a href="past-events/street-worship.html">Street Worship</a>
+          <a href="past-events/divine-positioning-conference.html">Divine Positioning Conference</a>
+          <a href="past-events/kingdom-builders-network.html">Kingdom Builders Network</a>
+          <a href="past-events/klf-hangouts.html">KLF Hangouts</a>
+          <a href="past-events/anniversaries.html">Anniversaries</a>
+        </div>
         <button onclick="navigate('visit')" class="text-left font-body font-semibold py-2" style="color:#444;">Visit</button>
         <button id="mobile-contact-button" type="button" onclick="openContactCard(true)" class="text-left font-body font-semibold py-2" style="color:#444;" aria-expanded="false" aria-controls="contact-card">Contact Us</button>
         <button id="mobile-give-button" type="button" onclick="toggleGivingMenu()" class="text-left font-body font-semibold py-2" style="color:#b5000b;" aria-expanded="false" aria-controls="giving-panel">Give</button>
-        <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit" aria-expanded="false" aria-controls="giving-panel">Partner</button>
+        <button id="mobile-partner-button" type="button" onclick="openPartnerPanel(true)" class="partner-link text-left font-body font-semibold py-2 w-fit">Partner</button>
         <button onclick="navigate('visit')" class="btn-primary px-6 py-3 rounded-xl font-body font-bold text-sm text-center mt-2">Plan Your Visit &rarr;</button>
       </div>
     </div>
@@ -1985,23 +2232,24 @@
 
 <!-- ===================== PAGE: SERMONS ===================== -->
 <div id="page-sermons" class="page">
-  <header class="relative pt-32 pb-24 overflow-hidden" style="background:#f6f5f8;">
+  <header class="relative pt-32 pb-24 overflow-hidden sermons-coming-soon-hero" style="background:#f6f5f8;">
     <div class="blob w-80 h-80 opacity-30" style="position:absolute;right:-60px;top:-30px;background:rgba(0,13,89,0.12);filter:blur(70px);"></div>
     <div class="blob w-64 h-64 opacity-20" style="position:absolute;left:-30px;bottom:-40px;background:rgba(181,0,11,0.12);filter:blur(70px);"></div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-      <div class="section-label mb-4">Sermons</div>
-      <h1 class="font-headline font-light leading-tight" style="font-size:clamp(2.7rem,6vw,5.4rem);color:#000D59;">
-        Sermons in<br/><span class="italic" style="color:#b5000b;">Series.</span>
-      </h1>
-      <p class="font-body text-lg leading-relaxed max-w-2xl mt-8" style="color:#495f84;">Follow the teaching journey of Kingdom Calibration Church through sermon series that can be watched in order, one message at a time.</p>
-      <div class="flex flex-wrap gap-4 mt-10">
-        <a href="#sermons-series-detail" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Start This Series</a>
-        <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:#e2e2e5;color:#1a1c1e;" onmouseover="this.style.borderColor='#b5000b';this.style.color='#b5000b'" onmouseout="this.style.borderColor='#e2e2e5';this.style.color='#1a1c1e'">Visit YouTube Channel</a>
+      <div class="sermons-coming-soon-stage">
+        <div class="leaders-coming-soon leaders-coming-soon-page-card reveal">
+          <div class="leaders-coming-soon-kicker">Sermons</div>
+          <h1 class="leaders-coming-soon-title">Coming Soon</h1>
+          <p class="leaders-coming-soon-copy">We are still preparing the sermons page. For messages, livestream replays, and new uploads, please visit our YouTube channel for now.</p>
+          <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <a href="https://youtube.com/@kingdomcalibrationchurch?si=8im3EXJpqXeYUxO5" target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Visit YouTube Channel</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <section class="py-24" style="background:#ffffff;">
+  <section class="py-24" style="background:#ffffff;" hidden>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="sermons-hero-shell reveal">
         <article class="sermons-hero-copy">
@@ -2030,7 +2278,7 @@
     </div>
   </section>
 
-  <section id="sermons-series-library" class="py-24" style="background:#f3f3f6;">
+  <section id="sermons-series-library" class="py-24" style="background:#f3f3f6;" hidden>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-14 reveal">
         <div>
@@ -2058,7 +2306,7 @@
     </div>
   </section>
 
-  <section id="sermons-series-detail" class="py-28" style="background:#ffffff;">
+  <section id="sermons-series-detail" class="py-28" style="background:#ffffff;" hidden>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="sermons-detail-shell reveal">
         <div class="sermons-detail-head">
@@ -2153,7 +2401,7 @@
     </div>
   </section>
 
-  <section class="py-24" style="background:#f9f9fc;">
+  <section class="py-24" style="background:#f9f9fc;" hidden>
     <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center reveal">
       <div class="section-label mb-3">Watch More</div>
       <h2 class="font-headline font-bold" style="font-size:clamp(2rem,4vw,3.3rem);color:#1a1c1e;">Keep following the teaching.</h2>
@@ -2450,7 +2698,7 @@
 
 <!-- ===================== PAGE: LEADERS ===================== -->
 <div id="page-leaders" class="page">
-  <header class="leaders-story-page-hero pt-32 pb-24">
+  <header class="leaders-story-page-hero leaders-story-page-hero-coming-soon pt-32 pb-24">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
       <div class="leaders-story-masthead reveal">
         <div class="leaders-story-masthead-logo">Kingdom Calibration Church</div>
@@ -2463,41 +2711,19 @@
         Back to About Us
       </button>
 
-      <div class="leaders-story-hero-grid">
-        <div class="reveal">
-          <div class="section-label mb-4">The Journey Behind the Mandate</div>
-          <h1 class="leaders-story-title">Read Their Story</h1>
-          <p class="font-body leaders-story-lead">Behind the public ministry is a quieter journey of calling, prayer, obedience, and shared stewardship. This page is designed as a slower editorial feature so someone can step into one story at a time and feel the heart behind the leadership of Kingdom Calibration Church.</p>
-          <p class="font-body leaders-story-subnote">Choose one story below to begin. Nothing opens until a reader selects a journey, so the page stays calm, personal, and easy to take in.</p>
-        </div>
-
-        <div class="leaders-portrait-montage reveal">
-          <figure class="leaders-portrait-card leaders-portrait-card-primary">
-            <img loading="lazy" decoding="async" src="Photos/Apostle Boniface Nagi.jpg" alt="Apostle Boniface Nagi portrait"/>
-            <figcaption class="leaders-portrait-caption">
-              <strong>Apostle Boniface Nagi</strong>
-              <span>Apostolic Voice</span>
-            </figcaption>
-          </figure>
-          <figure class="leaders-portrait-card leaders-portrait-card-secondary">
-            <img loading="lazy" decoding="async" src="Photos/Prophetess Joyce Wangechi.jpg" alt="Prophetess Joyce Wangechi portrait"/>
-            <figcaption class="leaders-portrait-caption">
-              <strong>Prophetess Joyce Wangechi</strong>
-              <span>Prophetic Watchman</span>
-            </figcaption>
-          </figure>
-          <div class="leaders-portrait-note">
-            <strong>One mandate. Two voices.</strong>
-            <span>Shared stewardship in truth, prayer, healing, and alignment.</span>
-          </div>
+      <div class="leaders-coming-soon-stage">
+        <div class="leaders-coming-soon leaders-coming-soon-page-card reveal">
+          <div class="leaders-coming-soon-kicker">Coming Soon</div>
+          <h1 class="leaders-coming-soon-title">The leaders' stories are still being prepared.</h1>
+          <p class="leaders-coming-soon-copy">We are still gathering and shaping their stories. This full page will be updated once the stories are ready to share.</p>
         </div>
       </div>
     </div>
   </header>
 
-  <section class="py-24" style="background:#ffffff;">
+  <section class="py-24" style="background:#ffffff;" hidden>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="leaders-story-selectors reveal">
+      <div class="leaders-story-selectors reveal" hidden>
         <div class="leaders-story-selector-grid stagger">
           <button type="button" class="leaders-selector-card" data-leader-story-trigger="apostle" aria-pressed="false">
             <span class="leaders-selector-number">01</span>
@@ -2517,7 +2743,7 @@
         </div>
       </div>
 
-      <div id="leaders-story-shell" class="leaders-story-shell reveal">
+      <div id="leaders-story-shell" class="leaders-story-shell reveal" hidden>
         <div class="leaders-story-empty" data-leader-story-empty>
           <strong>Choose a journey to begin.</strong>
           <span>Select Apostle's Journey, Prophetess' Journey, or Their Journey Together above. The full editorial story will open here one at a time.</span>
@@ -2787,6 +3013,173 @@
           <p class="font-body text-lg leading-relaxed" style="color:#31476b;">Join the Kingdom Labor Force and find where your gifts meet the ministry's needs. We believe every believer has a calibration point that enables them to align to God's eternal purpose.</p>
         </div>
         <button class="btn-primary px-10 py-5 rounded-xl font-body font-bold text-lg flex-shrink-0 relative z-10 recruitment-button">Complete Recruitment Form &rarr;</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: KBN ===================== -->
+<div id="page-kbn" class="page">
+  <section class="relative min-h-[92vh] flex items-end overflow-hidden" style="padding-top:80px;background:#0b1020;">
+    <video class="kbn-hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="assets/Video Asset Crop.mp4" type="video/mp4" />
+    </video>
+    <div class="kbn-hero-overlay"></div>
+    <div class="kbn-mist"></div>
+    <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full py-24">
+      <div class="max-w-3xl reveal" style="animation:fadeIn 0.8s ease both;">
+        <div class="section-label mb-5" style="color:rgba(255,255,255,0.82);">The</div>
+        <h1 class="font-headline font-bold leading-[0.94] mb-5" style="font-size:clamp(3rem,7.5vw,6.4rem);color:#ffffff;">
+          <span class="kbn-title-line">Kingdom</span>
+          <span class="kbn-title-line kbn-title-builders">Builders</span>
+          <span class="kbn-title-line">Network</span>
+        </h1>
+        <p class="font-headline font-bold leading-[1.02] mb-8" style="font-size:clamp(1.7rem,3.4vw,2.8rem);color:#f0c77c;">
+          Carry the Vision. Strengthen the House.
+        </p>
+        <p class="font-body text-lg leading-relaxed max-w-2xl mb-10" style="color:rgba(255,255,255,0.82);">
+          Kingdom Builders Network is the fellowship of partners who have committed to stand with Kingdom Calibration Church in prayer, provision, and shared responsibility for the vision God has entrusted to this house.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="scrollToGiveButton(event)" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base">Become a Kingdom Builder</button>
+          <button type="button" onclick="scrollWithinPage('kbn-story')" class="px-8 py-4 rounded-xl font-body font-bold text-base border-2 transition-all" style="border-color:rgba(255,255,255,0.26);color:#ffffff;" onmouseover="this.style.borderColor='#f0c77c';this.style.color='#f0c77c'" onmouseout="this.style.borderColor='rgba(255,255,255,0.26)';this.style.color='#ffffff'">Why Partnership Matters</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kbn-story" class="py-24 kbn-shell">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="leaders-coming-soon leaders-coming-soon-page-card reveal">
+        <div class="leaders-coming-soon-kicker">Coming Soon</div>
+        <h2 class="leaders-coming-soon-title">More about the Kingdom Builders Network Coming Soon</h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28" style="background:#ffffff;" hidden>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-7 reveal">
+          <div class="section-label mb-4">The Picture</div>
+          <h2 class="font-headline font-bold mb-8 leading-tight" style="font-size:clamp(2.2rem,5vw,4rem);color:#1a1c1e;">
+            When the nets began to strain,<br/><span style="color:#000D59;">partners were called in.</span>
+          </h2>
+          <div class="kbn-story-card rounded-3xl p-8 md:p-10">
+            <p class="font-body text-lg leading-relaxed mb-6" style="color:#495f84;">
+              Kingdom Builders Network draws its imagery from the moment when the disciples encountered miraculous abundance and signaled other fishermen to help them carry what one boat alone could not hold. KBN exists in that same spirit.
+            </p>
+            <p class="font-body text-lg leading-relaxed mb-6" style="color:#495f84;">
+              These are not spectators. They are co-laborers who recognize the grace on the house and choose to strengthen it through consistent prayer, financial partnership, advocacy, and practical support.
+            </p>
+            <p class="font-body text-lg leading-relaxed" style="color:#495f84;">
+              In KBN, partnership is not just about giving. It is about helping carry the weight of what God is releasing, so the vision can move with strength, dignity, and endurance.
+            </p>
+          </div>
+        </div>
+        <div class="lg:col-span-5 reveal">
+          <div class="kbn-scripture-block rounded-3xl p-8 md:p-10">
+            <div class="section-label mb-4">Luke 5 Picture</div>
+            <p class="font-headline text-3xl leading-tight mb-6" style="color:#000D59;">
+              “When the harvest exceeded one boat, they signaled their partners to come and help.”
+            </p>
+            <p class="font-body text-base leading-relaxed mb-8" style="color:#495f84;">
+              KBN is our answer to that picture: a people who do not merely admire the catch, but step in to help carry it.
+            </p>
+            <div class="space-y-5">
+              <div class="flex gap-4 items-start">
+                <span class="material-symbols-outlined" style="color:#b5000b;">volunteer_activism</span>
+                <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Partnership that is spiritual before it is transactional.</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="material-symbols-outlined" style="color:#b5000b;">savings</span>
+                <p class="font-body text-sm leading-relaxed" style="color:#495f84;">Stewardship that strengthens the work of the Kingdom with consistency and honor.</p>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="material-symbols-outlined" style="color:#b5000b;">diversity_3</span>
+                <p class="font-body text-sm leading-relaxed" style="color:#495f84;">A network of builders who help the house respond to growth with readiness and grace.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28" style="background:#f3f3f6;" hidden>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <div class="section-label mb-4">How Kingdom Builders Partner</div>
+        <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2.1rem,4vw,3.4rem);color:#1a1c1e;">Three ways KBN strengthens the house.</h2>
+        <p class="font-body text-lg leading-relaxed" style="color:#495f84;">Partnership in KBN is holistic: spiritual, practical, and visionary. It is how people align their strength with what God is building here.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+        <article class="kbn-path-card rounded-3xl p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(181,0,11,0.08);">
+            <span class="material-symbols-outlined" style="color:#b5000b;">auto_stories</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#1a1c1e;">Pray with the Vision</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Commit to stand with the ministry in prayer, discerning the times and covering the work of the house with faithful intercession.</p>
+        </article>
+        <article class="kbn-path-card rounded-3xl p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(0,13,89,0.08);">
+            <span class="material-symbols-outlined" style="color:#000D59;">payments</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#1a1c1e;">Build through Provision</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Support the vision financially so gatherings, media, discipleship, hospitality, and future expansion can move with excellence.</p>
+        </article>
+        <article class="kbn-path-card rounded-3xl p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(240,199,124,0.18);">
+            <span class="material-symbols-outlined" style="color:#735c00;">campaign</span>
+          </div>
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#1a1c1e;">Strengthen through Influence</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Become an advocate for the vision by opening doors, encouraging others, and helping the work of the house reach farther.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-28" style="background:#ffffff;" hidden>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-14 reveal">
+        <div class="max-w-3xl">
+          <div class="section-label mb-4">What Kingdom Builders Help Carry</div>
+          <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2.1rem,4vw,3.4rem);color:#1a1c1e;">Partnership strengthens what happens every week and what is still ahead.</h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 stagger">
+        <article class="rounded-3xl p-8 reveal" style="background:#f9f9fc;border:1px solid rgba(233,188,182,0.42);">
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#000D59;">Worship & Discipleship</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Helping sustain gatherings, teaching environments, and the spiritual formation of the house.</p>
+        </article>
+        <article class="rounded-3xl p-8 reveal" style="background:#f9f9fc;border:1px solid rgba(233,188,182,0.42);">
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#000D59;">Media & Reach</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Expanding the message through digital ministry, communication, and high-quality storytelling.</p>
+        </article>
+        <article class="rounded-3xl p-8 reveal" style="background:#f9f9fc;border:1px solid rgba(233,188,182,0.42);">
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#000D59;">Care & Hospitality</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Supporting the dignity, welcome, and pastoral strength that make the house feel like home.</p>
+        </article>
+        <article class="rounded-3xl p-8 reveal" style="background:#f9f9fc;border:1px solid rgba(233,188,182,0.42);">
+          <h3 class="font-headline font-bold text-2xl mb-4" style="color:#000D59;">Future Expansion</h3>
+          <p class="font-body text-base leading-relaxed" style="color:#495f84;">Positioning the church to respond with wisdom and readiness as God enlarges the vision.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 kbn-shell" hidden>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="kbn-cta-shell rounded-[2rem] p-10 md:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 reveal">
+        <div class="max-w-3xl">
+          <div class="section-label mb-4" style="color:rgba(255,255,255,0.72);">Join the Fellowship</div>
+          <h2 class="font-headline font-bold mb-6" style="font-size:clamp(2.2rem,5vw,4rem);color:#ffffff;">Become a Kingdom Builder.</h2>
+          <p class="font-body text-lg leading-relaxed" style="color:rgba(255,255,255,0.82);">If this vision has become part of your burden, your partnership matters. Join the network of people helping carry what God is establishing through this house.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="scrollToGiveButton(event)" class="btn-primary px-8 py-4 rounded-xl font-body font-bold text-base whitespace-nowrap">Partner Through Giving</button>
+          <button type="button" onclick="openContactSection()" class="px-8 py-4 rounded-xl font-body font-bold text-base whitespace-nowrap border-2 transition-all" style="border-color:rgba(255,255,255,0.22);color:#ffffff;" onmouseover="this.style.borderColor='#f0c77c';this.style.color='#f0c77c'" onmouseout="this.style.borderColor='rgba(255,255,255,0.22)';this.style.color='#ffffff'">Speak With the House</button>
+        </div>
       </div>
     </div>
   </section>
@@ -3081,16 +3474,28 @@
   function navigate(page) {
     closeGivingMenu();
     closeContactCard();
+    closePastEventsMenu();
     closeMobileMenu();
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(l => {
       l.classList.remove('active');
       l.style.color = '#444';
     });
+    const desktopPartnerButton = document.getElementById('desktop-partner-button');
+    if (desktopPartnerButton) {
+      desktopPartnerButton.classList.remove('active');
+      desktopPartnerButton.style.color = '#000D59';
+    }
     const target = document.getElementById('page-' + page);
     if (target) target.classList.add('active');
-    const link = document.querySelector(`[data-page="${page}"]`);
-    if (link) { link.classList.add('active'); link.style.color = '#b5000b'; }
+    document.querySelectorAll(`[data-page="${page}"]`).forEach((link) => {
+      link.classList.add('active');
+      link.style.color = '#b5000b';
+    });
+    if (page === 'kbn' && desktopPartnerButton) {
+      desktopPartnerButton.classList.add('active');
+      desktopPartnerButton.style.color = '#b5000b';
+    }
     if (page === 'leaders') {
       window.setTimeout(() => resetLeaderStories(), 40);
     }
@@ -3120,6 +3525,7 @@
     if (menu) {
       menu.classList.remove('open');
     }
+    closeMobilePastEventsMenu();
     syncMenuButtonState(false);
   }
 
@@ -3130,6 +3536,7 @@
     if (shouldOpen) {
       closeGivingMenu();
       closeContactCard();
+      closePastEventsMenu();
     }
     menu.classList.toggle('open', shouldOpen);
     syncMenuButtonState(shouldOpen);
@@ -3142,7 +3549,7 @@
   }
 
   function setGiveButtonState(isOpen) {
-    const ids = ['desktop-give-button', 'mobile-give-button', 'desktop-partner-button', 'mobile-partner-button'];
+    const ids = ['desktop-give-button', 'mobile-give-button'];
     ids.forEach((id) => {
       const button = document.getElementById(id);
       if (!button) return;
@@ -3163,6 +3570,62 @@
     }
   }
 
+  function syncPastEventsMenuState(isOpen) {
+    const menu = document.getElementById('past-events-dropdown');
+    const button = document.getElementById('desktop-past-events-button');
+    if (button) {
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.classList.toggle('is-open', isOpen);
+    }
+    if (menu) {
+      menu.classList.toggle('open', isOpen);
+      menu.setAttribute('aria-hidden', String(!isOpen));
+    }
+  }
+
+  function togglePastEventsMenu(forceState) {
+    const menu = document.getElementById('past-events-dropdown');
+    if (!menu) return;
+    const shouldOpen = typeof forceState === 'boolean' ? forceState : !menu.classList.contains('open');
+    if (shouldOpen) {
+      closeGivingMenu();
+      closeContactCard();
+    }
+    syncPastEventsMenuState(shouldOpen);
+  }
+
+  function closePastEventsMenu() {
+    togglePastEventsMenu(false);
+  }
+
+  function syncMobilePastEventsMenuState(isOpen) {
+    const menu = document.getElementById('mobile-past-events-menu');
+    const button = document.getElementById('mobile-past-events-button');
+    if (button) {
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.classList.toggle('is-open', isOpen);
+    }
+    if (menu) {
+      menu.classList.toggle('open', isOpen);
+      menu.setAttribute('aria-hidden', String(!isOpen));
+    }
+  }
+
+  function toggleMobilePastEventsMenu(forceState) {
+    const menu = document.getElementById('mobile-past-events-menu');
+    if (!menu) return;
+    const shouldOpen = typeof forceState === 'boolean' ? forceState : !menu.classList.contains('open');
+    if (shouldOpen) {
+      closeGivingMenu();
+      closeContactCard();
+    }
+    syncMobilePastEventsMenuState(shouldOpen);
+  }
+
+  function closeMobilePastEventsMenu() {
+    toggleMobilePastEventsMenu(false);
+  }
+
   function toggleGivingMenu(forceState) {
     const panel = document.getElementById('giving-panel');
     if (!panel) return;
@@ -3172,6 +3635,8 @@
     }
     if (shouldOpen) {
       closeContactCard();
+      closePastEventsMenu();
+      closeMobilePastEventsMenu();
     }
     panel.classList.toggle('open', shouldOpen);
     panel.setAttribute('aria-hidden', String(!shouldOpen));
@@ -3189,6 +3654,8 @@
     const shouldOpen = typeof forceState === 'boolean' ? forceState : !card.classList.contains('open');
     if (shouldOpen) {
       closeGivingMenu();
+      closePastEventsMenu();
+      closeMobilePastEventsMenu();
       if (isMobileViewport()) {
         closeMobileMenu();
       }
@@ -3212,9 +3679,7 @@
     if (shouldCloseMobileMenu || isMobileViewport()) {
       closeMobileMenu();
     }
-
-    closeContactCard();
-    toggleGivingMenu(true);
+    navigate('kbn');
   }
 
   function pulseGiveButton(button) {
@@ -3250,6 +3715,15 @@
     window.setTimeout(() => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 160);
+  }
+
+  function scrollWithinPage(id) {
+    const target = document.getElementById(id);
+    const header = document.getElementById('main-header');
+    if (!target) return;
+    const headerOffset = header ? header.offsetHeight + 24 : 24;
+    const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
   }
 
   function openContactSection() {
@@ -3348,18 +3822,18 @@
     const panel = document.getElementById('giving-panel');
     const desktopButton = document.getElementById('desktop-give-button');
     const mobileButton = document.getElementById('mobile-give-button');
-    const desktopPartnerButton = document.getElementById('desktop-partner-button');
-    const mobilePartnerButton = document.getElementById('mobile-partner-button');
     const contactCard = document.getElementById('contact-card');
     const desktopContactButton = document.getElementById('desktop-contact-button');
     const mobileContactButton = document.getElementById('mobile-contact-button');
+    const pastEventsDropdown = document.getElementById('past-events-dropdown');
+    const desktopPastEventsButton = document.getElementById('desktop-past-events-button');
+    const mobilePastEventsMenu = document.getElementById('mobile-past-events-menu');
+    const mobilePastEventsButton = document.getElementById('mobile-past-events-button');
 
     if (panel && panel.classList.contains('open')) {
       if (!panel.contains(event.target)
         && !(desktopButton && desktopButton.contains(event.target))
-        && !(mobileButton && mobileButton.contains(event.target))
-        && !(desktopPartnerButton && desktopPartnerButton.contains(event.target))
-        && !(mobilePartnerButton && mobilePartnerButton.contains(event.target))) {
+        && !(mobileButton && mobileButton.contains(event.target))) {
         closeGivingMenu();
       }
     }
@@ -3371,20 +3845,38 @@
         closeContactCard();
       }
     }
+
+    if (pastEventsDropdown && pastEventsDropdown.classList.contains('open')) {
+      if (!pastEventsDropdown.contains(event.target)
+        && !(desktopPastEventsButton && desktopPastEventsButton.contains(event.target))) {
+        closePastEventsMenu();
+      }
+    }
+
+    if (mobilePastEventsMenu && mobilePastEventsMenu.classList.contains('open')) {
+      if (!mobilePastEventsMenu.contains(event.target)
+        && !(mobilePastEventsButton && mobilePastEventsButton.contains(event.target))) {
+        closeMobilePastEventsMenu();
+      }
+    }
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeGivingMenu();
       closeContactCard();
+      closePastEventsMenu();
       closeMobileMenu();
     }
   });
 
   window.addEventListener('resize', () => {
     closeContactCard();
+    closePastEventsMenu();
     if (!isMobileViewport()) {
       closeMobileMenu();
+    } else {
+      closeMobilePastEventsMenu();
     }
     syncGivingPanelState(document.getElementById('giving-panel')?.classList.contains('open') === true);
   });
